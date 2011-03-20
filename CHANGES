@@ -1,0 +1,74 @@
+== 0.8.4 ==
+	 http://reachstuff.com/community/tracker/issue-79-armory-unlocked armory unlocked. 
+
+== 0.8.3 ==
+	 http://reachstuff.com/community/tracker/issue-43-inactive inactive 
+	 http://reachstuff.com/community/tracker/issue-49-some-spartans some spartans. 
+	 http://reachstuff.com/community/tracker/issue-67-this-registry-getclass $this->registry->getClass 
+	 http://reachstuff.com/community/tracker/issue-68-leaderboard-check leaderboard check 
+	 http://reachstuff.com/community/tracker/issue-69-no-gt no gt 
+	 http://reachstuff.com/community/tracker/issue-71-kd-ratio-is-off kd ratio is off 
+	 http://reachstuff.com/community/tracker/issue-72-sig-1-2-signs sig 1 2 % signs 
+	 http://reachstuff.com/community/tracker/issue-73-field-types-mysql field types mysql 
+	 http://reachstuff.com/community/tracker/issue-74-double-quotes-on-imagepage double quotes on imagePage 
+	 http://reachstuff.com/community/tracker/issue-76-commas-challlenges commas challlenges 
+	 http://reachstuff.com/community/tracker/issue-77-file-exists-templates file_exists templates 
+	 http://reachstuff.com/community/tracker/issue-78-check-w-400-kills-100-games-fails check w/ 400 kills + 100 games fails 
+
+== 0.8.2 ==
+	 http://reachstuff.com/community/tracker/issue-44-mass-recache mass recache 
+	 http://reachstuff.com/community/tracker/issue-66-preselect-option-for-sig-4 preselect option for sig 4 
+	
+== 0.8.1 == 
+	 http://reachstuff.com/community/tracker/issue-41-queries-image-page queries image page 
+	 http://reachstuff.com/community/tracker/issue-48-%20-in-name %20 in Name 
+	 http://reachstuff.com/community/tracker/issue-51-non-id-1-on-gamerpage Non ID 1 on gamerpage. 
+	 http://reachstuff.com/community/tracker/issue-52-playtime playtime 
+	 http://reachstuff.com/community/tracker/issue-53-default-settings default settings 
+	 http://reachstuff.com/community/tracker/issue-54-function-findandcheckgtid function findAndCheckGT($id) 
+	 http://reachstuff.com/community/tracker/issue-55-compare-page compare page 
+	 http://reachstuff.com/community/tracker/issue-56-new-task New task 
+	 http://reachstuff.com/community/tracker/issue-57-multiple-medals-check multiple medals check 
+	 http://reachstuff.com/community/tracker/issue-59-bsmselect bsmSelect 
+	 http://reachstuff.com/community/tracker/issue-60-one-form-per-page ONE FORM PER PAGE. 
+	 http://reachstuff.com/community/tracker/issue-61-better-medals better medals 
+	 http://reachstuff.com/community/tracker/issue-62-kd kd 
+	 http://reachstuff.com/community/tracker/issue-64-balls balls 
+	 http://reachstuff.com/community/tracker/issue-65-medals-and-commas medals and commas 
+
+== 0.8.0 ==
+	 http://reachstuff.com/community/tracker/issue-36-challenges challenges 
+	 http://reachstuff.com/community/tracker/issue-42-1st-green-w-spartan-image 1st green w/ spartan image 
+	 http://reachstuff.com/community/tracker/issue-45-timezones-and-challenges timezones and challenges 
+	 http://reachstuff.com/community/tracker/issue-46-1st-sig 1st sig. 
+	 http://reachstuff.com/community/tracker/issue-47-update-challenges update challenges. 
+	 http://reachstuff.com/community/tracker/issue-50-bbcode-imgurl bbcode img/url 
+
+== 0.7.9 ==
+	http://reachstuff.com/community/tracker/issue-28-recache-bot recache Bot 
+	http://reachstuff.com/community/tracker/issue-29-imagepermissions imagePermissions 
+	http://reachstuff.com/community/tracker/issue-30-image-page-new-members Image Page new members 
+	http://reachstuff.com/community/tracker/issue-31-totalgames totalGames 
+	http://reachstuff.com/community/tracker/issue-32-spartanemblem Spartan/Emblem 
+	http://reachstuff.com/community/tracker/issue-33-holy-cow HOLY COW 
+	http://reachstuff.com/community/tracker/issue-34-armoury-completion Armoury completion 
+	http://reachstuff.com/community/tracker/issue-35-no-killsdeaths No kills/deaths 
+	http://reachstuff.com/community/tracker/issue-37-feature-settings feature: settings 
+	http://reachstuff.com/community/tracker/issue-38-file-limit file limit 
+	http://reachstuff.com/community/tracker/issue-39-explain-pages explain pages 
+	http://reachstuff.com/community/tracker/issue-40-auto-check-radio auto-check radio 
+
+== 0.7.8 == (inital release)
+	http://reachstuff.com/community/tracker/issue-2-profilerunner profileRunner
+	http://reachstuff.com/community/tracker/issue-14-gamerpage gamerpage
+	http://reachstuff.com/community/tracker/issue-15-priority-watermarks priority watermarks
+	http://reachstuff.com/community/tracker/issue-16-link-to-gamerpage link to gamerpage
+	http://reachstuff.com/community/tracker/issue-17-time-between-recaches Time between recaches
+	http://reachstuff.com/community/tracker/issue-18-watermark-placement Watermark placement
+	http://reachstuff.com/community/tracker/issue-19-bbcode-missing BBCode missing
+	http://reachstuff.com/community/tracker/issue-20-remove-junk-from-weap-names Remove junk from weap names
+	http://reachstuff.com/community/tracker/issue-21-scalability scalability
+	http://reachstuff.com/community/tracker/issue-22-queries queries
+	http://reachstuff.com/community/tracker/issue-24-recache-so-soon recache so soon
+	http://reachstuff.com/community/tracker/issue-25-watermark-and-donators watermark and donators.
+	http://reachstuff.com/community/tracker/issue-26-recache-w-control-0 Recache w/ control = 0
