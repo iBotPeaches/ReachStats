@@ -1,9 +1,50 @@
+ReachStats 0.8.4-beta
+A very feature rich Halo Reach plugin for the IPB platform.
+Copyright (c) 2011 ReachStats
+
+*release is planned for this upcoming Saturday *
+
 ReachStats is released under a Creative Commons Attribution-NonCommerical 3.0 Unported License.
-
-
 Details of this license can be found here: http://creativecommons.org/licenses/by-nc/3.0/
  
 
 Bug Reports:  http://reachstuff.com/community/tracker/project-1-halo-reach-stats/ 
 Discussion: http://reachstuff.com/community/forum/16-discussion/
 Feature Requests: http://reachstuff.com/community/forum/16-discussion/
+
+Requirements:
+-Bungie API Key ( http://www.bungie.net/Account/reachapikey.aspx )
+-Installation of IPB (Invision Power Board)
+-Have at least curl, sockets or getfilecontents() 
+
+ReachStats installs as an application into the Invision Power Board platform. Currently supported version is 3.1.4 and will be updated to reflect newer versions as they are released.
+
+Features (see CHANGELOG)
+	* Hooks into user control panel for adding of GT
+	* Allows entering of Reach API Key directly into ACP
+	* Tier system for (Admin, Staff, Trusted Members, Members, Banned)
+	* Features small leaderboard page comparing basic stats
+	* Gamer profile pages for each user
+	* Weapons & Vehicle tables of data per user
+	* Pie graph to show win percent
+	* List of medals with a count below them
+	* Pulls Invasion, Competitive, and Arena
+	* Basic stats on Gamer profile page
+	* User spartan pulled onto Gamer profile page
+	* Direct link for re-caching if permissions allow
+	* Shows age of the data on Gamer profile page
+	* Dynamic Images for each user
+	* Images update based on selected Tier system
+	* Shows direct link and a generated forum link
+	* Task that runs daily insures that they are all up to date
+	* Hooks into userCP popup
+	* Sig Options
+	* Change some tiny things about images and save your choices
+	* Verify gamertags before adding them into system
+	* Leaderboard system with a (Gold, Silver, Bronze) ranking.
+	
+Roadmap 
+	* Allow admin to select which playlists are pulled into ReachStats (0.8.5)
+	* Abstract Tier Settings out of library file into ACP (0.8.5)
+	* Hook into public forum side to show gamer icon (0.8.6)
+	
