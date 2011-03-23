@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+	<group>
+		<grouptitle>ReachStats Settings</grouptitle>
+		<items>
+			<item>
+				<key>settings_change</key>
+				<string>Can modify settings</string>
+			</item>
+		</items>
+	</group>
+</permissions>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+	<group>
+		<grouptitle>ReachStats Tools</grouptitle>
+		<items>
+			<item>
+				<key>tools_overview</key>
+				<string>Can run tools</string>
+			</item>
+		</items>
+	</group>
+</permissions>

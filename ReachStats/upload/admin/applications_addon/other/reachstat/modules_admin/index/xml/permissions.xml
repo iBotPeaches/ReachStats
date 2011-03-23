@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+	<group>
+		<grouptitle>ReachStats Overview</grouptitle>
+		<items>
+			<item>
+				<key>view_overview</key>
+				<string>Can view overview</string>
+			</item>
+		</items>
+	</group>
+</permissions>
