@@ -1,0 +1,40 @@
+/*<IPS_IMPORT_BLOCK>
+DO NOT REMOVE OR ALTER THIS PLEASE. IT IS REMOVED AUTOMATICALLY BY THE IMPORT ROUTINE.
+<css_position>1</css_position>
+<css_app>reachstat</css_app>
+<css_app_hide>1</css_app_hide>
+<css_attributes>title="Main" media="screen"</css_attributes>
+</IPS_IMPORT_BLOCK>*/
+div.floatRight {
+    float: right;
+    width: 59%;
+}
+div.floatLeft {
+    float: left;
+    width: 39%;
+}
+div.floatRightAll{
+	float: right;
+	position: relative;
+}
+div.floatLeftAll{
+	float: left;
+	position: relative;
+}
+div.floatRight1 {
+    float: right;
+    width: 49.5%;
+}
+div.floatLeft1 {
+    float: left;
+    width: 49.5%;
+}
+div#header1 {
+    clear: both;
+    height: 50px;
+    background-color: aqua;
+    padding: 1px;
+}
+div.noOverflow{
+	overflow: hidden;
+}

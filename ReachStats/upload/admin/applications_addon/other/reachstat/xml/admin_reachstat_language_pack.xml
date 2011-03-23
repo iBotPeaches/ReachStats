@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languageexport>
+  <languagegroup>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>admin_lang</word_pack>
+      <word_key>admin_lang</word_key>
+      <word_default>test</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+  </languagegroup>
+</languageexport>

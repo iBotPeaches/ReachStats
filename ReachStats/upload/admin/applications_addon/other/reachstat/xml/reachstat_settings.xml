@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settingexport>
+  <settinggroup>
+    <setting>
+      <conf_is_title>1</conf_is_title>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_title_title>Main Settings</conf_title_title>
+      <conf_title_desc>Core application settings</conf_title_desc>
+      <conf_title_tab>Reach Stats</conf_title_tab>
+      <conf_title_app>reachstat</conf_title_app>
+      <conf_title_noshow>0</conf_title_noshow>
+    </setting>
+    <setting>
+      <conf_title>Application Enabled?</conf_title>
+      <conf_description>This will enable or disable the application</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>reach_online</conf_key>
+      <conf_default>1</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>1</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>reach, online, offline</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Group Access</conf_title>
+      <conf_description>Select which groups have access to this application, when its offline.</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>reach_group_online</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['reach_group_online']) )
+	{
+		$_POST['reach_group_online'] = implode(",",$_POST['reach_group_online']);
+	}
+	else
+	{
+		$_POST['reach_group_online'] = "";
+	}
+	
+	$key = 'reach_group_online';
+}
+if ( $show == 1 )
+{
+    $key='reach_group_online[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>2</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>reach, groups, offline</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Display Version</conf_title>
+      <conf_description>This will display the version (EX: 0.7.1) or will not display version number at all</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>reachstat_display_ver</conf_key>
+      <conf_default>yes</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>3</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>reachstat version</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>API Key</conf_title>
+      <conf_description>This is your API Key obtained from Bungie</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>input</conf_type>
+      <conf_key>api_key</conf_key>
+      <conf_default/>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>4</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords/>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Gamer Page Display</conf_title>
+      <conf_description>Enabling this setting uses the tabbed browsing method for stats.</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>tab_gamer_enabled</conf_key>
+      <conf_default>0</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>5</conf_position>
+      <conf_start_group>Gamer Profile Settings</conf_start_group>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords/>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Re-cache Groups</conf_title>
+      <conf_description>These user-groups can manually refresh their statistics at anytime (abiding by the time below)</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>recache_abil</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['recache_abil']) )
+	{
+		$_POST['recache_abil'] = implode(",",$_POST['recache_abil']);
+	}
+	else
+	{
+		$_POST['recache_abil'] = "";
+	}
+	
+	$key = 'recache_abil';
+}
+if ( $show == 1 )
+{
+    $key='recache_abil[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>6</conf_position>
+      <conf_start_group>Recache Settings</conf_start_group>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>recache groups, permissions</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Minimum Time Between Recaches</conf_title>
+      <conf_description>This is the minimum time that is required between re-caches. Defaulted at 5 minutes (or 300 seconds)</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>input</conf_type>
+      <conf_key>min_recache_time</conf_key>
+      <conf_default>300</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>7</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>recache, minimum</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Debug Mode Enabled?</conf_title>
+      <conf_description>This will enable the debug mode. This is very resource intensive. Only use in bursts</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>debug_mode</conf_key>
+      <conf_default>0</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>9</conf_position>
+      <conf_start_group>Debug Settings</conf_start_group>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>debug mode reach stats</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Users Inactivity</conf_title>
+      <conf_description>Setting this to NO prevents users from becoming inactive. Good for temporary testing.</conf_description>
+      <conf_group>36</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>inactive_flag</conf_key>
+      <conf_default>1</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>10</conf_position>
+      <conf_start_group>Inactivity Settings</conf_start_group>
+      <conf_end_group>1</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>inactive, gamer</conf_keywords>
+      <conf_title_keyword>reach_settings</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_is_title>1</conf_is_title>
+      <conf_title_keyword>tasks</conf_title_keyword>
+      <conf_title_title>Tasks</conf_title_title>
+      <conf_title_desc>Settings for the Halo Reach tasks</conf_title_desc>
+      <conf_title_tab>Reach Stats</conf_title_tab>
+      <conf_title_app>reachstat</conf_title_app>
+      <conf_title_noshow>0</conf_title_noshow>
+    </setting>
+    <setting>
+      <conf_title>Prevent Recaching</conf_title>
+      <conf_description>This will prevent the task from re-caching users data every 24/48 hours.</conf_description>
+      <conf_group>46</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>recache_perm</conf_key>
+      <conf_default>1</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>1</conf_position>
+      <conf_start_group>Global Task Rules</conf_start_group>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>recache enabled</conf_keywords>
+      <conf_title_keyword>tasks</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Prevent Recaching</conf_title>
+      <conf_description>This will prevent the task from re-caching users data every 24/48 hours.</conf_description>
+      <conf_group>46</conf_group>
+      <conf_type>yes_no</conf_type>
+      <conf_key>recache_perm</conf_key>
+      <conf_default>1</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>1</conf_position>
+      <conf_start_group>Global Task Rules</conf_start_group>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>recache enabled</conf_keywords>
+      <conf_title_keyword>tasks</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Profiles ran per task</conf_title>
+      <conf_description>This limits the amount of profiles checked per task run.</conf_description>
+      <conf_group>46</conf_group>
+      <conf_type>input</conf_type>
+      <conf_key>max_pro_num</conf_key>
+      <conf_default>20</conf_default>
+      <conf_extra/>
+      <conf_evalphp/>
+      <conf_protected>1</conf_protected>
+      <conf_position>2</conf_position>
+      <conf_start_group>Profile Runner</conf_start_group>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>settings, ran, </conf_keywords>
+      <conf_title_keyword>tasks</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_is_title>1</conf_is_title>
+      <conf_title_keyword>tiers</conf_title_keyword>
+      <conf_title_title>Tiers</conf_title_title>
+      <conf_title_desc>This controls permissions for the groups/tiers.</conf_title_desc>
+      <conf_title_tab>Reach Stats</conf_title_tab>
+      <conf_title_app>reachstat</conf_title_app>
+      <conf_title_noshow>0</conf_title_noshow>
+    </setting>
+    <setting>
+      <conf_title>Tier 0 Usergroup(s)</conf_title>
+      <conf_description>This is the banned usergroup.&#13;
+&#13;
+</conf_description>
+      <conf_group>38</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>tier_0_group</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['tier_0_group']) )
+	{
+		$_POST['tier_0_group'] = implode(",",$_POST['tier_0_group']);
+	}
+	else
+	{
+		$_POST['tier_0_group'] = "";
+	}
+	
+	$key = 'tier_0_group';
+}
+if ( $show == 1 )
+{
+    $key='tier_0_group[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>1</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>tier 0, banned</conf_keywords>
+      <conf_title_keyword>tiers</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Tier 1 Usergroup(s)</conf_title>
+      <conf_description>This is for the 1st level of users (15 days inactivity, 1 dynamic image)</conf_description>
+      <conf_group>38</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>tier_1_group</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['tier_1_group']) )
+	{
+		$_POST['tier_1_group'] = implode(",",$_POST['tier_1_group']);
+	}
+	else
+	{
+		$_POST['tier_1_group'] = "";
+	}
+	
+	$key = 'tier_1_group';
+}
+if ( $show == 1 )
+{
+    $key='tier_1_group[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>2</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>tier 1, group</conf_keywords>
+      <conf_title_keyword>tiers</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Tier 2 Usergroup(s)</conf_title>
+      <conf_description>This is for the level 2 members. (30 days inactivity, 2 dynamic images)</conf_description>
+      <conf_group>38</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>tier_2_group</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['tier_2_group']) )
+	{
+		$_POST['tier_2_group'] = implode(",",$_POST['tier_2_group']);
+	}
+	else
+	{
+		$_POST['tier_2_group'] = "";
+	}
+	
+	$key = 'tier_2_group';
+}
+if ( $show == 1 )
+{
+    $key='tier_2_group[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>3</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>tier 2 group</conf_keywords>
+      <conf_title_keyword>tiers</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Tier 3 Usergroup(s)</conf_title>
+      <conf_description>This is for the level 3 members. (60 days inactivity, all dynamic images)</conf_description>
+      <conf_group>38</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>tier_3_group</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['tier_3_group']) )
+	{
+		$_POST['tier_3_group'] = implode(",",$_POST['tier_3_group']);
+	}
+	else
+	{
+		$_POST['tier_3_group'] = "";
+	}
+	
+	$key = 'tier_3_group';
+}
+if ( $show == 1 )
+{
+    $key='tier_3_group[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>4</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>tier 3 group</conf_keywords>
+      <conf_title_keyword>tiers</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+    <setting>
+      <conf_title>Tier 4 Usergroup(s)</conf_title>
+      <conf_description>This is the last tier of users. All abilities are unlocked.</conf_description>
+      <conf_group>38</conf_group>
+      <conf_type>multi</conf_type>
+      <conf_key>tier_4_group</conf_key>
+      <conf_default/>
+      <conf_extra>#show_groups#</conf_extra>
+      <conf_evalphp><![CDATA[if ( $save == 1)
+{
+	if ( is_array($_POST['tier_4_group']) )
+	{
+		$_POST['tier_4_group'] = implode(",",$_POST['tier_4_group']);
+	}
+	else
+	{
+		$_POST['tier_4_group'] = "";
+	}
+	
+	$key = 'tier_4_group';
+}
+if ( $show == 1 )
+{
+    $key='tier_4_group[]';
+}]]></conf_evalphp>
+      <conf_protected>1</conf_protected>
+      <conf_position>5</conf_position>
+      <conf_start_group/>
+      <conf_end_group>0</conf_end_group>
+      <conf_add_cache>1</conf_add_cache>
+      <conf_keywords>tier 4 group</conf_keywords>
+      <conf_title_keyword>tiers</conf_title_keyword>
+      <conf_is_title>0</conf_is_title>
+    </setting>
+  </settinggroup>
+</settingexport>

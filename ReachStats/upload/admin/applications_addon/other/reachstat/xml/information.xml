@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<information>
+	<data>
+		<name>Halo: Reach Stats</name>
+		<public_name>Halo: Reach Stats</public_name>
+		<author>iBotPeaches</author>
+		<description>A built in Halo: Reach stat application</description>
+		<templategroups>
+			<template match="contains">skin_stattrack</template>
+		</templategroups>
+		<hide_tab>0</hide_tab>
+	</data>
+</information>

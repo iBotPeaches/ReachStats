@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languageexport>
+  <languagegroup>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>re_recache_p1</word_key>
+      <word_default>Please wait while </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>gt_inactive</word_key>
+      <word_default>This user is inactive and cannot be recached.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_gt</word_key>
+      <word_default>There was no gamertag passed. Please try again.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>bad_user</word_key>
+      <word_default>Malformed user_id during setGamertag.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_api_key</word_key>
+      <word_default>You need a API Key for this application. It can be entered/updated in the ACP.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>gt_exists</word_key>
+      <word_default>This gamertag already exists in our system. Please select another.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>100_games</word_key>
+      <word_default><![CDATA[I'm sorry, you need 100 games played to use this feature.]]></word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_recache_task</word_key>
+      <word_default>The Tier data for this user prevents a recache this often, by the task.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>gt_banned_img</word_key>
+      <word_default><![CDATA[We're sorry this account is suspended from Dynamic Image usage.]]></word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>400_kills</word_key>
+      <word_default><![CDATA[I'm sorry, you need 400 kills played to use this feature.]]></word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_recache_acp_off</word_key>
+      <word_default>Re-caching has been turned off by the administrator.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>redirect_recache</word_key>
+      <word_default>Please wait while your stats are re-cached.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>p2_failed</word_key>
+      <word_default><![CDATA[Player 2's data could not be loaded.]]></word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>p1_failed</word_key>
+      <word_default><![CDATA[Player 1's data could not be loaded.]]></word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>spam_img_recache</word_key>
+      <word_default>You cannot re-cache images so soon after a previous recache.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>spam_gt_recache</word_key>
+      <word_default>You cannot re-cache so soon after a previous recache.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>min_recache_time</word_key>
+      <word_default>You cannot re-cache images so soon after a previous recache</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>gt_no_exists</word_key>
+      <word_default>This gamertag does not exist.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>medal_wrong</word_key>
+      <word_default>The item passed to (medal) was not part of the Medal Family</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>cantRecache</word_key>
+      <word_default>This user has been inactive for too long, and cannot be recached.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>vehi_wrong</word_key>
+      <word_default>The item passed to (vehi) was not part of the Vehicle Family.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>weap_wrong</word_key>
+      <word_default>The item passed to (weap) was not part of Weapon Family.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>tier_banned</word_key>
+      <word_default>Sorry Tier 0 cannot save data.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_perm_img</word_key>
+      <word_default>Sorry you do not have permission to re-cache images</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>tag_no_exist</word_key>
+      <word_default>This gamertag does not exist.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_perm</word_key>
+      <word_default>Sorry you do not have permission to re-cache data.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>mem_id_no</word_key>
+      <word_default>Member IP and ID passed are not equal.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>no_user_id</word_key>
+      <word_default>Sorry, insufficient data.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>re_recache_p2</word_key>
+      <word_default> is re-cached. </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>stat_nav</word_key>
+      <word_default>Gamer Profile: </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_errors</word_pack>
+      <word_key>reach_manage_gamertag</word_key>
+      <word_default>Gamertag</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>raw</word_key>
+      <word_default>Direct Link</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>bnet_profile</word_key>
+      <word_default>View Bungie.net Profile</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>reach_userbar</word_key>
+      <word_default>Reach Playtime: </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>error</word_key>
+      <word_default>Error</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>tab_basic</word_key>
+      <word_default>Basic</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>sig_tab</word_key>
+      <word_default>My Sigs</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>recache_title</word_key>
+      <word_default>Dynamic Image Information</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>recache_exp3</word_key>
+      <word_default> This user has been inactive for</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>recache_exp2</word_key>
+      <word_default> old.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>dynamic_img</word_key>
+      <word_default><![CDATA[ Dynamic Image's]]></word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>recache_exp1</word_key>
+      <word_default>These images are </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>view_my_page</word_key>
+      <word_default>View My Gamer Page</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>dynamic_sigs</word_key>
+      <word_default>Dynamic Signatures</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>dynamic_sig_text</word_key>
+      <word_default>Welcome to the signature viewer. Below you will find a list of signature(s) this account has permission to use.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>view</word_key>
+      <word_default>View </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>htmlc</word_key>
+      <word_default>HTML: </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>bbcode</word_key>
+      <word_default>Forum Link: </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>reach_manage_gamertag</word_key>
+      <word_default>Halo: Reach Stats</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>stat_nav</word_key>
+      <word_default>Gamer Profile: </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>img_nav</word_key>
+      <word_default>Sig Viewer: </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>view_dynamic_image</word_key>
+      <word_default>View Dynamic Images</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>re_recache_p1</word_key>
+      <word_default>Please wait while </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>re_recache_p2</word_key>
+      <word_default> is recached. </word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>no_user_id</word_key>
+      <word_default>You must have an account to view this page. Please login.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>view_site_leaderboard</word_key>
+      <word_default>View Site Leaderboard</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>redirect_recache</word_key>
+      <word_default>Please wait while your stats are recached.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+    <lang>
+      <word_app>reachstat</word_app>
+      <word_pack>public_reachstat</word_pack>
+      <word_key>redirect_images</word_key>
+      <word_default>Please wait while your images are recached.</word_default>
+      <word_custom/>
+      <word_default_version>31005</word_default_version>
+      <word_custom_version/>
+      <word_js>0</word_js>
+    </lang>
+  </languagegroup>
+</languageexport>

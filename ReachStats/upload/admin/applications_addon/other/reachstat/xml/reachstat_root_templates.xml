@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates application="reachstat" templategroups="a:1:{s:14:&quot;skin_stattrack&quot;;s:8:&quot;contains&quot;;}">
+  <templategroup group="skin_stattrack">
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<div class='about_contact'>
+			<div class='contact_info left general_box row2'>
+				<h3 class='bar'>Other</h3>
+				<dl>
+                    <dt>Rank:</dt>
+ 	                <dd>{$data['rank']}</dd>
+                    <dt>K/D Ratio:</dt>
+                    <dd>{$data['kd_ratio']}</dd>
+                    <dt>Last Active:</dt>
+ 	                <dd>{$data['last_active']}</dd>
+					<dt>Games Played:</dt>
+					<dd>{parse format_number="$data['games_played']"}</dd>
+					<dt>Victories:</dt>
+					<dd>{parse format_number="$data['games_won']"}</dd>
+					<dt>Defeats:</dt>
+					<dd>{parse format_number="$data['games_lost']"}</dd>
+					<dt>Kills:</dt>
+					<dd>{parse format_number="$data['total_kills']"}</dd>
+					<dt>Assists:</dt>
+					<dd>{parse format_number="$data['total_assists']"}</dd>
+					<dt>Deaths:</dt>
+					<dd>{parse format_number="$data['total_deaths']"}</dd>
+					<dt>Betrayals:</dt>
+					<dd>{parse format_number="$data['total_betrayals']"}</dd>
+					<dt>Daily Challenges:</dt>
+					<dd>{parse format_number="$data['daily_challenges']"}</dd>
+					<dt>Weekly Challenges:</dt>
+					<dd>{parse format_number="$data['weekly_challenges']"}</dd>
+					<dt>Play Time:</dt>
+					<dd>{$data['total_playtime']}</dd>
+					<dt>Medal Count:</dt>
+					<dd>{parse format_number="$data['total_medals']"}</dd>
+                    <dt>First Played:</dt>
+ 	                <dd>{$data['first_played']}</dd>
+                    <dt>Armory Completion:</dt>
+					<dd>{$data['armory_completion']}</dd>
+				</dl>
+            </div>
+		</div>]]></template_content>
+      <template_name>basic_stats</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<div class='floatRight1'>
+<h2 class='maintitle'>
+<span class='left'><span class="fn nickname">Bio Toxic Peach</span></span><span class ='right'>C15</span>
+</div>
+<div class='floatLeft1'>
+</h2><h2 class='maintitle'>
+<span class='left'><span class="fn nickname">iBotPeaches v2</span></span><span class ='right'>C15</span>
+</h2>
+</div>
+<br />
+<br />
+<br />]]></template_content>
+      <template_name>comparePage</template_name>
+      <template_data/>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<div class="message error">
+<b>This account does not exist anymore.</b>
+<br />
+We are sorry. This used to be a registered account, but is now no longer reporting any stats. This could be caused by any of the below
+<br />
+</div>]]></template_content>
+      <template_name>errorPage</template_name>
+      <template_data>$gt,$message</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<php>print "<textarea cols='50' rows='30'>"; print_r( $times ); print "</textarea>";</php>
+<script type='text/javascript'>
+//<!#^#|CDATA|
+	ipb.profile.viewingProfile = parseInt( {$member['member_id']} );
+    google.load('visualization', '1', {packages:['table']});
+//|#^#]>
+</script>
+{parse js_module="profile"}
+<style type="text/css">
+/* new DIV so we can use a semi-transparent image */
+#userBg {
+	background-image: url("{style_images_url}/opacity70.png");
+	padding-bottom: 25px;
+}
+</style>
+<link rel='stylesheet' type='text/css' href='{$this->settings['public_dir']}style_css/{$this->registry->output->skin['_csscacheid']}/ipb_profile.css'>
+<h2 class='maintitle'>
+<span class='left'><span class="fn nickname">{$data['gt']}</span></span><span class ='right'>{$data['serviceTag']}</span>
+</h2>
+	<div id='userBg'>
+	<div id='profile_overview' class='left'>
+		<div class='personal_info clear general_box alt'>
+					<img class='photo' src='{$data['spartan']}'</a>
+			<ul>
+			<if test="relist:|:$times['stat']['recache'] == 1">
+			<li><a href='{parse url="module=display&amp;section=image&amp;gt={$data['gt']}" base="publicWithApp"}'>{$this->lang->words['view_dynamic_image']}</a></li>
+			<else />
+			<li><a href='{parse url="module=display&amp;section=image&amp;gt={$data['gt']}" base="publicWithApp"}'>{$this->lang->words['view']}{$data['gt']}{$this->lang->words['dynamic_img']}</a></li>
+			</if>
+			<li><a href='{parse url="" base="publicWithApp"}'>{$this->lang->words['view_site_leaderboard']}</a></li>
+			<if test="relist2:|:$times['stat']['recache'] == 2">
+			<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$data['visitGT']}" base="publicWithApp"}'>{$this->lang->words['view_my_page']}</a></li>
+			</if>
+			<li><a href='{parse url="http://www.bungie.net/Stats/Reach/Default.aspx?player={$data['gt']}"}'>{$this->lang->words['bnet_profile']}</a></li>
+			</ul>
+		</div>
+<br />
+<div class="message unspecified">
+ReachStats only pulls your Invasion, Competitive and Arena stats. It does not pull Campaign, Customs or Firefight.
+</div>
+<br />
+		<div class='personal_info clear general_box alt'>
+			<h3 class='bar'>Games Won</h3>
+				{parse template="headshot_pie" group="stattrack" params="$data['gamesLost'],$data['totalWins']"}
+		</div>
+	<br />
+</div>
+	<div id='main_profile_body' class='right'>
+<if test="recahe_perm:|: ($times['set'] == 1)">
+<div class="message error">
+<b>Recache Disabled</b>
+<br />
+The administrator has chosen to disable recaching. Your stats will stay intact, but no longer update.
+</div>
+</if>
+<br />
+		<div class='message user_status in_profile' id='status_box'>
+		Data is {$times['dataAge']} old.
+		<if test="recahe_perm:|: ($times['set'] == 0)">
+		<if test="recache:|:($times['stat']['recache'] == 1)"><a title="Recache Now" class="input_submit" href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}&amp;loc=recache" base="publicWithApp"}'>Recache Now</a>
+		</if>
+		<if test="recache2:|:($times['stat']['recache'] == 2)"><a title="Recache {$data['gt']} Stats?" class="input_submit" href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}&amp;loc=recache" base="publicWithApp"}'>Recache {$data['gt']} Stats?</a>
+		</if>
+</if>
+</div>
+		<div class='recent_activity'>
+			<ol class='tab_bar no_title mini'>
+				<foreach loop="tabs:$tabs as $tab">
+					<li id='tab_link_{$tab['app']}:{$tab['plugin_key']}' class='tab_toggle <if test="tabactive:|:$tab['app'].':'.$tab['plugin_key'] == $default_tab">active</if>'><a href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}&amp;tab={$tab['plugin_key']}" base="publicWithApp"} title='{$this->lang->words['view']} {$tab['_lang']}'>{$tab['_lang']}</a></li>
+				</foreach>
+			</ol>
+			<div id='tab_content' class='row1 profile_pane'>
+				<div id='tab_{$default_tab}'>
+					{$default_tab_contents}
+				</div>
+			</div>
+		</div>
+		<script type='text/javascript'>
+				ipb.profile.activeTab = '$default_tab';
+		</script>
+<br />
+<div class='message user_status in_profile' id='status_box'>
+This user has been inactive for {$times['visitDiff']}.
+</div>
+</div>
+</div>
+<br />
+<br />
+<br />
+{parse template="include_highlighter" group="global" params=""}]]></template_content>
+      <template_name>gamerPage</template_name>
+      <template_data><![CDATA[$times, $data, $member, $tabs, $default_tab='basic', $default_tab_contents, $google, $google1]]></template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<php>print "<textarea cols='50' rows='20'>"; print_r( $data ); print "</textarea>";</php>
+<script type='text/javascript'>
+//<!#^#|CDATA|
+    google.load('visualization', '1', {packages:['table']});
+//|#^#]>
+</script>
+<link rel='stylesheet' type='text/css' href='{$this->settings['public_dir']}style_css/{$this->registry->output->skin['_csscacheid']}/ipb_profile.css'>
+<h2 class='maintitle'>
+<span class='left'><span class="fn nickname">{$data['gt']}</span></span><span class ='right'>{$data['serviceTag']}</span>
+</h2>
+	<div id='profile_overview' class='left'>
+		<div class='personal_info clear general_box alt'>
+			<img class='photo' src='{$data['spartan']}'</a>
+			<ul>
+			<if test="relist:|:$times['stat']['mine'] == 1">
+			<li><a href='{parse url="module=display&amp;section=image&amp;gt={$data['gt']}" base="publicWithApp"}'>{$this->lang->words['view_dynamic_image']}</a></li>
+			<else />
+			<li><a href='{parse url="module=display&amp;section=image&amp;gt={$data['gt']}" base="publicWithApp"}'>{$this->lang->words['view']}{$data['gt']}{$this->lang->words['dynamic_img']}</a></li>
+			</if>
+			<li><a href='{parse url="" base="publicWithApp"}'>{$this->lang->words['view_site_leaderboard']}</a></li>
+			<li><a href='{parse url="http://www.bungie.net/Stats/Reach/Default.aspx?player={$data['gt']}"}'>{$this->lang->words['bnet_profile']}</a></li>
+			<if test="relist2:|:$times['stat']['mine'] == 0">
+			<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$data['visitGT']}" base="publicWithApp"}'>{$this->lang->words['view_my_page']}</a></li>
+			</if>
+			</ul>
+		</div>
+<br />
+<div class="message unspecified">
+ReachStats only pulls your Invasion, Competitive and Arena stats. It does not pull Campaign, Customs or Firefight.
+</div>
+<div class='about_contact'>
+				<h3 class='bar'>Basic Stats</h3>
+				<dl>
+                    <dt>Rank:</dt>
+ 	                <dd>{$data['rank']}</dd>
+                    <dt>K/D Ratio:</dt>
+                    <dd>{$data['kd_ratio']}</dd>
+                    <dt>Last Active:</dt>
+ 	                <dd>{$data['last_active']}</dd>
+					<dt>Games Played:</dt>
+					<dd>{parse format_number="$data['games_played']"}</dd>
+					<dt>Victories:</dt>
+					<dd>{parse format_number="$data['games_won']"}</dd>
+					<dt>Defeats:</dt>
+					<dd>{parse format_number="$data['games_lost']"}</dd>
+					<dt>Kills:</dt>
+					<dd>{parse format_number="$data['total_kills']"}</dd>
+					<dt>Assists:</dt>
+					<dd>{parse format_number="$data['total_assists']"}</dd>
+					<dt>Deaths:</dt>
+					<dd>{parse format_number="$data['total_deaths']"}</dd>
+					<dt>Betrayals:</dt>
+					<dd>{parse format_number="$data['total_betrayals']"}</dd>
+					<dt>Daily Challenges:</dt>
+					<dd>{parse format_number="$data['daily_challenges']"}</dd>
+					<dt>Weekly Challenges:</dt>
+					<dd>{parse format_number="$data['weekly_challenges']"}</dd>
+					<dt>Play Time:</dt>
+					<dd>{$data['total_playtime']}</dd>
+					<dt>Medal Count:</dt>
+					<dd>{parse format_number="$data['total_medals']"}</dd>
+                    <dt>First Played:</dt>
+ 	                <dd>{$data['first_played']}</dd>
+                    <dt>Armory Completion:</dt>
+					<dd>{$data['armory_completion']}</dd>
+				</dl>
+            </div>
+<br />
+<br />
+			<div class='personal_info clear general_box alt'>
+				<h3 class='bar'>Games Won</h3>
+					{parse template="headshot_pie" group="stattrack" params="$data['games_lost'],$data['games_won']"}
+					<div class='desc'>
+						</div>
+</div>
+<br />
+</div>
+<div id='main_profile_body' class='right'>
+<if test="recahe_perm:|: ($times['set'] == 1)">
+<div class="message error">
+<b>Recache Disabled</b>
+<br />
+The administrator has chosen to disable recaching. Your stats will stay intact, but no longer update.
+</div>
+</if>
+<br />
+		<div class='message user_status in_profile' id='status_box'>
+		Data is {$times['dataAge']} old.
+		<if test="recahe_perm:|:($times['set'] == 0)">
+		<if test="recache:|:($times['stat']['mine'] == 1)"><a title="Recache Now" class="input_submit" href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}&amp;loc=recache" base="publicWithApp"}'>Recache Now</a>
+		</if>
+		<if test="recache2:|:($times['stat']['mine'] == 0)"><a title="Recache {$data['gt']} Stats?" class="input_submit" href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}&amp;loc=recache" base="publicWithApp"}'>Recache {$data['gt']} Stats?</a>
+		</if>
+</if>
+</div>
+<h2 class='maintitle'>Weapons/Vehicle Stats</h2>
+		<div class='about_contact'>
+			<div class='about_info general_box row2'>
+				<h3 class='bar'>Weapons</h3>
+				<dl>
+					{parse template="kills_graph" group="stattrack" params="$google"}
+				</dl>
+			</div>
+            <div class='contact_info general_box row1'>
+            <h3 class='bar'>Vehicles</h3>
+            <dl>
+            {parse template="vehi_graph" group="stattrack" params="$google1"}
+            </dl>
+            </div>
+			<div class="friend_list" class="friend_list clear">
+				<h3 class="bar">Medals</h3>
+					<ul class="clearfix">
+					<div class="noOverflow">
+					<if test="is_array($data['medals']) and count($data['medals'])">
+						<foreach loop="$data['medals'] as $medal">
+						<li>
+                        <img src='{parse url="reach/medals/45/{$medal['Key']}.png"}'</a><div class='desc'><center>{parse format_number="$medal['value']"}
+                        <br />{$medal['Name']}</center></div></li>
+                    	</foreach>
+                    </div>
+	                </if>
+					</ul>
+			</div>
+<br />
+</div>
+<div class='message user_status in_profile' id='status_box'>
+This user has been inactive for {$times['visitDiff']}.
+</div>
+</div>
+<br />
+<br />
+<br />]]></template_content>
+      <template_name>gamerPageOld</template_name>
+      <template_data>$times, $data, $member, $google, $google1</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'Headshots');
+	data.addColumn('number', 'Count');
+	data.addRows(2);
+	data.setValue(0, 0, 'Games Lost');
+	data.setValue(0, 1, {$loss});
+	data.setValue(1, 0, 'Games Won');
+	data.setValue(1, 1, {$wins} );
+	var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+	chart.draw(data, {width: 300, height: 250,title: 'Games Won VS Games Lost', backgroundColor: '#EEF3F8', legend: 'none'});
+}
+</script>
+    <div id="chart_div1"></div>]]></template_content>
+      <template_name>headshot_pie</template_name>
+      <template_data>$loss, $wins</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+function SelectAll(id)
+{
+    document.getElementById(id).focus();
+    document.getElementById(id).select();
+}
+</script>
+<h2 class='maintitle'><span class='left'><span class="fn nickname">{$data['gt']}</span></span></h2>
+<br />
+<div class='topic_controls'>
+		<ul class='topic_buttons'>
+				<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}" base="publicWithApp"}'>{parse replacement="user_icon"} Return to Gamer Page</a></li>
+			    <if test="relist:|:$times['stat']['recache'] == 1">
+				    <li><a href='{parse url="module=display&amp;section=image&amp;loc=recache&amp;gt={$data['gt']}" base="publicWithApp"}'>{parse replacement="reply_msg_icon"} Recache Signatures</a></li>
+				</if>
+                <if test="relist2:|:$times['stat']['recache'] == 2">
+			        <li><a href='{parse url="module=display&amp;section=image&amp;loc=recache&amp;gt={$data['gt']}" base="publicWithApp"}'>{parse replacement="reply_msg_icon"} Recache {$data['gt']} {$this->lang->words['dynamic_img']}</a></li>
+                </if>
+                    <li><a href='{parse url="app=core&amp;module=usercp&amp;tab=reachstat&amp;area=mysigs" base="public"}'>{parse replacement="gallery_modoptions"} Sig Options</a></li>
+		</ul>
+</div>
+<br />
+<div class="message">
+<b>{$this->lang->words['dynamic_sigs']}</b>
+<br />
+{$this->lang->words['dynamic_sig_text']}
+</div>
+<br />
+<if test="is_array($sigs) and count($sigs)">
+<foreach loop="$sigs as $sig">
+<if test="($sig['use'] == 0) and ($times['tier']['dynimg'] == 0)">
+<else />
+<div class='sigImage'><img src="{$sig['url']}" alt="{$data['gt']}"><br /></div>
+<fieldset class='row2'>
+<ul>
+	<li class='field'>
+		<label for='sigbbcode_{$sig['num1']}'>{$this->lang->words['bbcode']}</label>
+			<input type="text" name="sigbbcode_{$sig['num1']}" class="input_text" id="sigbbcode_{$sig['num1']}"  size=115 value="[url=&#34;{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}&#34;]" base="publicWithApp"}[img]{$sig['url']}[/img][/url]" readonly="true" onClick="SelectAll('sigbbcode_{$sig['num1']}')" /><br />
+				<span class='desc'>This code can be used for posting on forums.</span>
+<br />
+		<label for='sigbbcode_{$sig['num2']}'>{$this->lang->words['raw']}</label>
+			<input type="text" name="sigbbcode_{$sig['num1']}" class="input_text" id="sigbbcode_{$sig['num2']}"  size=115 value="{$sig['url']}" readonly="true" onClick="SelectAll('sigbbcode_{$sig['num2']}')" /><br />
+				<span class='desc'>This is the direct URL of the image above.</span>
+	</li>
+</ul>
+</fieldset>
+</if>
+<br />
+<br />
+</foreach>
+<else />
+</if>
+<div class="message unspecific">
+<b>{$this->lang->words['recache_title']}</b>
+<br />
+{$this->lang->words['recache_exp1']} {$times['sigTime']} {$this->lang->words['recache_exp2']} {$this->lang->words['recache_exp3']} {$times['visitTime']}
+</div>
+<br />
+<div class='topic_controls'>
+		<ul class='topic_buttons'>
+				<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$data['gt']}" base="publicWithApp"}'>{parse replacement="user_icon"} Return to Gamer Page</a></li>
+				<if test="relist:|:$times['stat']['recache'] == 1">
+				     <li><a href='{parse url="module=display&amp;section=image&amp;loc=recache&amp;gt={$data['gt']}" base="publicWithApp"}'>{parse replacement="reply_msg_icon"} Recache Signatures</a></li>
+				</if>
+                <if test="relist2:|:$times['stat']['recache'] == 2">
+			        <li><a href='{parse url="module=display&amp;section=image&amp;loc=recache&amp;gt={$data['gt']}" base="publicWithApp"}'>{parse replacement="reply_msg_icon"} Recache {$data['gt']} {$this->lang->words['dynamic_img']}</a></li>
+                </if>
+<li><a href='{parse url="app=core&amp;module=usercp&amp;tab=reachstat&amp;area=mysigs" base="public"}'>{parse replacement="gallery_modoptions"} Sig Options</a></li>
+		</ul>
+</div>
+<br />]]></template_content>
+      <template_name>imagePage</template_name>
+      <template_data>$data, $sigs, $times</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+      google.load('visualization', '1', {packages: ['table']});
+    </script>
+    <script type="text/javascript">
+	//<!#^#|CDATA|
+    function drawVisualization() {
+  	var data = new google.visualization.DataTable();
+	var weaps = {$data};
+  		data.addColumn('string', 'Weapon');
+  		data.addColumn('number', 'Kills');
+  		data.addColumn('number', 'Deaths');
+        data.addColumn('number', 'K/D Spread');
+  	data.addRows(weaps.length);
+	for (var i = 0; i < weaps.length; i++){
+	    // It does exist
+		data.setCell(i, 0, weaps[i]['name']);
+		data.setCell(i, 1, weaps[i]['kills']);
+		data.setCell(i, 2, weaps[i]['deaths']);
+        data.setCell(i, 3, weaps[i]['ratio']);
+		}
+      // Create and draw the visualization.
+    visualization = new google.visualization.Table(document.getElementById('kill_table'));
+	 // Format those numbers
+	var formatter = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '0'});
+	var formatter3 = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '2'});
+	var formatter2 = new google.visualization.ArrowFormat();
+ 	formatter.format(data, 1); // Apply formatter to second column
+	formatter.format(data, 2); // Apply formatter to second column
+	formatter3.format(data, 3); // Apply formatter to second column
+	formatter2.format(data, 3); // Apply formatter to second column
+    visualization.draw(data, {sortColumn: 1, sortAscending: false, allowHtml: false, alternatingRowStyle: true, pageSize: 8, page: 'enable', height: '250px'});
+    }
+    google.setOnLoadCallback(drawVisualization);
+	//|#^#]>
+    </script>
+    <div id='kill_table'></div>]]></template_content>
+      <template_name>kills_graph</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+	//<!#^#|CDATA|
+  	var data = new google.visualization.DataTable();
+	var weaps = {$data};
+  		data.addColumn('string', 'Weapon');
+  		data.addColumn('number', 'Kills');
+  		data.addColumn('number', 'Deaths');
+        data.addColumn('number', 'K/D Spread');
+  	data.addRows(weaps.length);
+	for (var i = 0; i < weaps.length; i++){
+	    // It does exist
+		data.setCell(i, 0, weaps[i]['name']);
+		data.setCell(i, 1, weaps[i]['kills']);
+		data.setCell(i, 2, weaps[i]['deaths']);
+        data.setCell(i, 3, weaps[i]['ratio']);
+		}
+      // Create and draw the visualization.
+    visualization = new google.visualization.Table(document.getElementById('table2'));
+	 // Format those numbers
+	var formatter = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '0'});
+	var formatter3 = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '2'});
+	var formatter2 = new google.visualization.ArrowFormat();
+ 	formatter.format(data, 1); // Apply formatter to second column
+	formatter.format(data, 2); // Apply formatter to second column
+	formatter3.format(data, 3); // Apply formatter to second column
+	formatter2.format(data, 3); // Apply formatter to second column
+    visualization.draw(data, {sortColumn: 1, sortAscending: false, allowHtml: true, alternatingRowStyle: true, pageSize: 12, page: 'enable', height: '310px', startPage:0});
+	//|#^#]>
+    </script>
+    <div id='table2'></div>]]></template_content>
+      <template_name>kills_graphNew</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content>leaderboardPage</template_content>
+      <template_name>leaderboardPage</template_name>
+      <template_data/>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<if test="$gt == ''">
+<div class="message error">
+<b>Have a gamertag?</b>
+<br />
+Vist the <a href='{parse url="app=core&amp;module=usercp&amp;tab=reachstat" base="public"}'>Settings Area</a> to add your gamertag.
+</div>
+</if>
+<br />
+<link rel='stylesheet' type='text/css' href='{$this->settings['public_dir']}style_css/{$this->registry->output->skin['_csscacheid']}/ipb_profile.css'>
+<h2 class='maintitle'>
+<span class='left'><span class="fn nickname">Welcome {$gt} to Reach Stats</span></span><span class ='right'></span>
+</h2>
+</h2>
+	<div id='profile_overview' class='left'>
+		<div class='personal_info clear general_box alt'>
+			<img class='photo' src='{$this->settings['img_url']}/reach/{$image}.png' width='204'</a>
+<if test="$gt != ''">
+<br />
+				 <iframe src="http://gamercard.xbox.com/{$gt}.card" scrolling="no" frameBorder="0" height="140" width="204">{$gt}</iframe>
+			<ul>
+			<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$gt}" base="publicWithApp"}'>{$this->lang->words['view_my_page']}</a></li>
+            <li><a href='{parse url="module=display&amp;section=image&amp;gt={$gt}" base="publicWithApp"}'>{$this->lang->words['view_dynamic_image']}</a></li>
+			</ul>
+</if>
+		</div>
+</div>
+<div id='main_profile_body' class='right'>
+<br />
+<div class='floatLeft'>
+<h2 class='maintitle'>Leaderboard</h2>
+<div class='about_contact'>
+<dl>
+	<if test="is_array($leaders) and count($leaders)">
+		<foreach loop="$leaders as $stats">
+		<dt>{$stats['0']['name']}<br /><span class="desc">{$stats['0']['des']}</span></dt>
+        <dd><span class="desc"><img src='{style_image_url}/award_star_gold_1.png' alt='1st Place' /> <a href='{parse url="module=display&amp;section=gamer&amp;gt={$stats['1']['gt']}" base="publicWithApp"}'>{$stats['1']['gt']}</a> ({$stats['1']['num']})
+		<br /><img src='{style_image_url}/award_star_silver_1.png' alt='2nd Place' /> <a href='{parse url="module=display&amp;section=gamer&amp;gt={$stats['2']['gt']}" base="publicWithApp"}'>{$stats['2']['gt']}</a> ({$stats['2']['num']})
+		<br /><img src='{style_image_url}/award_star_bronze_1.png' alt='3rd Place' /> <a href='{parse url="module=display&amp;section=gamer&amp;gt={$stats['3']['gt']}" base="publicWithApp"}'>{$stats['3']['gt']}</a> ({$stats['3']['num']})</span></dd>
+		</foreach>
+	</if>
+</dl>
+</div>
+</div>
+<div class='floatRight'>
+<h2 class='maintitle'>
+<span class='left'><span class="fn nickname">Current Challenges</span></span><span class ='right'></span>
+</h2>
+<if test="is_array($challenges) and count($challenges)">
+<foreach loop="$challenges as $ch">
+<div class='general_box'>
+	<div class='floatLeftAll'>
+		<h2>{$ch['name']}</h2>
+		<span class='desc'>{$ch['des']}</span>
+	</div>
+	<div class='floatRightAll'>
+<span class='desc'>
+		Credits: {$ch['cR']} <br />
+		Expires: {$ch['expires']['dateClean']}
+</span>
+	</div>
+<br /><br /><br />
+</div>
+</foreach>
+<else />
+</if>
+<br />
+</div>
+</div>]]></template_content>
+      <template_name>reach_home</template_name>
+      <template_data>$gt, $image, $challenges, $leaders</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js"></script>
+  <script type="text/javascript" src="http://reachstuff.com/community/public/js/3rd_party/jquery.bsmselect.js"></script>
+  <script type="text/javascript" src="http://reachstuff.com/community/public/js/3rd_party/jquery.bsmselect.sortable.js"></script>
+  <script type="text/javascript" src="http://reachstuff.com/community/public/js/3rd_party/jquery.bsmselect.compatibility.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+</script>
+ <script type="text/javascript">//<!#^#|CDATA|
+    jQuery(function($) {
+	/* asign vars */
+	var colors = {$radioColor};
+	/* Make pic */
+    changePic(colors['id'].toString());
+	/* Click radio button */
+    document.getElementById(colors['name'].toString()).click();
+	/* is the emblem enabled? */
+    checkEmblem(colors['sp'].toString(), colors['id'].toString());
+	/* Check the image */
+	if (colors['color'] != null)
+	{
+		changeColor(colors['color'].toString());
+	}
+      // Initialize options
+      var medals = {$medals};
+      jQuery.each(medals, function(index, med)
+      {
+        jQuery(".sminit").each(function() {
+          jQuery(this).append(jQuery("<option>").html(med));
+        });
+      });
+      // Example 1
+      jQuery("#medalSelect").bsmSelect({
+        addItemTarget: 'top',
+        animate: true,
+        highlight: true,
+        plugins: [
+          jQuery.bsmSelect.plugins.sortable({ axis : 'y', opacity : 0.5 }, { listSortableClass : 'bsmListSortableCustom' }),
+          jQuery.bsmSelect.plugins.compatibility()
+        ]
+      });
+})
+  //|#^#]></script>
+<script type="text/javascript">
+window.onload = init;
+function init()
+{
+}
+function changePic(num)
+{
+	/* Uncheck Remove Emblem, if not green */
+	document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2_" + num.toString() + ".png";
+	if (num != 1)
+	{
+    	document.getElementById("spartan_enable").disabled = true;
+	    document.getElementById("spartan_enable").checked = false;
+	}
+	else
+	{
+    	document.getElementById("spartan_enable").disabled = false;
+	}
+}
+function changeColor(stringColor)
+{
+	document["sig5"].src = "http://reachstuff.com/community/reach/templates/pack5-" + stringColor.toString() + ".png";
+}
+function greenEmblem()
+{
+     document.getElementById("1_green").click();
+	if (document.getElementById("spartan_enable").checked == false)
+     document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2_1.png";
+    else
+	/* Set the radio to green, and only do this if its being checked not un-checked */
+     document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2.png";
+}
+function checkEmblem(num, id)
+{
+	/* Make sure were green */
+	if (id == 1)
+	{
+		/* Make sure were checked */
+	   if (num == 1)
+		{
+	    	document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2.png";
+	    	document.getElementById("spartan_enable").checked = true;
+		}
+	   else
+		{
+	    	document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2_1.png";
+	    	document.getElementById("spartan_enable").checked = false;
+		}
+	}
+	else
+	{
+		document.getElementById("spartan_enable").checked = false;
+	}
+}
+function changeMessage()
+{
+document.getElementById("funnyMessage").innerHTML='<div class="reg_msg reg_error">\
+Test this is an error\
+</div>';
+}
+</script>
+<fieldset class="row2">
+<h3>Sig 1 Settings</h3>
+<br />
+<label for"medalSelect">Pick 4 medals</label>
+<select id="medalSelect" multiple="multiple" name="medals[]" class="sminit">
+</select>
+<if test="is_array($picked) and count($picked)">
+<div class='desc'>
+Previous Signature included:
+<foreach loop="$picked as $medal">
+{$medal['Name']},
+</foreach>
+</div>
+</if>
+</fieldset>
+<fieldset class="row1">
+<h3>Sig 2 Settings</h3>
+<br />
+Background Color
+<fieldset class="row1">
+<div style="float: left;">
+<span class="desc"><a href="http://reachstuff.com/sigs/sig2bg">Huh? Background for what?</a></span><br /><br />
+<form name="colors" method="post">
+<input id="1_green" class="input_check" type="radio" onClick="changePic(1)" value="1_green" name="radioColor">
+<label for="1_green"> Green (Default)</label><br />
+<input id="2_blue" class="input_check" type="radio" onClick="changePic(2)" value="2_blue" name="radioColor">
+<label for="2_blue"> Blue </label><br />
+<input id="3_black" class="input_check" type="radio" onClick="changePic(3)" value="3_black" name="radioColor">
+<label for="3_black"> Black </label><br />
+<input id="4_pink" class="input_check" type="radio" onClick="changePic(4)" value="4_pink" name="radioColor">
+<label for="4_pink"> Pink </label><br />
+<input id="5_grey" class="input_check" type="radio" onClick="changePic(5)" value="5_grey" name="radioColor">
+<label for="5_grey"> Grey </label><br />
+<input id="6_red" class="input_check" type="radio" onClick="changePic(6)" value="6_red" name="radioColor">
+<label for="6_red"> Red </label><br />
+</div>
+<div style="float: right;">
+<a href="#"><img src="http://reachstuff.com/community/ccs_files/sig2/pack2_1.png" name="sig2" ></a>
+</div>
+</fieldset>
+<ul>
+<li class="field checkbox">
+<input id="spartan_enable" class="input_check" type="checkbox" onClick="greenEmblem()" value="1"  name="spartan_enable">
+<label for="spartan_enable"> Show Spartan? (Green Only)</label>
+<span class="desc">Confused? This should help you. </span>
+</li>
+</ul>
+</fieldset>
+<br />
+<br />
+<fieldset class="row2">
+<h3>Sig 5 Settings</h3>
+<div style="float: right;">
+<a href="#"><img src="http://reachstuff.com/community/reach/templates/pack5-aqua.png" name="sig5" ></a>
+</div>
+<p>Background Color<br>
+<select name="sig5Colors" onChange="changeColor(this.value)">
+<if test="is_array($sig5) and count($sig5)">
+<div class='desc'>
+Previous Signature included:
+<foreach loop="$sig5 as $color">
+<option value="{$color['name']}" {$color['active']}>{$color['formal']}</option>
+</foreach>
+</div>
+</if>
+</select>
+</p>
+</fieldset>
+</form>]]></template_content>
+      <template_name>reach_mysigs</template_name>
+      <template_data>$radioColor, $medals, $picked, $sig5</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<fieldset class="row1">
+<if test="$value != ''">
+<div class="message">
+<b>We're Sorry</b>
+<br />
+If you wish to change your gamertag, you will have to wait. There is an abuse of changing and adding GTs. So the feature is being recoded. If you accidently did something wrong, and need to reset your GT. Send a PM to peaches.
+</div>
+</if>
+<br />
+	<h3>Settings</h3>
+<if test="$value != ''">
+	<ul>
+		<li class="field ">
+			<input type="text" size="50" name="$name" value='$value' class='input_text' disabled="true"/>
+			<span class="desc">Xbox Live Gamertag</span>
+		</li>
+	</ul>
+<else />
+	<ul>
+		<li class="field ">
+			<input type="text" size="50" name="$name" value='$value' class='input_text'/>
+			<span class="desc">Xbox Live Gamertag</span>
+		</li>
+	</ul>
+</if>
+<br />
+</fieldset>]]></template_content>
+      <template_name>reach_ucp</template_name>
+      <template_data>$name,$value</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+//<!#^#|CDATA|
+google.setOnLoadCallback(drawVisualization);
+    function drawVisualization() {
+  	var data = new google.visualization.DataTable();
+		//dump the temp vars
+		var vehicles  = {$data};
+		//setup the graph
+  		data.addColumn('string', 'Vehicle');
+  		data.addColumn('number', 'Kills');
+  		data.addColumn('number', 'Deaths');
+        data.addColumn('number', 'K/D Spread');
+        data.addRows(vehicles.length);
+		//fill
+		for (var i = 0; i < vehicles.length; i++){
+        	data.setValue(i, 0, vehicles[i]['name']);
+        	data.setValue(i, 1, vehicles[i]['kills']);
+        	data.setValue(i, 2, vehicles[i]['deaths']);
+			data.setValue(i, 3, vehicles[i]['ratio']);
+		}
+      	// Create and draw the visualization.
+    		visualization = new google.visualization.Table(document.getElementById('table3'));
+		// Format those numbers
+			var formatter = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '0'});
+			var formatter3 = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '2'});
+			var formatter2 = new google.visualization.ArrowFormat();
+		// NAO FORMAT
+ 			formatter.format(data, 1); // Apply formatter to second column
+			formatter.format(data, 2); // Apply formatter to second column
+			formatter3.format(data, 3); // Apply formatter to second column
+			formatter2.format(data, 3); // Apply formatter to second column
+    	visualization.draw(data, {sortColumn: 1, sortAscending: false, allowHtml: true, alternatingRowStyle: true, pageSize: 6, page: 'enable', height: '200px'});
+    	}
+//|#^#]>
+    	</script>
+<div id='table3'></div>]]></template_content>
+      <template_name>vehi_graph</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+  </templategroup>
+</templates>

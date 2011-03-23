@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates application="reachstat" templategroups="a:1:{s:14:&quot;skin_stattrack&quot;;s:8:&quot;contains&quot;;}">
+  <templategroup group="skin_stattrack">
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>kills_graphNew</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>reach_home</template_name>
+      <template_data>$gt</template_data>
+      <template_updated>1300836694</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>xmlskin</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>reach_ucp</template_name>
+      <template_data>$name,$value</template_data>
+      <template_updated>1300836694</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>xmlskin</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>reach_mysigs</template_name>
+      <template_data>$radioColor, $medals, $picked, $sig5</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>vehi_graph</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>comparePage</template_name>
+      <template_data/>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>errorPage</template_name>
+      <template_data>$gt,$message</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>leaderboardPage</template_name>
+      <template_data/>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>headshot_pie</template_name>
+      <template_data>$loss, $wins</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>imagePage</template_name>
+      <template_data><![CDATA[$gt = '', $sigs = array()]]></template_data>
+      <template_updated>1300836694</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>xmlskin</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>kills_graph</template_name>
+      <template_data>$values</template_data>
+      <template_updated>1300836694</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>xmlskin</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>gamerPage</template_name>
+      <template_data><![CDATA[$gt = "", $times = array(), $recache = null, $data = array(), $member = array()]]></template_data>
+      <template_updated>1300836694</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>xmlskin</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>basic_stats</template_name>
+      <template_data>$data</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>gamerPageOld</template_name>
+      <template_data>$times, $data, $member, $google, $google1</template_data>
+      <template_updated>1300836693</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>index</template_name>
+      <template_data/>
+      <template_updated>1300836694</template_updated>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>xmlskin</template_master_key>
+    </template>
+  </templategroup>
+</templates>

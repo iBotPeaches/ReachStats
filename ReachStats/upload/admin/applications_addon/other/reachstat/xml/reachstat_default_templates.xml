@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates application="reachstat" templategroups="a:1:{s:14:&quot;skin_stattrack&quot;;s:8:&quot;contains&quot;;}">
+  <templategroup group="skin_stattrack">
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+function SelectAll(id)
+{
+    document.getElementById(id).focus();
+    document.getElementById(id).select();
+}
+</script>
+<div class="message">
+<b>{$this->lang->words['dynamic_sigs']}</b>
+<br />
+{$this->lang->words['dynamic_sig_text']}
+</div>
+<br />
+<if test="is_array($sigs) and count($sigs)">
+<foreach loop="$sigs as $sig">
+<img src="{$sig['url']}" alt="{$gt}"><br />
+<fieldset class='row2'>
+<ul>
+	<li class='field'>
+		<label for='sigbbcode_{$sig['num1']}'>{$this->lang->words['bbcode']}</label>
+			<input type="text" name="sigbbcode_{$sig['num1']}" class="input_text" id="sigbbcode_{$sig['num1']}"  size=115 value="[url={parse url="module=display&amp;section=gamer&amp;gt={$gt}" base="publicWithApp"}[img]{$sig['url']}[/img][/url]" readonly="true" onClick="SelectAll('sigbbcode_{$sig['num1']}')" /><br />
+				<span class='desc'>This code can be used for posting on forums.</span>
+<br />
+		<label for='sigbbcode_{$sig['num2']}'>{$this->lang->words['raw']}</label>
+			<input type="text" name="sigbbcode_{$sig['num1']}" class="input_text" id="sigbbcode_{$sig['num2']}"  size=115 value="{$sig['url']}" readonly="true" onClick="SelectAll('sigbbcode_{$sig['num2']}')" /><br />
+				<span class='desc'>This is the direct URL of the image above.</span>
+	</li>
+</ul>
+</fieldset>
+<br />
+<br />
+</foreach>
+<else />
+</if>
+<div class="message unspecific">
+<b>{$this->lang->words['recache_title']}</b>
+<br />
+{$this->lang->words['recache_exp1']} age {$this->lang->words['recache_exp2']  }
+</div>
+<div class="message error">
+<b>Under Construction</b>
+<br />
+This feature did not make the cut. It will be included in the full release of ReachStats. Set on the release of Halo Reach :(
+</div>
+<div class='topic_controls'>
+		<ul class='topic_buttons'>
+				<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$gt}" base="publicWithApp"}'>Return to Gamer Page</a></li>
+		</ul>
+</div>]]></template_content>
+      <template_name>imagePage</template_name>
+      <template_data>$gt, $data, $sigs</template_data>
+      <template_updated>1274033720</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<if test="$gt == ''">
+<div class="message error">
+<b>Have a gamertag?</b>
+<br />
+Vist the <a href='{parse url="app=core&amp;module=usercp&amp;tab=reachstat" base="public"}'>Settings Area</a> to add your gamertag.
+</div>
+</if>
+<br />
+<div id="header1">
+    <h1>Header</h1>
+</div>
+<div id="left1">
+    <iframe src="http://gamercard.xbox.com/{$gt}.card" scrolling="no" frameBorder="0" height="140" width="204">{$gt}</iframe>
+	<center><a href='{parse url="module=display&amp;section=gamer&amp;gt={$gt}" base="publicWithApp"}' title='This will be a link to my profile.'>This will be a link to my profile.</a>
+</div>
+<div id="right1">
+    Starboard side text...
+</div>
+<div id="middle1">
+    Middle column text...
+</div>
+<div id="footer1">
+    Footer text...
+</div>
+<div class="message error">
+<b>Under Construction</b>
+<br />
+This feature did not make the cut. It will be included in the full release of ReachStats. Set on the release of Halo Reach :(
+</div>
+<br />]]></template_content>
+      <template_name>reach_home</template_name>
+      <template_data>$gt</template_data>
+      <template_updated>1274033720</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<fieldset class="row1">
+	<h3>Settings</h3>
+<if test="$value != ''">
+	<ul>
+		<li class="field ">
+			<input type="text" size="50" name="$name" value='$value' class='input_text' disabled="true"/>
+			<span class="desc">Xbox Live Gamertag</span>
+		</li>
+	</ul>
+<else />
+	<ul>
+		<li class="field ">
+			<input type="text" size="50" name="$name" value='$value' class='input_text'/>
+			<span class="desc">Xbox Live Gamertag</span>
+		</li>
+	</ul>
+</if>
+<div class="message error">
+<b>Under Construction</b>
+<br />
+More settings to come in final version. Such as (Allow players to compare with you, etc)
+</div>
+<br />]]></template_content>
+      <template_name>reach_ucp</template_name>
+      <template_data>$name,$value</template_data>
+      <template_updated>1274033720</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<script type="text/javascript">
+      google.load('visualization', '1', {packages: ['table']});
+    </script>
+    <script type="text/javascript">
+	//<!#^#|CDATA|
+    function drawVisualization() {
+  	var data = new google.visualization.DataTable();
+	var kills = $tempKills;
+	var deaths = $tempDeaths;
+	var names = $tempNames;
+    var kd    = $tempKD;
+  		data.addColumn('string', 'Weapon');
+  		data.addColumn('number', 'Kills');
+  		data.addColumn('number', 'Deaths');
+        data.addColumn('number', 'K/D Spread');
+  	data.addRows(kills.length);
+	for (var i = 0; i < kills.length; i++){
+	    // It does exist
+		data.setCell(i, 0, names[i]);
+		data.setCell(i, 1, kills[i]);
+		data.setCell(i, 2, deaths[i]);
+        data.setCell(i, 3, kd[i]);
+		}
+      // Create and draw the visualization.
+    visualization = new google.visualization.Table(document.getElementById('table'));
+	 // Format those numbers
+	var formatter = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '0'});
+	var formatter3 = new google.visualization.NumberFormat( {groupingSymbol: ',', fractionDigits : '2'});
+	var formatter2 = new google.visualization.ArrowFormat();
+ 	formatter.format(data, 1); // Apply formatter to second column
+	formatter.format(data, 2); // Apply formatter to second column
+	formatter3.format(data, 3); // Apply formatter to second column
+	formatter2.format(data, 3); // Apply formatter to second column
+    visualization.draw(data, {sortColumn: 0, allowHtml: true});
+    }
+    google.setOnLoadCallback(drawVisualization);
+	//|#^#]>
+    </script>
+	<div id="table"></div>]]></template_content>
+      <template_name>kills_graph</template_name>
+      <template_data>$tempKills, $tempDeaths, $tempNames, $tempKD</template_data>
+      <template_updated>1274033720</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content><![CDATA[<h2 class='maintitle'>
+<span class='left'><span class="fn nickname">{$gt}</span></span><span class ='right'>{$data['serviceTag']}</span>
+</h2>
+	<div id='profile_overview' class='left'>
+		<div class='personal_info clear general_box alt'>
+			<img class='photo' src='{$this->settings['img_url']}/reach/reachModel.png'</a>
+			<ul>
+			<if test="relist:|:$myGT['id'] == 1">
+			<li><a href='{parse url="module=display&amp;section=image&amp;gt={$gt}" base="publicWithApp"}'>{$this->lang->words['view_dynamic_image']}</a></li>
+			<else />
+			<li><a href='{parse url="module=display&amp;section=image&amp;gt={$gt}" base="publicWithApp"}'>{$this->lang->words['view']}{$gt}{$this->lang->words['dynamic_img']}</a></li>
+			</if>
+			<li><a href='{parse url="" base="publicWithApp"}'>{$this->lang->words['view_site_leaderboard']}</a></li>
+			<if test="relist:|:$myGT['id'] == 0">
+			<li><a href='{parse url="module=display&amp;section=gamer&amp;gt={$myGT['gt']}" base="publicWithApp"}'>{$this->lang->words['view_my_page']}</a></li>
+			</if>
+			<li><a href='{parse url="http://www.bungie.net/Stats/Reach/Default.aspx?player={$myGT['gt']}"}'>{$this->lang->words['bnet_profile']}</a></li>
+			</ul>
+		</div>
+	</div>
+			<div id='main_profile_body' class='right'>
+		<div class='message user_status in_profile' id='status_box'>
+		Data is {$times['dataAge']} old.
+		<if test="recache:|:($recache == 1)"><a title="Recache Now" id="update_stats" href='{parse url="module=display&amp;section=gamer&amp;gt={$gt}&amp;loc=recache" base="publicWithApp"}'>Recache Now</a>
+		</if>
+		<if test="recache2:|:($recache == 2)"><a title="Recache {$gt} Stats?" id="update_stats" href='{parse url="module=display&amp;section=gamer&amp;gt={$gt}&amp;loc=recache" base="publicWithApp"}'>Recache {$gt} Stats?</a>
+		</if>
+		</div>
+<h2 class='maintitle'>Weapons/Medals Stats</h2>
+		<div class='about_contact'>
+			<div class='about_info left general_box row2'>
+				<h3 class='bar'>Weapons</h3>
+				<dl>
+					{parse template="kills_graph" group="stattrack" params="$tempKills, $tempDeaths, $tempNames, $tempKD "}
+				</dl>
+			</div>
+			<div class='contact_info right general_box row2'>
+				<h3 class='bar'>Other</h3>
+				<dl>
+					<dt>Games Played:</dt>
+					<dd>{parse format_number="$data['total']['stats']['gameCount']"}</dd>
+					<dt>Total Kills:</dt>
+					<dd>{parse format_number="$data['total']['stats']['totalKills']"}</dd>
+					<dt>Total Assists:</dt>
+					<dd>{parse format_number="$data['total']['stats']['assists']"}</dd>
+					<dt>Total Deaths:</dt>
+					<dd>{parse format_number="$data['total']['stats']['totalDeaths']"}</dd>
+					<dt>Victories:</dt>
+					<dd>{parse format_number="$data['total']['stats']['victories']"}</dd>
+					<dt>Defeats:</dt>
+					<dd>{parse format_number="$data['total']['stats']['defeats']"}</dd>
+					<dt>Play Time:</dt>
+					<dd>{$data['total']['stats']['playTime']}</dd>
+					<dt>Medal Count:</dt>
+					<dd>{parse format_number="$data['total']['stats']['medalCount']"}</dd>
+				</dl>
+			</div>
+			<div class="friend_list" class="friend_list clear">
+				<h3 class="bar">Medals</h3>
+					<ul class="clearfix">
+						<li><a title="View Profile" href="http://www.ibotmodz.net/forum/user/67-curtis/"><img width="50" height="50" class="photo" alt="Photo" src="http://www.ibotmodz.net/forum/uploads/profile/photo-67.jpg"></a></li>
+					</ul>
+			</div>
+<br />
+		</div>
+</div>
+</div>
+<br />
+<br />
+<br />
+Inactivity time is {$times['visitDiff']} old.
+<br />]]></template_content>
+      <template_name>gamerPage</template_name>
+      <template_data><![CDATA[$gt = "", $times = array(), $recache = null, $data = array(), $member = array(), $myGT = array(), $tempKills, $tempDeaths, $tempNames, $tempKD]]></template_data>
+      <template_updated>1274033720</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+  </templategroup>
+</templates>

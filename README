@@ -2,11 +2,8 @@ ReachStats 0.8.4-beta
 A very feature rich Halo Reach plugin for the IPB platform.
 Copyright (c) 2011 ReachStats
 
-*release is planned for this upcoming Saturday *
-
 ReachStats is released under a Creative Commons Attribution-NonCommerical 3.0 Unported License.
 Details of this license can be found here: http://creativecommons.org/licenses/by-nc/3.0/
- 
 
 Bug Reports:  http://reachstuff.com/community/tracker/project-1-halo-reach-stats/ 
 Discussion: http://reachstuff.com/community/forum/16-discussion/
@@ -47,4 +44,5 @@ Roadmap
 	* Allow admin to select which playlists are pulled into ReachStats (0.8.5)
 	* Abstract Tier Settings out of library file into ACP (0.8.5)
 	* Hook into public forum side to show gamer icon (0.8.6)
+	* Language Abstraction (0.8.6)
 	

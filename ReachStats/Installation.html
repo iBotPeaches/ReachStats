@@ -1,0 +1,292 @@
+<html>
+	<head>
+		<title>ReachStats installation guide</title>
+		<style type='text/css'>
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; } 
+table {	border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,th,var { font-style:normal; font-weight:normal; }
+ol,ul { list-style:none; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%;	font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+address{ display: inline; }
+
+body {
+	background: #1d3652;
+	color: black;
+	font-size: 0.85em;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	position: relative;
+	-webkit-text-stroke: 1px transparent;
+	text-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px;
+}
+
+div#wrapper {
+	margin: 5%;
+}
+
+h1 {
+	letter-spacing: -0.05em;
+	font-size: 30px;
+	color: white;
+	margin-bottom: 5px;
+	width: 100%;
+	margin-left: 15px;
+}
+
+h2 {
+	font-size: 22px;
+	color: #1d3652;
+}
+
+h3 {
+	font-size: 20px;
+	color: black;
+	margin-bottom: 5px;
+	border-bottom: 1px solid;
+}
+
+.box {
+	background: #e7e7e7;
+	padding: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px;
+	margin-bottom: 20px;
+}
+
+.box.info {
+	background-color: #528f6c;
+	color: white;
+}
+
+.box.info a {
+	color: white;
+}
+
+.box.info h3 {
+	color: white;
+}
+
+dd, dt {
+	float: left;
+}
+
+dd {
+	font-weight: bold;
+	width: 20%;
+}
+
+dt {
+	width: 30%;
+}
+
+.clear {
+	clear: both;
+}
+
+.padding_p p {
+	margin-bottom: 10px;
+}
+
+.footer {
+	position: relative;
+	float: right;
+	top:-45px;
+}
+
+table.table {
+	border: none;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+	table.table tr.header {
+		font-weight: bold;
+		background-color: #b6c7db;
+		font-size: 0.9em !important;
+		color: #1d3652;
+	}
+
+		table.table tr.header td {
+			font-size: 1em !important;
+			text-align: center;
+		}
+		
+		table.table td {
+			font-size: 0.8em;
+			padding: 3px;
+		}
+		
+.row1, .row1 td {
+	background-color: #fafbfc; /* Very light blue */
+}
+
+	.row1 .altrow, .row1.altrow {
+		background-color: #eef3f8; /* Slightly darker than row1 */
+	}
+	
+.row2, .row2 td {
+	background-color: #f1f4f7; /* Light blue */
+}
+
+	.row2 .altrow, .row2.altrow {
+		background-color: #e4ebf2; /* Slightly darker than row2 */
+	}
+	
+div.edit {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+div.edit h3 {
+	font-size: 1.3em;
+}
+
+div.edit h4 {
+	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+
+div.edit div.inner {
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	text-align: center;
+}
+
+pre.prettyprint { margin-top: 10px; margin-bottom: 10px; text-align:left; padding: 5px; background: #f8f8f8; border: 1px solid #c9c9c9; overflow: auto; margin-left: 10px; font-size: 11px; line-height: 140%; }
+
+/************************************************************************/
+/*  BBCODE STYLES */
+/* 	NOTE: These selectors style bbcodes throughout IPB. It is recommended that you DO NOT change these 
+	styles if you are creating a skin since it may interfere with user expectation
+	of what certain BBCodes look like (quote boxes are an exception to this). */
+
+strong.bbc				{	font-weight: bold !important; }
+em.bbc 					{	font-style: italic !important; }
+span.bbc_underline 		{ 	text-decoration: underline !important; }
+div.bbc_center 			{	text-align: center; }
+div.bbc_left 			{	text-align: left; }
+div.bbc_right 			{	text-align: right; }
+div.bbc_indent 			{	margin-left: 50px; }
+del.bbc 				{	text-decoration: line-through !important; }
+ul.bbc 					{	list-style: disc outside; margin-left: 30px; }
+	ul.bbc ul.bbc 			{	list-style-type: circle; }
+		ul.bbc ul.bbc ul.bbc 	{	list-style-type: square; }
+ul.bbcol.decimal 				{ margin-left: 30px; list-style-type: decimal; }
+	ul.bbcol.lower-alpha		{ margin-left: 30px; list-style-type: lower-alpha; }
+	ul.bbcol.upper-alpha		{ margin-left: 30px; list-style-type: upper-alpha; }
+	ul.bbcol.lower-roman		{ margin-left: 30px; list-style-type: lower-roman; }
+	ul.bbcol.upper-roman		{ margin-left: 30px; list-style-type: upper-roman; }
+hr.bbc 					{ 	display: block; border-top: 2px solid #777; }
+div.bbc_spoiler 		{	 }
+div.bbc_spoiler span	{ 	font-weight: bold; }
+div.bbc_spoiler_wrapper	{ 	border: 1px inset #777; padding: 4px; }
+div.bbc_spoiler_content	{ 	 }
+input.bbc_spoiler_show	{ 	width: 45px; font-size: .7em; margin: 0px; padding: 0px; }
+
+/* Pretty printing styles. Used with prettify.js. */
+
+.str { color: #080; }
+.kwd { color: #008; }
+.com { color: #800; }
+.typ { color: #606; }
+.lit { color: #066; }
+.pun { color: #660; }
+.pln { color: #000; }
+.tag { color: #008; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
+
+
+@media print {
+  .str { color: #060; }
+  .kwd { color: #006; font-weight: bold; }
+  .com { color: #600; font-style: italic; }
+  .typ { color: #404; font-weight: bold; }
+  .lit { color: #044; }
+  .pun { color: #440; }
+  .pln { color: #000; }
+  .tag { color: #006; font-weight: bold; }
+  .atn { color: #404; }
+  .atv { color: #060; }
+}
+
+		</style>
+		<script type='text/javascript' src='http://community.invisionpower.com/public/min/index.php?g=js'></script>
+		<script type="text/javascript" src="http://community.invisionpower.com/public/js/3rd_party/prettify/prettify.js"></script>
+		<script type='text/javascript' src='http://community.invisionpower.com/public/js/3rd_party/prettify/lang-sql.js'></script>
+		<!-- By default we load generic code, php, css, sql and xml/html; load others here if desired -->
+		<script type="text/javascript">
+		//<![CDATA[
+			Event.observe( window, 'load', function(e){ prettyPrint() });
+		//]]>
+		</script>
+	</head>
+	
+	<body>
+		<div id='wrapper'>
+			<h1>ReachStats installation guide</h1>
+			<div class='box info'>
+				<img src='http://community.invisionpower.com/ccs_files/resourcefooter.png' class='footer' />
+				<h3>File Information</h3>
+				<dl>
+					<dd>File Name</dd>
+					<dt>ReachStats</dt>
+					<dd>Version</dd>
+					<dt>v0.8.4</dt>
+					
+					<dd class='clear'>Author Name</dd>
+					<dt>iBotPeaches</dt>
+					<dd>Resource Type</dd>
+					<dt>Application</dt>					<dd class='clear'>Author Website</dd>
+					<dt><a href='http://reachstuff.com/community/' target='_blank'>http://reachstuff.com/community/</a></dt>					<dd>Compatability</dd>
+					<dt>IP.Board: 3.1.4<br />PHP: 5.2.x<br /></dt>				</dl>
+				<br class='clear' />
+			</div>
+			<div class='box'>
+				<h2>Description</h2>
+				<p>ReachStats<br />A very feature rich Halo Reach plugin for the IPB platform.<br />Copyright &copy; 2011 ReachStats<strong class='bbc'><br /><br />ReachStats is an all in one growing product that allow website owners to bring lots of features from the Halo Reach stat realm right to their website. Features include:<br /></strong><br />	* Hooks into user control panel for adding of GT<br />	* Allows entering of Reach API Key directly into ACP<br />	* Tier system for (Admin, Staff, Trusted Members, Members, Banned)<br />	* Features small leaderboard page comparing basic stats<br />	* Gamer profile pages for each user<br />	* Weapons &amp; Vehicle tables of data per user<br />	* Pie graph to show win percent<br />	* List of medals with a count below them<br />	* Pulls Invasion, Competitive, and Arena<br />	* Basic stats on Gamer profile page<br />	* User spartan pulled onto Gamer profile page<br />	* Direct link for re-caching if permissions allow<br />	* Shows age of the data on Gamer profile page<br />	* Dynamic Images for each user<br />	* Images update based on selected Tier system<br />	* Shows direct link and a generated forum link<br />	* Task that runs daily insures that they are all up to date<br />	* Hooks into userCP popup<br />	* Sig Options<br />	* Change some tiny things about images and save your choices<br />	* Verify gamertags before adding them into system<br />	* Leaderboard system with a (Gold, Silver, Bronze) ranking.</p>
+			</div>				<div class='box'>
+					<h2>Step 1: Files to Upload</h2>
+					<table class='table'>
+						<tr class='header'>
+							<td align='center' width='48%'>File in Download</td>
+							<td width='4%'>&nbsp;</td>
+							<td align='center' width='48%'>File on Server</td>
+						</tr>
+													<tr class='row2'>
+								<td width='48%'>ReachStats/upload/admin/applications_addon/other/reachstat/</td>
+								<td align='center' width='4%'>&rarr;</td>
+								<td width='48%'>/admin/applications_addon/other/</td>
+							</tr>							<tr class='row1'>
+								<td width='48%'>ReachStats/upload/public/style_images/master/reach/</td>
+								<td align='center' width='4%'>&rarr;</td>
+								<td width='48%'>public/style_images/master/reach</td>
+							</tr>							<tr class='row2'>
+								<td width='48%'>ReachStats/upload/reach/</td>
+								<td align='center' width='4%'>&rarr;</td>
+								<td width='48%'>/reach/</td>
+							</tr>
+					</table>
+				</div>			<div class='box padding_p'>
+				<h2>Step 2: Install the Application</h2>
+				
+				<p>Visit your IP.Board Admin CP and click the link on the navigation bar to the left entitled, 'Manage Applications & Modules'. Scroll down the page until you see an entry for "<strong>ReachStats</strong>", click 'Install' and follow the on-screen instructions.</p>
+			</div>			<div class='box padding_p'>
+				<h2>Step 3: Configuration</h2>
+				<p>Once installed, you will now see a tab entitled "<strong>ReachStats</strong>", in the dropdown 'My Apps', this is the central home-screen for the application.</p>
+				
+			</div>			<div class='box'>
+				<h2>Found a Bug?</h2>
+				<p>If you believe you have found a bug with this application, please report it <a href='http://reachstuff.com/community/forum/17-bugs/'>here</a>. Your report will help ensure future versions of this application remain as bug-free as possible.</p>
+			</div>			<div class='box'>
+				<h2>Need Support?</h2>
+				<p>If you need any help or support with this application, or are experiencing any problems, <a href='http://reachstuff.com/community/forum/16-discussion/'>click here</a> to ask for help!</p>
+			</div>		</div>
+	</body>
+</html>

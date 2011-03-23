@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<export>
+  <help>
+    <row>
+      <title>Tiers Explanation</title>
+      <text><![CDATA[Meet the Tiers
+ <br />
+ <br />
+Tier 0:
+ <br />
+-This Tier was designed for a banned usergroup. Its features (or lack of) includes
+ <br />]]></text>
+      <description>Tiers are what this application uses as permissions.</description>
+      <position>0</position>
+      <app>reachstat</app>
+    </row>
+  </help>
+</export>

@@ -1,0 +1,26 @@
+<installdata>
+    <file>
+        <path>reach</path>
+        <dir>1</dir>
+    </file>
+    <file>
+        <path>reach/index.php</path>
+        <dir>0</dir>
+    </file>
+    <file>
+        <path>reach/sigs/</path>
+        <dir>0</dir>
+    </file>
+        <file>
+        <path>reach/templates/</path>
+        <dir>0</dir>
+    </file>
+        <file>
+        <path>reach/fonts/</path>
+        <dir>0</dir>
+    </file>
+        <file>
+        <path>reach/emblems/</path>
+        <dir>0</dir>
+    </file>
+</installdata>

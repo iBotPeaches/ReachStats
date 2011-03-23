@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates application="reachstat" templategroups="a:1:{s:14:&quot;skin_stattrack&quot;;s:8:&quot;contains&quot;;}">
+  <templategroup group="skin_stattrack">
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>gamerPage</template_name>
+      <template_data><![CDATA[$gt = "", $times = array(), $recache = null, $data = array(), $member = array()]]></template_data>
+      <template_updated>1274033722</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>imagePage</template_name>
+      <template_data><![CDATA[$gt = '', $sigs = array()]]></template_data>
+      <template_updated>1274033722</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>reach_home</template_name>
+      <template_data>$gt</template_data>
+      <template_updated>1274033722</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+    <template>
+      <template_group>skin_stattrack</template_group>
+      <template_content/>
+      <template_name>reach_ucp</template_name>
+      <template_data>$name,$value</template_data>
+      <template_updated>1274033722</template_updated>
+      <template_removable>1</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+    </template>
+  </templategroup>
+</templates>
