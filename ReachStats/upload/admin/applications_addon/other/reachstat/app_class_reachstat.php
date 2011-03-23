@@ -51,7 +51,8 @@ class app_class_reachstat
     	//---------------------------------------
     	// Only load this stuff if not in ACP
     	//---------------------------------------
-        if (IN_ACP) {
+        if (IN_ACP)
+        {
             // Make them select the index instead of something else
             if (!ipsRegistry::$request['module']) {
                 ipsRegistry::$request['module'] == 'overview';
@@ -92,7 +93,11 @@ class app_class_reachstat
     		/* Flag if no API key */
     		if (API_KEY == null)
     		{
+    			/* dont show the error if in acp ass */
+    			if (!(IN_ACP))
+    			{
     			$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
+    			}
     		}
     		/* Is this junk online and enabled? */
     		if (!$this->settings['reach_online'])
