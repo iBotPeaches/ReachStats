@@ -1,0 +1,51 @@
+BUNGIE.NET API TERMS AND CONDITIONS
+
+Access to the Bungie.net API
+
+If you are approved by Bungie for use of the Bungie.net API you may use the Bungie.net API, and the data, content, and information made available through the Bungie.net API ("API Data"), subject to these API Terms and Conditions and the Bungie.net Terms of Use as a whole, for non-commercial purposes in connection with a website or software application ("API Client") developed by you. Bungie may monitor your use of the Bungie.net API to ensure quality, improve Bungie’s products and services, and verify your compliance with these terms. You will not interfere with such monitoring or otherwise obscure from Bungie your use of the Bungie.net API. Bungie may use any technical means to overcome such interference.
+
+No Commercial Use
+
+You may not use the Bungie.net API for commercial purposes. If your use of the Bungie.net API generates revenue, your use is commercial. If you are in doubt about whether your application is commercial, here are a few common examples of commercial use that may provide you some guidance:
+
+    Users are charged a fee for your product or service that includes some sort of integration using the Bungie.net APIs;
+    You sell services to Bungie.net users and use the APIs to bring users' Bungie.net content into your service;
+    Your site uses API Data to drive traffic and generate ad revenue.
+
+Brand Feature License
+
+Subject to the Bungie.net Terms of Use, including these API Terms and Conditions, Bungie gives you a personal, worldwide, royalty-free, non-assignable, non-transferable, non-sublicenseable, and non-exclusive license to display Brand Features solely for the purpose of promoting or advertising your authorized use of the Bungie.net API in accordance with these terms and for the purpose of fulfilling your obligations under this agreement. For purposes of this agreement, "Brand Features" means the trade names, trademarks, service marks, logos, domain names, and other distinctive brand features of Bungie and its licensors.
+
+In using Brand Features, you will not:
+
+    Display a Brand Feature in any manner that implies a relationship or affiliation with, sponsorship, or endorsement by Bungie, other than your use of the Bungie.net API, or that can be reasonably interpreted to suggest editorial content has been authored by, or represents the views or opinions of Bungie or Bungie personnel;
+    Use Brand Features to disparage Bungie, its products or services;
+    Display a Brand Feature in your API Client or on your site if your API Client or site contains or displays adult content or promotes illegal activities, gambling, or the sale of tobacco or alcohol to persons under twenty-one (21) years of age;
+    Have the Bungie logo as the largest logo in your API Client;
+    Display a Brand Feature as the most prominent element in your API Client;
+    Display a Brand Feature in a manner that is misleading, defamatory, infringing, libelous, disparaging, obscene or otherwise objectionable to Bungie;
+    Display a Brand Feature in your API Client that violates any law or regulation; or
+    Remove, distort or alter any element of a Brand Feature (this includes squeezing, stretching, inverting, discoloring, etc.).
+
+Except as set forth in this Section, nothing in this Agreement will grant or will be deemed to grant you any right, title or interest in or to Brand Features. All use by you of Brand Features (including any goodwill associated therewith) will inure to the benefit of Bungie. At no time will you challenge or assist others to challenge the Brand Features of Bungie (except to the extent such restriction is prohibited by law) or the registration thereof by Bungie, nor will you attempt to register any Brand Features (including domain names) that are confusingly similar in any way (including but not limited to, sound, appearance and spelling) to those of Bungie or its licensors.
+
+No Warranties
+
+The Bungie.net API and the API Data are provided without warranties express or implied. Bungie may change, suspend, or discontinue any aspect of the Bungie.net APIs at any time, including the availability of any Bungie.net APIs to you or any other user. Bungie may also impose limits on certain features and services or restrict your access to parts or all of the Bungie.net APIs without notice or liability.
+
+Restrictions on Use
+
+Your use of the Bungie.net API is subject to the following restrictions:
+
+    All calls to the Bungie.net API must reference the Bungie.net API Key ("API Key") issued to you as an approved user.
+    You agree to keep your API Key confidential and not to share it with any third party. This right is unique to you, and any affiliates or third parties must seek and obtain their own Bungie.net API right and API Key.
+    You are limited to one API Key per person or organization.
+    You may not retain any copies of API Data obtained through the Bungie.net API. Your right to API Data is limited to making direct server calls to the Bungie.net API for and to distributing API Data to your end users through your API Client immediately upon receipt by your servers.
+    You may not otherwise reproduce, modify, distribute, decompile, disassemble or reverse engineer any portion of the Bungie.net API or API Data.
+    You may not use the Bungie.net APIs in a manner that, in Bungie’s sole judgment and discretion, exceeds reasonable request volumes, constitutes excessive or abusive use, or otherwise fails to comply or is inconsistent with any part of the Bungie.net API documentation.
+    You may not use the Bungie.net API in any manner or for any purpose that violates any law or regulation, any right of any person, including but not limited to intellectual property rights, rights of privacy, or rights of personality, or in any manner inconsistent with the this Agreement.
+    Finally, your use of the Bungie.net API is subject to the Xbox Game Content Usage Rules available here: http://www.xbox.com/en-US/Community/Developer/Rules
+
+Indemnity
+
+To the maximum extent permitted by applicable law, you agree to hold harmless and indemnify Bungie and its subsidiaries, affiliates, officers, agents, licensors, co-branders or other partners, and employees from and against any third party claim arising from or in any way related to your use of Bungie.net APIs, including any liability or expense arising from all claims, losses, damages (actual and/or consequential), suits, judgments, litigation costs and attorneys' fees, of every kind and nature. Bungie shall use good faith efforts to provide you with written notice of such claim, suit or action.

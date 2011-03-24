@@ -24,7 +24,7 @@ class reachStats
 	protected $debug 					= DEBUG_MODE;
 	protected $api_key					= "";
 	protected $item;
-	protected $tempNum				=0;
+	protected $tempNum					= 0;
 
 	/* halo data */
 	public $data 					= array();
@@ -206,6 +206,9 @@ class reachStats
 			/* Download it via fileManage, then decode it */
 			$data = json_decode($this->fileManage->getFileContents($tempURL), true);
 
+			/* make sure that api key works */
+			$this->apiCheck($data);
+
 			/* reset */
 			$id = 0;
 
@@ -372,13 +375,24 @@ class reachStats
 		$this->_initCURL();
 
 		/* check for api key noob */
-		if (($this->api_key == null)) {
+		if (($this->api_key == null))
+		{
 				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
 		}
 
 		/* Lets start our JSON readout */
 		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/challenges/'
 			. $this->api_key;
+
+
+		/* check for bad api key */
+		$http_code = $this->library->get_http_response_code($tempURL);
+
+		/* boot us out of here */
+		if ($http_code != "200")
+		{
+			#error out
+		}
 
 		/* Download it via fileManage, then decode it */
 		$information = json_decode($this->fileManage->getFileContents($tempURL), true);
@@ -589,6 +603,15 @@ class reachStats
 		/* Lets start our JSON readout */
 		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/player/details/nostats/'
 			. $this->api_key . "/" . rawurlencode($this->data['gt']);
+
+		/* check for bad api key */
+		$http_code = $this->library->get_http_response_code($tempURL);
+
+		/* boot us out of here */
+		if ($http_code != "200")
+		{
+			#error out
+		}
 
 		/* Download it via fileManage, then decode it */
 		$information = json_decode($this->fileManage->getFileContents($tempURL), true);

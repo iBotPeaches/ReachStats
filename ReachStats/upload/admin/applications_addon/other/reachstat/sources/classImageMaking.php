@@ -621,12 +621,12 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 	private function loadFonts()
 	{
 		/* List of fonts, statically loaded */
-		$this->fonts[0] = $this->tempPath . 'reach/fonts/cambriab.ttf';
-		$this->fonts[1] = $this->tempPath . 'reach/fonts/berlinsans.ttf';
-		$this->fonts[2] = $this->tempPath . 'reach/fonts/calibri.ttf';
+		//$this->fonts[0] = $this->tempPath . 'reach/fonts/cambriab.ttf';
+		//$this->fonts[1] = $this->tempPath . 'reach/fonts/berlinsans.ttf';
+		//$this->fonts[2] = $this->tempPath . 'reach/fonts/calibri.ttf';
 		$this->fonts[3] = $this->tempPath . 'reach/fonts/myriad_reg.otf';
 		$this->fonts[4] = $this->tempPath . 'reach/fonts/visitor.ttf';
-		$this->fonts[5] = $this->tempPath . 'reach/fonts/gothic.ttf';
+		//$this->fonts[5] = $this->tempPath . 'reach/fonts/gothic.ttf';
 		$this->fonts[6] = $this->tempPath . 'reach/fonts/segoeuil.ttf';
 		$this->fonts[7] = $this->tempPath . 'reach/fonts/conduit.ttf';
 

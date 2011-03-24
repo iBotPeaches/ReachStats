@@ -151,6 +151,12 @@ class Library
 			}
 	}
 
+	/* Only returns the 3-digit HTTP code */
+	public function get_http_response_code($theURL)
+	{
+		$headers = get_headers($theURL);
+		return substr($headers[0], 9, 3);
+	}
 	/*
 	 * Pass member ID
 	 * Return Group ID
