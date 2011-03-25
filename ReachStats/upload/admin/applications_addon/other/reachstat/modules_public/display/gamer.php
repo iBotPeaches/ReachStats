@@ -295,7 +295,7 @@ class public_reachstat_display_gamer extends ipsCommand
 		//IPSDebug::fireBug( 'info', 'Ending Game Deaths: ' . $this->data['totalDeaths']);
 
 		/* Check for tabbed or not */
-		if (ipsRegistry::$settings['tab_gamer_enabled'])
+		if ((ipsRegistry::$settings['tab_gamer_enabled']) && ($no == TRUE))
 		{
 			/* Enabled */
 			/* Search it for tabs */

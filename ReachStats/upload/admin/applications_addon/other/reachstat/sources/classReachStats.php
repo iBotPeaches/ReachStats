@@ -203,6 +203,15 @@ class reachStats
 			/* Lets start our JSON readout */
 			$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/metadata/' . $this->api_key;
 
+			/* check for bad api key */
+			$http_code = $this->library->get_http_response_code($tempURL);
+
+			/* boot us out of here */
+			if ($http_code != "200")
+			{
+				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
+			}
+
 			/* Download it via fileManage, then decode it */
 			$data = json_decode($this->fileManage->getFileContents($tempURL), true);
 
@@ -384,15 +393,15 @@ class reachStats
 		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/challenges/'
 			. $this->api_key;
 
-
 		/* check for bad api key */
 		$http_code = $this->library->get_http_response_code($tempURL);
 
 		/* boot us out of here */
 		if ($http_code != "200")
 		{
-			#error out
+			$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
 		}
+
 
 		/* Download it via fileManage, then decode it */
 		$information = json_decode($this->fileManage->getFileContents($tempURL), true);
@@ -491,22 +500,26 @@ class reachStats
 		}
 
 		/* Make sure they did something right */
-		if (in_array($type,array('commendations','maps','medals','weapons','variants','ranks')) == true) {
-			# throw error
+		if (in_array($type,array('commendations','maps','medals','weapons','variants','ranks')) == true)
+		{
+			//$this->registry->getClass('output')->showError('type: ' + $type + " key: " + $key, "<a href='".$this->kb."2029-r31'>2029</a>",false,'2029');
 		}
 
 		/* Check if we should return entire array */
-		if ($full == true) {
+		if ($full == true)
+		{
 			return $this->caches['metadata'][$type][$key];
 		}
 		else
 		{
 			/* Bug fix for ranks */
-			if ($type == 'ranks') {
+			if ($type == 'ranks')
+			{
 				return $this->caches['metadata'][$type][$key]['Value'];
 			}
 			/* Bug fix for variants */
-			if ($type == 'variants') {
+			if ($type == 'variants')
+			{
 				return $this->caches['metadata'][$type][$key]['Key'];
 			}
 			/* Send the name that matches ID */
@@ -610,7 +623,7 @@ class reachStats
 		/* boot us out of here */
 		if ($http_code != "200")
 		{
-			#error out
+			$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
 		}
 
 		/* Download it via fileManage, then decode it */
@@ -704,11 +717,15 @@ class reachStats
 				$this->data['gamesPlayed']    += $playlist['game_count'];
 				$this->data['totalAssists']   += $playlist['total_assists'];
 
-				//IPSDebug::fireBug( 'info', $playlist['game_count'] . " for " . $this->getKey($playlist['VariantClass'],'variants',false) );
-				//IPSDebug::fireBug( 'info', 'Total Kills Running: ' .$this->data['totalKills'] . ' and specifially ' . $playlist['total_kills'] . ' added for ' . $this->getKey($playlist['VariantClass'],'variants',false) );
-				//IPSDebug::fireBug( 'info', 'Total Deaths Running: ' .$this->data['totalDeaths'] . ' and specifially ' . $playlist['total_deaths'] . ' added for ' . $this->getKey($playlist['VariantClass'],'variants',false) );
-
+				/* debug for kills/deaths */
+				if ($this->debug)
+				{
+					IPSDebug::fireBug( 'info', $playlist['game_count'] . " for " . $this->getKey($playlist['VariantClass'],'variants',false) );
+					IPSDebug::fireBug( 'info', 'Total Kills Running: ' .$this->data['totalKills'] . ' and specifially ' . $playlist['total_kills'] . ' added for ' . $this->getKey($playlist['VariantClass'],'variants',false) );
+					IPSDebug::fireBug( 'info', 'Total Deaths Running: ' .$this->data['totalDeaths'] . ' and specifially ' . $playlist['total_deaths'] . ' added for ' . $this->getKey($playlist['VariantClass'],'variants',false) );
+				}
 				/* We add total seconds together here, then at the end convert */
+
 				//IPSDebug::fireBug('info','We are at ' . $this->data['totalPlaytime'] . " before");
 				$this->data['totalPlaytime'] += $this->_getTimePlayed($playlist['total_playtime']);
 				//IPSDebug::fireBug('info','We are at ' . $this->library->time_duration($this->_getTimePlayed($playlist['total_playtime'])) . " then total " . $this->data['totalPlaytime'] . " after on the playlist: " . $playlist['HopperId']);

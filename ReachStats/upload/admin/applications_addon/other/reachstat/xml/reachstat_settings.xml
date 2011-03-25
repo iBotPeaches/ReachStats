@@ -100,7 +100,7 @@ if ( $show == 1 )
     </setting>
     <setting>
       <conf_title>Gamer Page Display</conf_title>
-      <conf_description>Enabling this setting uses the tabbed browsing method for stats.</conf_description>
+      <conf_description>Enabling this setting uses the tabbed browsing method for stats. (un-implemented)</conf_description>
       <conf_group>36</conf_group>
       <conf_type>yes_no</conf_type>
       <conf_key>tab_gamer_enabled</conf_key>
@@ -170,7 +170,7 @@ if ( $show == 1 )
     </setting>
     <setting>
       <conf_title>Debug Mode Enabled?</conf_title>
-      <conf_description>This will enable the debug mode. This is very resource intensive. Only use in bursts</conf_description>
+      <conf_description>This will enable the debug mode. This is for developers only.</conf_description>
       <conf_group>36</conf_group>
       <conf_type>yes_no</conf_type>
       <conf_key>debug_mode</conf_key>

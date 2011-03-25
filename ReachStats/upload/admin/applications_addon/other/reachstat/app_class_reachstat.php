@@ -96,7 +96,7 @@ class app_class_reachstat
     			/* dont show the error if in acp ass */
     			if (!(IN_ACP))
     			{
-    			$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
+    				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
     			}
     		}
     		/* Is this junk online and enabled? */
