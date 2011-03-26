@@ -48,11 +48,11 @@ class admin_reachstat_settings_settings extends ipsCommand
 		$this->registry->class_localization->loadLanguageFile( array( 'admin_lang' ), 'reachstat' );
 
 		require_once( IPSLib::getAppDir( 'core' ) . '/modules_admin/tools/settings.php' );
-		$this->settingsClass		= new admin_core_tools_settings( $this->registry );
+		$this->settingsClass		= new admin_core_tools_settings();
 		$this->settingsClass->makeRegistryShortcuts( $this->registry );
 		$this->settingsClass->html				= $this->registry->output->loadTemplate( 'cp_skin_tools', 'core' );
-		$this->settingsClass->form_code			= $this->settingsClass->html->form_code		= 'module=tools&amp;section=settings';
-		$this->settingsClass->form_code_js		= $this->settingsClass->html->form_code_js	= 'module=tools&section=settings';
+		$this->settingsClass->form_code			= $this->settingsClass->html->form_code		= 'module=settings&amp;section=settings';
+		$this->settingsClass->form_code_js		= $this->settingsClass->html->form_code_js	= 'module=settings&section=settings';
 		$this->settingsClass->return_after_save	= $this->settings['base_url'] . '&module=settings';
 
 		//-----------------------------------------
@@ -61,15 +61,14 @@ class admin_reachstat_settings_settings extends ipsCommand
 
 		if( $this->request['do'] == 'tiers' )
 		{
-			$this->registry->output->global_message	= $this->lang->words['advanced_settings_help'];
 
-			$this->request['conf_title_keyword']	= 'reachstat_tiers';
-
-			$this->settingsClass->return_after_save .= "&do=tiers";
+			$this->request['conf_title_keyword']	= 'tiers';
+			$this->settingsClass->return_after_save = $this->settingsClass->html->form_code;
 		}
 		else
 		{
-			$this->request['conf_title_keyword']	= 'reachstat';
+			$this->request['conf_title_keyword']	= 'reach_settings';
+			$this->settingsClass->return_after_save = $this->settingsClass->html->form_code;
 		}
 
 		//-----------------------------------------

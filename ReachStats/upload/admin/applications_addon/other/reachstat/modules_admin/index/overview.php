@@ -76,7 +76,6 @@ class admin_reachstat_index_overview extends ipsCommand
 		/* Size of reach folder */
 		$this->data['size'] = $this->library->size_readable($this->library->dirsize(DOC_IPS_ROOT_PATH . '/reach/'));
 
-
 		//-----------------------------------------
 		// Load HTML
 		//-----------------------------------------

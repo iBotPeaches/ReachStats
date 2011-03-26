@@ -367,6 +367,9 @@ class reachStats
 		/* get api key manually */
 		$this->api_key = ipsRegistry::$settings['api_key'];
 
+		if (($this->api_key != null))
+		{
+
 		//---------------------------------------------
 		// Try and load CACHE, otherwise redo
 		//---------------------------------------------
@@ -386,7 +389,10 @@ class reachStats
 		/* check for api key noob */
 		if (($this->api_key == null))
 		{
+			if (!(IN_ACP))
+			{
 				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
+			}
 		}
 
 		/* Lets start our JSON readout */
@@ -399,7 +405,10 @@ class reachStats
 		/* boot us out of here */
 		if ($http_code != "200")
 		{
-			$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
+			if (!(IN_ACP))
+			{
+				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
+			}
 		}
 
 
@@ -476,7 +485,7 @@ class reachStats
 		if ($force != true) {
 			return($this->challenges);
 		}
-
+	}
 	}
 
 	/**

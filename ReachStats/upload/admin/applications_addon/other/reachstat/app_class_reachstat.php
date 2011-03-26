@@ -54,7 +54,8 @@ class app_class_reachstat
         if (IN_ACP)
         {
             // Make them select the index instead of something else
-            if (!ipsRegistry::$request['module']) {
+            if (!ipsRegistry::$request['module'])
+            {
                 ipsRegistry::$request['module'] == 'overview';
             }
         } else
