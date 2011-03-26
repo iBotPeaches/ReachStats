@@ -53,7 +53,7 @@ class admin_reachstat_settings_settings extends ipsCommand
 		$this->settingsClass->html				= $this->registry->output->loadTemplate( 'cp_skin_tools', 'core' );
 		$this->settingsClass->form_code			= $this->settingsClass->html->form_code		= 'module=settings&amp;section=settings';
 		$this->settingsClass->form_code_js		= $this->settingsClass->html->form_code_js	= 'module=settings&section=settings';
-		$this->settingsClass->return_after_save	= $this->settings['base_url'] . '&module=settings';
+		$this->settingsClass->return_after_save	= $this->settings['base_url'] . $this->settingsClass->html->form_code;
 
 		//-----------------------------------------
 		// Show settings form
@@ -63,12 +63,10 @@ class admin_reachstat_settings_settings extends ipsCommand
 		{
 
 			$this->request['conf_title_keyword']	= 'tiers';
-			$this->settingsClass->return_after_save = $this->settingsClass->html->form_code;
 		}
 		else
 		{
 			$this->request['conf_title_keyword']	= 'reach_settings';
-			$this->settingsClass->return_after_save = $this->settingsClass->html->form_code;
 		}
 
 		//-----------------------------------------
