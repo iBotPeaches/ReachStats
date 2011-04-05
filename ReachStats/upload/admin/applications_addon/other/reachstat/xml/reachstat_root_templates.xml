@@ -90,7 +90,7 @@ We are sorry. This used to be a registered account, but is now no longer reporti
     </template>
     <template>
       <template_group>skin_stattrack</template_group>
-      <template_content><![CDATA[<php>print "<textarea cols='50' rows='30'>"; print_r( $times ); print "</textarea>";</php>
+      <template_content><![CDATA[
 <script type='text/javascript'>
 //<!#^#|CDATA|
 	ipb.profile.viewingProfile = parseInt( {$member['member_id']} );
@@ -190,7 +190,7 @@ This user has been inactive for {$times['visitDiff']}.
     </template>
     <template>
       <template_group>skin_stattrack</template_group>
-      <template_content><![CDATA[<php>print "<textarea cols='50' rows='20'>"; print_r( $data ); print "</textarea>";</php>
+      <template_content><![CDATA[
 <script type='text/javascript'>
 //<!#^#|CDATA|
     google.load('visualization', '1', {packages:['table']});
