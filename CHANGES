@@ -1,3 +1,13 @@
+== 0.8.5 ==
+	Fixed -1 medal ID problem
+	Fixed Rank being returned as null or 0
+	Fixed tasks locking themselves
+	Fixed random usercpForm error caused by malformed url
+	Fixed profileTabs showing up on non-gamer profile forms
+	Fixed ReachStuff linking of certain JS files
+	Fixed images not loading on certain ways
+	Fixed description of Template 2 saying Defeats when it should read Total Games
+	
 == 0.8.4.b ==
 	 Fixed the debug message on profiles
 

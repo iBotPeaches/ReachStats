@@ -14,8 +14,8 @@
    * ~peaches
 */
 
-define('HR_VERSION', '0.8.4');
-define('HR_RVERSION', '10014');
+define('HR_VERSION', '0.8.5');
+define('HR_RVERSION', '10015');
 define('DEBUG_MODE', (ipsRegistry::$settings['debug_mode']));
 define('API_KEY', (ipsRegistry::$settings['api_key']));
 define('FLAG_INACTIVE', ipsRegistry::$settings['inactive_flag']);

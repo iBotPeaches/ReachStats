@@ -20,42 +20,6 @@
       <task_application>reachstat</task_application>
     </row>
     <row>
-      <task_id>29</task_id>
-      <task_title>Recache every 5 hours</task_title>
-      <task_file>recache_5hours.php</task_file>
-      <task_next_run>1300652599</task_next_run>
-      <task_week_day>2</task_week_day>
-      <task_month_day>-1</task_month_day>
-      <task_hour>5</task_hour>
-      <task_minute>10</task_minute>
-      <task_cronkey>86698786373986cee673205599a3fe32</task_cronkey>
-      <task_log>1</task_log>
-      <task_description>This runs every 5 hours to recache those members who paid for a 5 hour recache.</task_description>
-      <task_enabled>0</task_enabled>
-      <task_key>daily</task_key>
-      <task_safemode>0</task_safemode>
-      <task_locked>0</task_locked>
-      <task_application>reachstat</task_application>
-    </row>
-    <row>
-      <task_id>28</task_id>
-      <task_title>Recache Hourly</task_title>
-      <task_file>recache_hourly.php</task_file>
-      <task_next_run>1300652599</task_next_run>
-      <task_week_day>-1</task_week_day>
-      <task_month_day>-1</task_month_day>
-      <task_hour>-1</task_hour>
-      <task_minute>59</task_minute>
-      <task_cronkey>d7546753f5be48f6e2c10e31072c6dc6</task_cronkey>
-      <task_log>0</task_log>
-      <task_description>This runs hourly to recache those members who paid for an hourly recache.</task_description>
-      <task_enabled>0</task_enabled>
-      <task_key>hourly</task_key>
-      <task_safemode>0</task_safemode>
-      <task_locked>0</task_locked>
-      <task_application>reachstat</task_application>
-    </row>
-    <row>
       <task_id>35</task_id>
       <task_title>Leaderboard </task_title>
       <task_file>leaderboard.php</task_file>
@@ -69,24 +33,6 @@
       <task_description>Refreshes leaderboard every 6 hours</task_description>
       <task_enabled>1</task_enabled>
       <task_key>leaderboard</task_key>
-      <task_safemode>0</task_safemode>
-      <task_locked>0</task_locked>
-      <task_application>reachstat</task_application>
-    </row>
-    <row>
-      <task_id>26</task_id>
-      <task_title>Recache Data</task_title>
-      <task_file>recache.php</task_file>
-      <task_next_run>1300854840</task_next_run>
-      <task_week_day>-1</task_week_day>
-      <task_month_day>-1</task_month_day>
-      <task_hour>4</task_hour>
-      <task_minute>34</task_minute>
-      <task_cronkey>1620c74470b2211df6c10d72ea54c5fe</task_cronkey>
-      <task_log>0</task_log>
-      <task_description>This will automatically recache sigs and data.</task_description>
-      <task_enabled>0</task_enabled>
-      <task_key>recache</task_key>
       <task_safemode>0</task_safemode>
       <task_locked>0</task_locked>
       <task_application>reachstat</task_application>

@@ -236,11 +236,16 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 		//-----------------------------------------------
 		$templateMedals = array ();
 		$i = 0;
-
-		/* Foreach the medals for the output */
-		foreach ($medals as $medal){
-			$templateMedals[$i] = ($medal['Name'] . " (" . $medal['value'] . ")");
-			$i++;
+	
+		/* check if they are medals before doing this */
+		if (is_array($medals))
+		{
+			/* foreach the medals to build a list */
+			foreach ($medals as $medal)
+			{
+				$templateMedals[$i] = ($medal['Name'] . " (" . $medal['value'] . ")");
+				$i++;
+			}
 		}
 
 		/* unset, sort, encode */

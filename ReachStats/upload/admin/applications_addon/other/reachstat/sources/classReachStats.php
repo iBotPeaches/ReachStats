@@ -293,8 +293,9 @@ class reachStats
 			}
 
 			/* Ranks */
-			foreach ($data['Data']['GlobalRanksById'] as $item){
-				$this->cachedData['ranks'][$item['Key']] = $item;
+			foreach ($data['Data']['GlobalRanks'] as $item)
+			{
+				$this->cachedData['ranks'][$item['Id']] = $item;
 			}
 			/* dump */
 			unset($data);
@@ -524,7 +525,7 @@ class reachStats
 			/* Bug fix for ranks */
 			if ($type == 'ranks')
 			{
-				return $this->caches['metadata'][$type][$key]['Value'];
+				return $this->caches['metadata'][$type][$key]['DisplayName'];
 			}
 			/* Bug fix for variants */
 			if ($type == 'variants')
@@ -590,11 +591,14 @@ class reachStats
 			/* Check for inactivity */
 			if ($result['inactive'] == 1)
 			{
-
 				/* Throw error if inactive */
 				if($this->memberData['member_id'])
 				{
-					$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "<a href='".$this->kb."2023-r25'>2023</a>",false,'2023');
+					/* get rid of error if inactivity is off */
+					if(!(ipsRegistry::$settings['inactive_flag'])
+					{
+						$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "<a href='".$this->kb."2023-r25'>2023</a>",false,'2023');
+					}
 				}
 			}
 		}
@@ -920,7 +924,7 @@ class reachStats
 		// BEFORE WE SAVE. SET THE LEADERBOARDS
 		//------------------------------------------------
 		$this->_setLeaderboards(&$this->data, $this->weapons);
-
+		
 		/* Save all this crap we got */
 		$postBack = $this->saveReachData($gt, $id, &$this->data, &$this->weapons, &$this->medals, &$this->commendations, $task);
 
