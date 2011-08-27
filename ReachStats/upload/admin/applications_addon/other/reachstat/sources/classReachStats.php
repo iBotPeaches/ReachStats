@@ -165,7 +165,8 @@ class reachStats
 		{
 			/* Regex Failed */
 			return true;
-		} else
+		}
+		else
 		{
 			/* Real GT */
 			/* Double check if were saving */
@@ -222,7 +223,8 @@ class reachStats
 			$id = 0;
 
 			/* Loop for commedations and add them to array */
-			foreach ($data['Data']['AllCommendationsById'] as $item ){
+			foreach ($data['Data']['AllCommendationsById'] as $item )
+			{
 				$this->cachedData['commendations'][$id] = $item;
 				$id++;
 			}
@@ -231,13 +233,15 @@ class reachStats
 			$id = 0;
 
 			/* Foreach for the maps/levels */
-			foreach ($data['Data']['AllMapsById'] as $item ){
+			foreach ($data['Data']['AllMapsById'] as $item )
+			{
 				$this->cachedData['maps'][$id] = $item;
 				$id++;
 			}
 
 			/* Foreach for the medals */
-			foreach ($data['Data']['AllMedalsById'] as $item ){
+			foreach ($data['Data']['AllMedalsById'] as $item )
+			{
 				$this->cachedData['medals'][$item['Key']] = $item;
 			}
 
@@ -245,7 +249,8 @@ class reachStats
 			asort($this->cachedData['medals']);
 
 			/* weaps :o */
-			foreach ($data['Data']['AllWeaponsById'] as $item ){
+			foreach ($data['Data']['AllWeaponsById'] as $item )
+			{
 				$this->cachedData['weapons'][$item['Key']]['Key'] = $item['Key'];
 				$this->cachedData['weapons'][$item['Key']]['Value']['Description'] = $item['Value']['Description'];
 
@@ -261,7 +266,8 @@ class reachStats
 					$pos = null;
 				}
 				/* check if $pos is not null */
-				if(!($pos) == null) {
+				if(!($pos) == null)
+				{
 
 					/* get portion of string */
 					$tempName = substr($item['Value']['Name'], 0, $pos);
@@ -287,7 +293,8 @@ class reachStats
 			$id = 0;
 
 			/* game variants :o */
-			foreach ($data['Data']['GameVariantClassesKeysAndValues'] as $item ){
+			foreach ($data['Data']['GameVariantClassesKeysAndValues'] as $item )
+			{
 				$this->cachedData['variants'][$id] = $item;
 				$id++;
 			}
@@ -595,7 +602,7 @@ class reachStats
 				if($this->memberData['member_id'])
 				{
 					/* get rid of error if inactivity is off */
-					if(!(ipsRegistry::$settings['inactive_flag'])
+					if(!(ipsRegistry::$settings['inactive_flag']))
 					{
 						$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "<a href='".$this->kb."2023-r25'>2023</a>",false,'2023');
 					}
@@ -661,7 +668,8 @@ class reachStats
 		{
 
 			/* Check for 0, then skip */
-			if ($common['Value'] == 0) {
+			if ($common['Value'] == 0)
+			{
 				continue;
 			}
 
@@ -688,19 +696,19 @@ class reachStats
 			$pathToSpartan = DOC_IPS_ROOT_PATH . 'reach/spartans/' . $id . '-spartan.png';
 
 			/* go */
-			$spartan = $this->fileManage->getFileContents($this->data['spartan']);
+			//$spartan = $this->fileManage->getFileContents($this->data['spartan']);
 
 			/* Open the Stream */
-			$fp = fopen($pathToSpartan, 'w');
+			//$fp = fopen($pathToSpartan, 'w');
 
 			/* Write then Close */
-			fwrite($fp, $spartan);
-			fclose($fp);
+			//fwrite($fp, $spartan);
+			//fclose($fp);
 
 			/* bi bi */
-			unset($spartan);
+			//unset($spartan);
 			unset($pathToSpartan);
-			unset($fp);
+			//unset($fp);
 		}
 
 		//-------------------------------------------
@@ -716,10 +724,12 @@ class reachStats
 		$data = json_decode($this->fileManage->getFileContents($tempURL), true);
 
 		/* data contains lots of stuff now */
-		foreach ($data['StatisticsByPlaylist'] as $playlist){
+		foreach ($data['StatisticsByPlaylist'] as $playlist)
+		{
 
 			/* Check for our playlists */
-			if ($playlist['VariantClass'] == 3 || $playlist['VariantClass'] == 2 || $playlist['VariantClass'] == 1) {
+			if ($playlist['VariantClass'] == 3 || $playlist['VariantClass'] == 2 || $playlist['VariantClass'] == 1)
+			{
 
 				/* Now lets add the static stuff, then proceed on */
 				$this->data['totalMedals']    += $playlist['TotalMedals'];
@@ -749,8 +759,6 @@ class reachStats
 
 				foreach ($playlist['DeathsByDamageType'] as $death)
 				{
-
-
 					/* Check for 0 to save processing */
 					if ($death['Value'] == 0) {
 
@@ -924,7 +932,7 @@ class reachStats
 		// BEFORE WE SAVE. SET THE LEADERBOARDS
 		//------------------------------------------------
 		$this->_setLeaderboards(&$this->data, $this->weapons);
-		
+
 		/* Save all this crap we got */
 		$postBack = $this->saveReachData($gt, $id, &$this->data, &$this->weapons, &$this->medals, &$this->commendations, $task);
 

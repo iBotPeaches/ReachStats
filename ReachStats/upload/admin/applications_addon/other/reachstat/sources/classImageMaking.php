@@ -73,6 +73,12 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		/* reset settings everytime */
 		$this->sigSettings = $sets;
 
+		/* check or die */
+		if(!function_exists("gd_info"))
+		{
+			die("GD is not installed on this server");
+		}
+
 		/* do this once moron */
 		if ($this->counter == 0)
 		{
@@ -125,13 +131,10 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		//-------------------------------------------
 		// Check for folder, then delete/make
 		//-------------------------------------------
-		if (file_exists($this->tempPath . 'reach/sigs/' . $this->id . '/')) {
-
-		}
-		else
+		if (!(file_exists($this->tempPath . 'reach/sigs/' . $this->id . '/')))
 		{
-				/* make that folder */
-				mkdir($this->tempPath . 'reach/sigs/' . $id . '/' , 0777);
+			/* make that folder */
+			mkdir($this->tempPath . 'reach/sigs/' . $id . '/' , 0777);
 		}
 
 		/* Temp */
@@ -451,7 +454,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 							}
 
 							/* Grab image, add text, destroy. Rinse and repeat */
-							
+
 							/* check if image exists -1 bug fattwam */
 							if (file_exists(($pathToMedals . "36/" . $medal['Id'] . ".png")))
 							{
@@ -491,8 +494,8 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 						/* Kills etc */
 						imagettftext($template, 10, 0, 31, 83, $black, $this->fonts[3], '     Kills: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_kills'])); # Kills
 						imagettftext($template, 10, 0, 30, 99, $black, $this->fonts[3], 'Deaths: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_deaths'])); # Deaths
-						imagettftext($template, 10, 0, 160, 83, $black, $this->fonts[3], 'Games Played: '. $this->registry->getClass('class_localization')->formatNumber( ($this->data['games_played'] - $this->data['totalWins']))); # Defeats
-						imagettftext($template, 10, 0, 160, 99, $black, $this->fonts[3], 'Victories:     ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['games_won'])); # Victories
+						imagettftext($template, 10, 0, 160, 83, $black, $this->fonts[3], 'Games Played: '. $this->registry->getClass('class_localization')->formatNumber( ($this->data['games_played']))); # Defeats
+						imagettftext($template, 10, 0, 160, 99, $black, $this->fonts[3], '          Victories: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['games_won'])); # Victories
 						imagettftext($template, 10, 0, 291, 83, $black, $this->fonts[3], ' Assists: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_assists'])); # Assissits
 						imagettftext($template, 10, 0, 290, 99, $black, $this->fonts[3], 'Medals: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_medals'])); # Medals
 						imagettftext($template, 16, 0, 36, 60, $black, $this->fonts[3], $this->data['rank'] );
@@ -523,8 +526,8 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 						/* Kills etc */
 						imagettftext($template, 10, 0, 31, 70, $black, $this->fonts[3], '     Kills: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_kills'])); # Kills
 						imagettftext($template, 10, 0, 30, 86, $black, $this->fonts[3], 'Deaths: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_deaths'])); # Deaths
-						imagettftext($template, 10, 0, 160, 70, $black, $this->fonts[3], ' Defeats: '. $this->registry->getClass('class_localization')->formatNumber( ($this->data['games_played'] - $this->data['totalWins']))); # Defeats
-						imagettftext($template, 10, 0, 160, 86, $black, $this->fonts[3], 'Victories: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['games_won'])); # Victories
+						imagettftext($template, 10, 0, 160, 70, $black, $this->fonts[3], 'Games Played: '. $this->registry->getClass('class_localization')->formatNumber( ($this->data['games_played']))); # Defeats
+						imagettftext($template, 10, 0, 160, 86, $black, $this->fonts[3], '          Victories: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['games_won'])); # Victories
 						imagettftext($template, 10, 0, 291, 70, $black, $this->fonts[3], ' Assists: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_assists'])); # Assissits
 						imagettftext($template, 10, 0, 290, 86, $black, $this->fonts[3], 'Medals: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_medals'])); # Medals
 						imagettftext($template, 16, 0, 36, 48, $black, $this->fonts[3], $this->data['rank'] );
