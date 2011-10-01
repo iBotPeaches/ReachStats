@@ -24,7 +24,6 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     public $ok_message 					= 'Your gamertag exists, and has been saved.';
     public $hide_form_and_save_button   = false;
     public $uploadFormMax 				= 0;
-	public $kb 							= 'http://reachstuff.com/kb/page/';
 	public $tier 						= 0;
 
     /**
@@ -161,10 +160,12 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
         // -----------------------------------------
         // Where to go, what to see?
         // -----------------------------------------
-        switch ($current_area) {
+        switch ($current_area)
+        {
             case 'settings':
                 return $this->showReachSettings();
                 break;
+
         	case 'mysigs':
         		return $this->showSigSettings();
         		break;
@@ -181,9 +182,9 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     {
     	/* Build the query to grab their gamertag */
             $value = $this->DB->buildAndFetch(array(
-                    'select' => 'id,gamertag,ip_address',
-                    'from' => 'reachstat',
-                    'where' => "id='" .$this->memberData['member_id']."'"));
+                    'select' 		=> 'id,gamertag,ip_address',
+                    'from' 			=> 'reachstat',
+                    'where' 		=> "id='" . $this->memberData['member_id'] . "'"));
 
     	/* Get highest Tier */
     	$this->tier = $this->library->determineHighestTier($this->memberData['member_group_id']);
@@ -192,16 +193,19 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     	$this->ok_message = 'Your gamertag exists, and has been saved.';
 
     	/* Remove save button if they added GT */
-    	if (($value['gamertag'] != "")) {
+    	if (($value['gamertag'] != ""))
+    	{
 
     		$this->hide_form_and_save_button = 1;
     	}
     	/* Check if banned */
-    	if ($this->tier == 0) {
+    	if ($this->tier == 0)
+    	{
     		return $this->registry->output->getTemplate('stattrack')->reach_ucp("gt_field", 'Banned Users cannot add GTs');
     	}
     	/* Simple check to see if they have one */
-    	if (($value['gamertag'] == "")) {
+    	if (($value['gamertag'] == ""))
+    	{
     		return $this->registry->output->getTemplate('stattrack')->reach_ucp("gt_field", "");
     	}
 		else
@@ -236,7 +240,7 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 		//-----------------------------------------------
 		$templateMedals = array ();
 		$i = 0;
-	
+
 		/* check if they are medals before doing this */
 		if (is_array($medals))
 		{

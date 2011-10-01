@@ -47,8 +47,8 @@ class admin_reachstat_settings_settings extends ipsCommand
 		$this->registry->class_localization->loadLanguageFile( array( 'admin_tools' ), 'core' );
 		$this->registry->class_localization->loadLanguageFile( array( 'admin_lang' ), 'reachstat' );
 
-		require_once( IPSLib::getAppDir( 'core' ) . '/modules_admin/tools/settings.php' );
-		$this->settingsClass		= new admin_core_tools_settings();
+		require_once( IPSLib::getAppDir( 'core' ) . '/modules_admin/settings/settings.php' );
+		$this->settingsClass		= new admin_core_settings_settings();
 		$this->settingsClass->makeRegistryShortcuts( $this->registry );
 		$this->settingsClass->html				= $this->registry->output->loadTemplate( 'cp_skin_tools', 'core' );
 		$this->settingsClass->form_code			= $this->settingsClass->html->form_code		= 'module=settings&amp;section=settings';

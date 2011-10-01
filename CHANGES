@@ -1,3 +1,8 @@
+== 0.8.7 ==
+	Started 3.2 work
+	Fixed lang issue
+	Fixed wrong API key issue
+
 == 0.8.5 ==
 	Fixed -1 medal ID problem
 	Fixed Rank being returned as null or 0

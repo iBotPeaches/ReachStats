@@ -14,8 +14,8 @@
    * ~peaches
 */
 
-define('HR_VERSION', '0.8.6');
-define('HR_RVERSION', '10016');
+define('HR_VERSION', '0.8.7');
+define('HR_RVERSION', '10017');
 define('DEBUG_MODE', (ipsRegistry::$settings['debug_mode']));
 define('API_KEY', (ipsRegistry::$settings['api_key']));
 define('FLAG_INACTIVE', ipsRegistry::$settings['inactive_flag']);
@@ -38,15 +38,18 @@ class app_class_reachstat
     public function __construct(ipsRegistry $registry)
     {
     	/* Make object */
-    	$this->registry = $registry;
-    	$this->DB       = $this->registry->DB();
-    	$this->settings =& $this->registry->fetchSettings();
-    	$this->request  =& $this->registry->fetchRequest();
-    	$this->cache    = $this->registry->cache();
-    	$this->caches   =& $this->registry->cache()->fetchCaches();
-    	$this->lang     = $this->registry->getClass('class_localization');
-    	$this->member   = $this->registry->member();
-    	$this->memberData =& $this->registry->member()->fetchMemberData();
+    	$this->registry 	= $registry;
+    	$this->DB       	= $this->registry->DB();
+    	$this->settings 	=& $this->registry->fetchSettings();
+    	$this->request  	=& $this->registry->fetchRequest();
+    	$this->cache    	= $this->registry->cache();
+    	$this->caches   	=& $this->registry->cache()->fetchCaches();
+    	$this->lang     	= $this->registry->getClass('class_localization');
+    	$this->member   	= $this->registry->member();
+    	$this->memberData 	=& $this->registry->member()->fetchMemberData();
+
+    	/* load the lang */
+    	$this->registry->getClass('class_localization')->loadLanguageFile( array( 'public_errors','public_reachstat','admin_lang' ), 'reachstat' );
 
     	//---------------------------------------
     	// Only load this stuff if not in ACP
@@ -97,7 +100,7 @@ class app_class_reachstat
     			/* dont show the error if in acp ass */
     			if (!(IN_ACP))
     			{
-    				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
+    				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"2003", false, '2003' );
     			}
     		}
     		/* Is this junk online and enabled? */
@@ -119,7 +122,7 @@ class app_class_reachstat
     				$this->registry->getClass('output')->setTitle("OFFLINE: ");
 
     				/* error out */
-    				$registry->getClass('output')->showError( $this->lang->words['system_offline'],"<a href='".$this->kb."2006-r7'>2006</a>", false, '2006' );
+    				$registry->getClass('output')->showError( $this->lang->words['system_offline'],"2006", false, '2006' );
     			}
     		}
     	}

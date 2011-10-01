@@ -64,4 +64,8 @@
 		<human>0.8.6</human>
 		<long>10016</long>
 	</version>
+	<version>
+		<human>0.8.7</human>
+		<long>10017</long>
+	</version>
 </versions>

@@ -44,7 +44,7 @@
 		</div>]]></template_content>
       <template_name>basic_stats</template_name>
       <template_data>$data</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -66,7 +66,7 @@
 <br />]]></template_content>
       <template_name>comparePage</template_name>
       <template_data/>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -82,7 +82,7 @@ We are sorry. This used to be a registered account, but is now no longer reporti
 </div>]]></template_content>
       <template_name>errorPage</template_name>
       <template_data>$gt,$message</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -90,8 +90,7 @@ We are sorry. This used to be a registered account, but is now no longer reporti
     </template>
     <template>
       <template_group>skin_stattrack</template_group>
-      <template_content><![CDATA[
-<script type='text/javascript'>
+      <template_content><![CDATA[<script type='text/javascript'>
 //<!#^#|CDATA|
 	ipb.profile.viewingProfile = parseInt( {$member['member_id']} );
     google.load('visualization', '1', {packages:['table']});
@@ -182,7 +181,7 @@ This user has been inactive for {$times['visitDiff']}.
 {parse template="include_highlighter" group="global" params=""}]]></template_content>
       <template_name>gamerPage</template_name>
       <template_data><![CDATA[$times, $data, $member, $tabs, $default_tab='basic', $default_tab_contents, $google, $google1]]></template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -190,8 +189,7 @@ This user has been inactive for {$times['visitDiff']}.
     </template>
     <template>
       <template_group>skin_stattrack</template_group>
-      <template_content><![CDATA[
-<script type='text/javascript'>
+      <template_content><![CDATA[<script type='text/javascript'>
 //<!#^#|CDATA|
     google.load('visualization', '1', {packages:['table']});
 //|#^#]>
@@ -324,7 +322,7 @@ This user has been inactive for {$times['visitDiff']}.
 <br />]]></template_content>
       <template_name>gamerPageOld</template_name>
       <template_data>$times, $data, $member, $google, $google1</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -351,7 +349,7 @@ This user has been inactive for {$times['visitDiff']}.
     <div id="chart_div1"></div>]]></template_content>
       <template_name>headshot_pie</template_name>
       <template_data>$loss, $wins</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -432,7 +430,7 @@ function SelectAll(id)
 <br />]]></template_content>
       <template_name>imagePage</template_name>
       <template_data>$data, $sigs, $times</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -478,7 +476,7 @@ function SelectAll(id)
     <div id='kill_table'></div>]]></template_content>
       <template_name>kills_graph</template_name>
       <template_data>$data</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -518,7 +516,7 @@ function SelectAll(id)
     <div id='table2'></div>]]></template_content>
       <template_name>kills_graphNew</template_name>
       <template_data>$data</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -529,7 +527,7 @@ function SelectAll(id)
       <template_content>leaderboardPage</template_content>
       <template_name>leaderboardPage</template_name>
       <template_data/>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -607,7 +605,7 @@ Vist the <a href='{parse url="app=core&amp;module=usercp&amp;tab=reachstat" base
 </div>]]></template_content>
       <template_name>reach_home</template_name>
       <template_data>$gt, $image, $challenges, $leaders</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -791,7 +789,7 @@ Previous Signature included:
 </form>]]></template_content>
       <template_name>reach_mysigs</template_name>
       <template_data>$radioColor, $medals, $picked, $sig5</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -828,7 +826,7 @@ If you wish to change your gamertag, you will have to wait. There is an abuse of
 </fieldset>]]></template_content>
       <template_name>reach_ucp</template_name>
       <template_data>$name,$value</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>
@@ -874,7 +872,7 @@ google.setOnLoadCallback(drawVisualization);
 <div id='table3'></div>]]></template_content>
       <template_name>vehi_graph</template_name>
       <template_data>$data</template_data>
-      <template_updated>1300836693</template_updated>
+      <template_updated>1317507383</template_updated>
       <template_removable>0</template_removable>
       <template_user_added>0</template_user_added>
       <template_user_edited>0</template_user_edited>

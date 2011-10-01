@@ -34,7 +34,6 @@ class reachStats
 	public $i						= 0;
 	public $challenges				= array();
 	protected $cachedData			= array();
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 	public $commLevels				= array('not_awarded', 'iron', 'bronze', 'silver', 'gold', 'onyx', 'max');
 
 	/**
@@ -43,15 +42,15 @@ class reachStats
 	function __construct(ipsRegistry $ipsRegistry)
 	{
 		/* Make objects and stuff */
-		$this->registry = &$ipsRegistry;
-		$this->DB = $this->registry->DB();
-		$this->settings = &$this->registry->fetchSettings();
-		$this->request = &$this->registry->fetchRequest();
-		$this->lang = $this->registry->getClass('class_localization');
-		$this->member = $this->registry->member();
-		$this->memberData = &$this->registry->member()->fetchMemberData();
-		$this->cache = $this->registry->cache();
-		$this->caches = &$this->cache->fetchCaches();
+		$this->registry 	= &$ipsRegistry;
+		$this->DB 			= $this->registry->DB();
+		$this->settings 	= &$this->registry->fetchSettings();
+		$this->request 		= &$this->registry->fetchRequest();
+		$this->lang 		= $this->registry->getClass('class_localization');
+		$this->member 		= $this->registry->member();
+		$this->memberData 	= &$this->registry->member()->fetchMemberData();
+		$this->cache 		= $this->registry->cache();
+		$this->caches 		= &$this->cache->fetchCaches();
 	}
 
 	/**
@@ -64,22 +63,25 @@ class reachStats
 		/* Check for user ID */
 		if (!$userID == 0)
 		{
+			/* check if they exist */
 			$value = $this->DB->buildAndFetch(array(
-				'select' => 'gamertag',
-				'from' => 'reachstat',
-				'where' => "id='" . $this->memberData['member_id'] .
-			    "'"));
+				'select' 	=> 'gamertag',
+				'from' 		=> 'reachstat',
+				'where' 	=> "id='" . $this->memberData['member_id'] . "'"));
 
 			/* Clean that junk */
 			$value['gamertag'] = $this->unParseGT($value['gamertag']);
 
+			/* bi bi */
 			return $value['gamertag'];
-		} else
+
+		}
+		else
 		{
 			/* Flag = true */
 			if (($flag == true))
 			{
-				$this->registry->getClass('output')->showError( $this->lang->words['no_user_id'],"<a href='".$this->kb."2005-r6'>2005</a>", false, '2005' );
+				$this->registry->getClass('output')->showError( $this->lang->words['no_user_id'],"2005", false, '2005' );
 			}
 		}
 	}
@@ -88,10 +90,9 @@ class reachStats
 	{
 		/* Check if the GT exists */
 		$gtExists = $this->DB->buildAndFetch(array(
-			'select' => 'id',
-			'from' => 'reachstat',
-			'where' => "gamertag='" . $gt .
-		"'"));
+			'select' 		=> 'id',
+			'from' 			=> 'reachstat',
+			'where' 		=> "gamertag='" . $gt ."'"));
 
 		/* Go on */
 		if ($gtExists['id'] == null)
@@ -101,42 +102,43 @@ class reachStats
 			{
 				/* Check the DB first */
 				$result = $this->DB->buildAndFetch(array(
-					'select' => '*',
-					'from' => 'reachstat',
-					'where' => "id='" . intval($userID) .
-				    "'"));
+					'select' 	=> '*',
+					'from' 		=> 'reachstat',
+					'where' 	=> "id='" . intval($userID) . "'"));
 
 				/* COMPARE */
 				if ($result == null)
 				{
 					/* Its blank so add it in */
 					$this->DB->insert('reachstat', array(
-						'id' => intval($userID),
-						'gamertag' => $gt,
-						'inactive' => intval(0),
-						'ip_address'	   => IPSText::parseCleanValue($_SERVER['REMOTE_ADDR'])));
+						'id' 				=> intval($userID),
+						'gamertag' 			=> $gt,
+						'inactive' 			=> intval(0),
+						'ip_address'	   	=> IPSText::parseCleanValue($_SERVER['REMOTE_ADDR'])));
 				} else
 				{
 					/* o teh nos. It exists */
 					$this->DB->update('reachstat', array(
-						'id' 		=> intval($userID),
-						'gamertag'  => $gt),
-					"id=" . intval($userID));
+						'id' 			=> intval($userID),
+						'gamertag'  	=> $gt),
+						"id=" . intval($userID));
 				}
 
 				/* Lets add it to the members table */
 				$this->DB->update('members',array(
-				'has_reachstat' => intval(1)),
-				"member_id=" .intval($userID));
+						'has_reachstat' 	=> intval(1)),
+						"member_id=" . intval($userID));
 			}
 			else
 			{
-				$this->registry->getClass('output')->showError($this->lang->words['bad_user'], "<a href='".$this->kb."2018-r20'>2018</a>", false, '2018' );
+				/* bad user */
+				$this->registry->getClass('output')->showError($this->lang->words['bad_user'], "2018", false, '2018' );
 			}
 		}
 		else
 		{
-			$this->registry->getClass('output')->showError( $this->lang->words['gt_exists'],"<a href='".$this->kb."2004-r5'>2004</a>", false, '2004' );
+			/* gt already exist */
+			$this->registry->getClass('output')->showError( $this->lang->words['gt_exists'],"2004", false, '2004' );
 		}
 	}
 
@@ -169,11 +171,12 @@ class reachStats
 		else
 		{
 			/* Real GT */
-			/* Double check if were saving */
 			if ($save === true)
 			{
 				$this->setGamertag($this->memberData['member_id'], $gt);
 			}
+
+			/* bi bi */
 			return false;
 		}
 		# $took = round(microtime(true) - $timer, 2);
@@ -210,7 +213,7 @@ class reachStats
 			/* boot us out of here */
 			if ($http_code != "200")
 			{
-				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
+				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"2028", false, '2028' );
 			}
 
 			/* Download it via fileManage, then decode it */
@@ -268,7 +271,6 @@ class reachStats
 				/* check if $pos is not null */
 				if(!($pos) == null)
 				{
-
 					/* get portion of string */
 					$tempName = substr($item['Value']['Name'], 0, $pos);
 
@@ -304,6 +306,7 @@ class reachStats
 			{
 				$this->cachedData['ranks'][$item['Id']] = $item;
 			}
+
 			/* dump */
 			unset($data);
 
@@ -319,7 +322,6 @@ class reachStats
 			}
 			else
 			{
-
 				/* set cache */
 				$this->cache->setCache( 'metadata', $this->cachedData,  array( 'array' => 1, 'donow' => 1 ) );
 
@@ -336,7 +338,7 @@ class reachStats
 		/* Make sure it comes back */
 		if ($response['reason'] != 'Okay')
 		{
-			$this->registry->getClass('output')->showError( $this->lang->words['api_failed'],"<a href='".$this->kb."2027-r27'>2027</a>", false, '2027' );
+			$this->registry->getClass('output')->showError( $this->lang->words['api_failed'],"2027", false, '2027' );
 		}
 	}
 
@@ -353,10 +355,13 @@ class reachStats
 		foreach($this->caches['metadata']['medals'] as $medal)
 		{
 			/* Check if we exist */
-			if ($medal['Value']['Name'] == $passedMedal) {
+			if ($medal['Value']['Name'] == $passedMedal)
+			{
+				/* found it */
 				return $medal['Value']['Id'];
 			}
 		}
+
 		/* ouch, we found nothing */
 		return -1;
 	}
@@ -399,7 +404,7 @@ class reachStats
 		{
 			if (!(IN_ACP))
 			{
-				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"<a href='".$this->kb."2003-r4'>2003</a>", false, '2003' );
+				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"2003", false, '2003' );
 			}
 		}
 
