@@ -409,8 +409,7 @@ class reachStats
 		}
 
 		/* Lets start our JSON readout */
-		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/challenges/'
-			. $this->api_key;
+		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/challenges/' . $this->api_key;
 
 		/* check for bad api key */
 		$http_code = $this->library->get_http_response_code($tempURL);
@@ -420,7 +419,7 @@ class reachStats
 		{
 			if (!(IN_ACP))
 			{
-				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
+				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"2028", false, '2028' );
 			}
 		}
 
@@ -495,7 +494,8 @@ class reachStats
 		$this->cache->setCache( 'challenges', $this->challenges,  array( 'array' => 1, 'donow' => 1 ) );
 
 		/* cleanup */
-		if ($force != true) {
+		if ($force != true)
+		{
 			return($this->challenges);
 		}
 	}

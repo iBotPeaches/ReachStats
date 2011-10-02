@@ -230,7 +230,7 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 			$value = $this->DB->buildAndFetch(array(
 				'select' => 'settings,sigs,data,medals',
 				'from'	 => 'reachstat',
-				'where'	 => "id='" .$this->memberData['member_id']."'"));
+				'where'	 => "id='" . $this->memberData['member_id'] . "'"));
 
 		/* set medals in */
 		$medals = unserialize($value['medals']);
@@ -372,11 +372,13 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
         // -----------------------------------------
         // Where to go, what to see?
         // -----------------------------------------
-        switch ($current_area) {
+        switch ($current_area)
+        {
             default:
             case 'settings':
                 return $this->saveReachSettings();
                 break;
+
         	case 'mysigs':
         		return $this->saveSigSettings();
         		break;
@@ -399,10 +401,12 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     	$this->tier = $this->library->determineHighestTier($this->memberData['member_group_id']);
 
     	/* If Banned Tier, then do not save. */
-    	if ($this->tier == 0) {
-    		$this->registry->getClass('output')->showError($this->lang->words['tier_banned'], "<a href='".$this->kb."2007-r9'>2007</a>",false,'2007');
+    	if ($this->tier == 0)
+    	{
+    		$this->registry->getClass('output')->showError($this->lang->words['tier_banned'], "2007",false,'2007');
 
     	}
+
 		/* Temp var of their GT */
     	$check = $this->reach->checkGTExists(IPSText::parseCleanValue($this->request['gt_field']),true);
 
@@ -410,11 +414,10 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     	$this->DB->execute();
 
     	/* Lets grab their GT and check */
-    	/* Build the query to grab their gamertag */
     	$value = $this->DB->buildAndFetch(array(
-					'select' => 'gamertag,id,ip_address',
-					'from' => 'reachstat',
-					'where' => "id='".intval($id)."'"));
+					'select' 	=> 'gamertag,id,ip_address',
+					'from' 		=> 'reachstat',
+					'where' 	=> "id='" . intval($id) . "'"));
 
     	/* Update thier stuff */
     	require_once( IPSLib::getAppDir( 'reachstat' ) . '/sources/classReachStats.php' );
@@ -423,8 +426,9 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     	$this->image = new imageClass( $this->registry );
 
     	/* Lets see if the GTs are different, meaning they are changing */
-    	if (($this->reach->unParseGT($value['gamertag']) != $this->request['gt_field'])) {
-    		$this->registry->getClass('output')->showError($this->lang->words['gt_changed'], "<a href='".$this->kb."2024-r46'>2024</a>",false,'2024');
+    	if (($this->reach->unParseGT($value['gamertag']) != $this->request['gt_field']))
+    	{
+    		$this->registry->getClass('output')->showError($this->lang->words['gt_changed'], "2024",false,'2024');
     	}
     	//------------------------------------------------
     	// Update Sigs/Data first time
@@ -438,21 +442,24 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
     	$this->saveSigSettings();
 
     	/* Check */
-    	if (($value['gamertag'] == $this->request['gt_field'])) {
+    	if (($value['gamertag'] == $this->request['gt_field']))
+    	{
     		return false;
     	}
     	else
     	{
 
     	/* Make sure this GT exists. No morons passing fakes here */
-		if ($check == true) {
-			$this->registry->getClass('output')->showError($this->lang->words['tag_no_exist'], "<a href='".$this->kb."2000-r1'>2000</a>",false,'2000');
+		if ($check == true)
+		{
+			$this->registry->getClass('output')->showError($this->lang->words['tag_no_exist'], "2000",false,'2000');
 		}
     		else
     		{
-    			//set the field
+    			/* set the field */
     			$gamertag = IPSText::parseCleanValue($this->request['gt_field']);
 
+    			/* bi bi */
     			return true;
     		}
 
@@ -502,7 +509,7 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 			$value = $this->DB->buildAndFetch(array(
 				'select' => 'settings',
 				'from'	 => 'reachstat',
-				'where'	 => "id='" .$this->memberData['member_id']."'"));
+				'where'	 => "id='" . $this->memberData['member_id']."'"));
 
 			/* set previous settings in */
 			$temp = unserialize($value['settings']);
@@ -532,6 +539,7 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 
 
 	}
+
 	private function fillSig5()
 	{
 		$colour['0']['name'] = "aqua";
@@ -566,6 +574,7 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 		$colour['29']['name'] = "white";
 		$colour['30']['name'] = "yellow";
 
+		/* bi */
 		return $colour;
 	}
 }

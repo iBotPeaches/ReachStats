@@ -46,6 +46,7 @@ class fetchSkin__reachstat{
 	function __construct(){
 
 	}
+
 	public function fetchSkin()
 	{
 		//return 12;

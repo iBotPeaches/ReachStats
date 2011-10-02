@@ -61,7 +61,8 @@ class app_class_reachstat
             {
                 ipsRegistry::$request['module'] == 'overview';
             }
-        } else
+        }
+		else
         {
         	/* Lets load the library */
 	       	if ( ! $this->registry->isClassLoaded( 'library' ) )
