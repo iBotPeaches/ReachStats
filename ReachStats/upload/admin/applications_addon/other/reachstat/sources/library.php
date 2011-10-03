@@ -9,15 +9,14 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
 class Library
 {
-	//vars
+	/* vars */
 	protected $version = HR_VERSION;
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 
 	/**
 	 * Constructor
@@ -25,15 +24,15 @@ class Library
 	function __construct(ipsRegistry $ipsRegistry)
 	{
 		/* Make objects and stuff */
-		$this->registry = &$ipsRegistry;
-		$this->DB = $this->registry->DB();
-		$this->settings = &$this->registry->fetchSettings();
-		$this->request = &$this->registry->fetchRequest();
-		$this->lang = $this->registry->getClass('class_localization');
-		$this->member = $this->registry->member();
-		$this->memberData = &$this->registry->member()->fetchMemberData();
-		$this->cache = $this->registry->cache();
-		$this->caches = &$this->cache->fetchCaches();
+		$this->registry 		= &$ipsRegistry;
+		$this->DB 				= $this->registry->DB();
+		$this->settings 		= &$this->registry->fetchSettings();
+		$this->request 			= &$this->registry->fetchRequest();
+		$this->lang 			= $this->registry->getClass('class_localization');
+		$this->member 			= $this->registry->member();
+		$this->memberData 		= &$this->registry->member()->fetchMemberData();
+		$this->cache 			= $this->registry->cache();
+		$this->caches 			= &$this->cache->fetchCaches();
 
 		/* quick var dump */
 		$userID = $this->memberData['member_id'];
@@ -151,12 +150,15 @@ class Library
 			}
 	}
 
-	/* Only returns the 3-digit HTTP code */
+	/*
+	 * Only returns the 3-digit HTTP code
+	 */
 	public function get_http_response_code($theURL)
 	{
 		$headers = get_headers($theURL);
 		return substr($headers[0], 9, 3);
 	}
+
 	/*
 	 * Pass member ID
 	 * Return Group ID
@@ -165,15 +167,13 @@ class Library
 	{
 		/* Get the group ID */
 		$info = $this->DB->buildAndFetch(array(
-			'select' => 'member_group_id',
-			'from' => 'members',
-			'where' => "member_id='" . intval($id) .
-		"'"));
+			'select' 		=> 'member_group_id',
+			'from' 			=> 'members',
+			'where' 		=> "member_id='" . intval($id) . "'"));
 
 		/* Return */
 		return $info['member_group_id'];
 	}
-
 
 	public function getRandomPlaceholder()
 	{
@@ -217,7 +217,8 @@ class Library
 		//---------------------------------------------------------------
 		// Only look for their groupID. If there not on their own page
 		//---------------------------------------------------------------
-		if (intval($this->memberData['member_id']) != intval($id)) {
+		if (intval($this->memberData['member_id']) != intval($id))
+		{
 			$groupID = $this->_getGroupID($id);
 		}
 		else
@@ -237,7 +238,8 @@ class Library
 		   * WM (1 = NO WATERMARK, 0 = WATERMARK)
 		   * CONTROL (1 = RECACHE ANYTHING, 0= RECACHE WHEN NEEDED)
 		*/
-		switch ($tierID){
+		switch ($tierID)
+		{
 			case 4: #Staff (Staff)
 				$result['tier']['inactive'] = 15552000; #180 days
 				$result['tier']['time_ttl'] = 21600; # 6 hours
@@ -248,6 +250,7 @@ class Library
 				$result['tier']['wm']       = 1;
 				$result['tier']['control']  = 1;
 				break;
+
 			case 3: #Tier 3 (Top Payers)
 				$result['tier']['inactive'] = 2592000; #30 days
 				$result['tier']['time_ttl'] = 3600; # 1 hour
@@ -258,6 +261,7 @@ class Library
 				$result['tier']['wm']       = 1;
 				$result['tier']['control']  = 1;
 				break;
+
 			case 2: #Tier 2 (2nd Plan)
 				$result['tier']['inactive'] = 1296000; #15 days
 				$result['tier']['time_ttl'] = 21600; # 6 hours
@@ -268,6 +272,7 @@ class Library
 				$result['tier']['wm']       = 1;
 				$result['tier']['control']  = 1;
 				break;
+
 			case 1: #Tier 1 (Free Plan)
 				$result['tier']['inactive'] = 259200; #3 days
 				$result['tier']['time_ttl'] = 86400; # 24 hours
@@ -278,6 +283,7 @@ class Library
 				$result['tier']['wm']       = 0;
 				$result['tier']['control']  = 0;
 				break;
+
 			case 0: #Banned
 				$result['tier']['inactive'] = -1; #-1 doesn't allow generating
 				$result['tier']['time_ttl'] = -1; # n/a
@@ -337,9 +343,9 @@ class Library
 
 			/* Pull the Gamer Stats cache */
 			$temp['stats'] = $this->DB->buildAndFetch(array(
-				'select' => 'stat_date,sig_date',
-				'from' => 'reachstat',
-				'where' => "id='" . intval($id) . "'"));
+				'select' 		=> 'stat_date,sig_date',
+				'from' 			=> 'reachstat',
+				'where' 		=> "id='" . intval($id) . "'"));
 
 			/* ARE WE ON OUR OWN PAGE. Saves 1 query */
 			if ($this->memberData['member_id'] == $id)
@@ -350,11 +356,12 @@ class Library
 			{
 				/* Lets get the last time they were active */
 				$memInfo = $this->DB->buildAndFetch(array(
-					'select' => 'last_activity',
-					'from'   => 'members',
-					'where' => "member_id='" . intval($id). "'"));
+					'select' 		=> 'last_activity',
+					'from'   		=> 'members',
+					'where' 		=> "member_id='" . intval($id). "'"));
 
 			}
+
 			/* Get the date */
 			$timeBefore = $memInfo['last_activity'];
 
@@ -432,67 +439,67 @@ class Library
  */
 	public function dirsize($path)
 	{
-	// Init
-	$size = 0;
+		// Init
+		$size = 0;
 
-	// Trailing slash
-	if (substr($path, -1, 1) !== DIRECTORY_SEPARATOR) {
-		$path .= DIRECTORY_SEPARATOR;
-	}
-
-	// Sanity check
-	if (is_file($path)) {
-		return filesize($path);
-	} elseif (!is_dir($path)) {
-		return false;
-	}
-
-	// Iterate queue
-	$queue = array($path);
-	for ($i = 0, $j = count($queue); $i < $j; ++$i)
-	{
-		// Open directory
-		$parent = $i;
-		if (is_dir($queue[$i]) && $dir = @dir($queue[$i])) {
-			$subdirs = array();
-			while (false !== ($entry = $dir->read())) {
-				// Skip pointers
-				if ($entry == '.' || $entry == '..') {
-					continue;
-				}
-
-				// Get list of directories or filesizes
-				$path = $queue[$i] . $entry;
-				if (is_dir($path)) {
-					$path .= DIRECTORY_SEPARATOR;
-					$subdirs[] = $path;
-				} elseif (is_file($path)) {
-					$size += filesize($path);
-				}
-			}
-
-			// Add subdirectories to start of queue
-			unset($queue[0]);
-			$queue = array_merge($subdirs, $queue);
-
-			// Recalculate stack size
-			$i = -1;
-			$j = count($queue);
-
-			// Clean up
-			$dir->close();
-			unset($dir);
+		// Trailing slash
+		if (substr($path, -1, 1) !== DIRECTORY_SEPARATOR) {
+			$path .= DIRECTORY_SEPARATOR;
 		}
-	}
 
-	return $size;
-}
+		// Sanity check
+		if (is_file($path)) {
+			return filesize($path);
+		} elseif (!is_dir($path)) {
+			return false;
+		}
+
+		// Iterate queue
+		$queue = array($path);
+		for ($i = 0, $j = count($queue); $i < $j; ++$i)
+		{
+			// Open directory
+			$parent = $i;
+			if (is_dir($queue[$i]) && $dir = @dir($queue[$i])) {
+				$subdirs = array();
+				while (false !== ($entry = $dir->read())) {
+					// Skip pointers
+					if ($entry == '.' || $entry == '..') {
+						continue;
+					}
+
+					// Get list of directories or filesizes
+					$path = $queue[$i] . $entry;
+					if (is_dir($path)) {
+						$path .= DIRECTORY_SEPARATOR;
+						$subdirs[] = $path;
+					} elseif (is_file($path)) {
+						$size += filesize($path);
+					}
+				}
+
+				// Add subdirectories to start of queue
+				unset($queue[0]);
+				$queue = array_merge($subdirs, $queue);
+
+				// Recalculate stack size
+				$i = -1;
+				$j = count($queue);
+
+				// Clean up
+				$dir->close();
+				unset($dir);
+			}
+		}
+
+		return $size;
+	}
 
 	public function checkOnline()
 	{
 		/* Is this junk online and enabled? */
-		if (!$this->settings['reach_online']) {
-
+		if (!$this->settings['reach_online'])
+		{
 			/* The currently visiting member */
 			if(in_array( $this->memberData['member_group_id'], explode( ",", $this->settings['reach_group_online'] ) ) )
 			{
@@ -502,7 +509,7 @@ class Library
 			else
 			{
 				/* error out */
-				$this->registry->getClass('output')->showError( $this->lang->words['system_offline'],"<a href='".$this->kb."2006-r7'>2006</a>", false, '2006' );
+				$this->registry->getClass('output')->showError( $this->lang->words['system_offline'], "2006", false, '2006' );
 			}
 		}
 	}
@@ -526,7 +533,6 @@ class Library
 		return $requestedPosition;
 	}
 
-
 	/**
 	 * Library::doubleCheck()
 	 *
@@ -536,21 +542,21 @@ class Library
 	public function doubleCheck($times, $id)
 	{
 		/* Are they inactive ? */
-		if (!($times['visit'] > $times['tier']['inactive'])) {
-
+		if (!($times['visit'] > $times['tier']['inactive']))
+		{
 			/* Now update into Database. */
 			$this->DB->update('reachstat', array(
-			'id'	   => intval($id),
-			'inactive'	=> 0),
-			"id=".intval($id));
+			'id'	   		=> intval($id),
+			'inactive'		=> 0),
+			"id=" . intval($id));
 		}
 		else
 		{
 			/* Now update into Database. */
 			$this->DB->update('reachstat', array(
-			'id'	   => intval($id),
-			'inactive'	=> 1),
-			"id=".intval($id));
+			'id'	   		=> intval($id),
+			'inactive'		=> 1),
+			"id=" . intval($id));
 		}
 
 	}

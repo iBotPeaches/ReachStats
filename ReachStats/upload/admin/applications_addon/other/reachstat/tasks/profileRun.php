@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -62,6 +62,7 @@ class task_item
 		$this->class	= $class;
 		$this->task		= $task;
 	}
+
 	/**
 	 * Run this task
 	 *
@@ -101,8 +102,10 @@ class task_item
 		{
 			$previous = null;
 		}
+
 		/* Check if that storage was succesful */
-		if (intval($previous) == null) {
+		if (intval($previous) == null)
+		{
 			$run = true; #re-run from the top.
 		}
 		else
@@ -117,9 +120,10 @@ class task_item
 		switch($run){
 			case true:
 				/* Run through the IDs, and restart */
-				$max = $this->DB->buildAndFetch( array( 'select' => 'COUNT(*)',
-										 'from' => 'reachstat',
-										 'where' => 'inactive=0'));
+				$max = $this->DB->buildAndFetch( array(
+										'select' 		=> 'COUNT(*)',
+										 'from' 		=> 'reachstat',
+										 'where' 		=> 'inactive=0'));
 				/* Gotta set it */
 				$_max = intval($max['COUNT(*)']);
 				unset($max);
@@ -130,9 +134,7 @@ class task_item
 					'from'	 => 'reachstat',
 					'where'  => 'inactive=0',
 					'order'  => 'id ASC',
-					'limit'	 => array (0, intval($this->settings['max_pro_num']))
-				));
-
+					'limit'	 => array (0, intval($this->settings['max_pro_num']))));
 
 				/* Run em */
 				$out = $this->DB->execute();
@@ -140,7 +142,6 @@ class task_item
 				/* Bring those in and lets loop em */
 				while($row = $this->DB->fetch($out))
 				{
-
 					/* Now get Tier Data, we might need it */
 					$this->tier = $this->library->getUserData($row['id']);
 
@@ -151,23 +152,25 @@ class task_item
 					 */
 
 					/* Check if banned */
-					if ($this->tier['groupID'] == $this->settings['banned_group']) {
+					if ($this->tier['groupID'] == $this->settings['banned_group'])
+					{
 						continue;
 					}
 
 					/* Check if ignored and/or banned */
-					if ($row['inactive'] == 3 || $row['inactive'] == 2) {
+					if ($row['inactive'] == 3 || $row['inactive'] == 2)
+					{
 						continue;
 					}
 
 					/* Check if they are inactive, but haven't been flagged. */
-					if ($this->tier['visit'] > $this->tier['tier']['inactive']) {
-
+					if ($this->tier['visit'] > $this->tier['tier']['inactive'])
+					{
 						/* Now update into Database. */
 						$this->DB->update('reachstat', array(
-							'id'	   => intval($row['id']),
-							'inactive'	=> intval(1)),
-							"id=".intval($row['id']));
+							'id'	   		=> intval($row['id']),
+							'inactive'		=> intval(1)),
+							"id=" . intval($row['id']));
 					}
 
 					//------------------------------------------------------
@@ -175,7 +178,6 @@ class task_item
 					//------------------------------------------------------
 					if ($this->tier['data'] > $this->tier['tier']['time_ttl'])
 					{
-
 						//------------------------------------------------------
 						// Recache their DATA, then SIGS
 						//------------------------------------------------------
@@ -187,17 +189,12 @@ class task_item
 							/* sigs */
 							$this->image->doThemAll($row['id'],	$this->reach->unParseGT($row['gamertag']) );
 					}
-
 					/* Check here */
 					$lastid = $row['id'];
 					$this->counter++;
-
 				}
-
-
-
-
 				break;
+
 			case false:
 				/* Use the supplied ID, $previous and restart at that ID */
 				$this->DB->allow_sub_select = 1;
@@ -208,9 +205,7 @@ class task_item
 						'from'	 => 'reachstat',
 						'where'  => 'inactive=0',
 						'order'  => 'id ASC',
-						'limit'	 => array (intval($previous), intval($this->settings['max_pro_num']))
-			));
-
+						'limit'	 => array (intval($previous), intval($this->settings['max_pro_num']))));
 
 				/* Run em */
 				$out = $this->DB->execute();
@@ -218,7 +213,6 @@ class task_item
 				/* Bring those in and lets loop em */
 				while($row = $this->DB->fetch($out))
 				{
-
 					/* Now get Tier Data, we might need it */
 					$this->tier = $this->library->getUserData($row['id']);
 
@@ -229,23 +223,25 @@ class task_item
 					*/
 
 					/* Check if banned */
-					if ($this->tier['groupID'] == $this->settings['banned_group']) {
+					if ($this->tier['groupID'] == $this->settings['banned_group'])
+					{
 						continue;
 					}
 
 					/* Check if ignored and/or banned */
-					if ($row['inactive'] == 3 || $row['inactive'] == 2) {
+					if ($row['inactive'] == 3 || $row['inactive'] == 2)
+					{
 						continue;
 					}
 
 					/* Check if they are inactive, but haven't been flagged. */
-					if ($this->tier['visit'] > $this->tier['tier']['inactive']) {
-
+					if ($this->tier['visit'] > $this->tier['tier']['inactive'])
+					{
 						/* Now update into Database. */
 						$this->DB->update('reachstat', array(
-							'id'	   => intval($row['id']),
-							'inactive'	=> intval(1)),
-						"id=".intval($row['id']));
+							'id'	   			=> intval($row['id']),
+							'inactive'			=> intval(1)),
+						"id=" . intval($row['id']));
 					}
 
 					//------------------------------------------------------
@@ -268,12 +264,11 @@ class task_item
 						/* debug */
 						//IPSDebug::addLogMessage($row['id'],'profileRun',$row,true,false);
 					}
-
 					/* Check here */
 					$lastid = $row['id'];
-
 				}
 				break;
+
 			default:
 				break;
 		}
@@ -293,7 +288,6 @@ class task_item
 
 	public function cleanGlobals()
 	{
-
 		/* If running from task clear the globals */
 		unset($this->reach->data);
 		unset($this->reach->weapons);

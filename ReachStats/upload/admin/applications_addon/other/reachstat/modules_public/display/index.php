@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -30,7 +30,6 @@ class public_reachstat_display_index extends ipsCommand
 	protected $id 					= 0;
 	protected $gamertag				= "";
 	protected $debug 				= DEBUG_MODE;
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 	protected $version              = HR_VERSION;
 	protected $data					= array ();
 
@@ -54,7 +53,8 @@ class public_reachstat_display_index extends ipsCommand
 		$this->data = $this->registry->getClass('library')->getUserData($this->id);
 
 		/* If no GT, don't show it k? */
-		if ($this->gamertag == "") {
+		if ($this->gamertag == "")
+		{
 			$noGT = 1;
 		}
 

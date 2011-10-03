@@ -9,56 +9,56 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
 class imageClass {
 
-/* Vars */
-protected $gt 				= "";
-protected $userID			= 0;
-protected $id				= 0;
-protected $max 				= 5; #CHANGE THIS TO MAX SIGS.
-protected $pathToEmblem70   = null;
-protected $pathToEmblem45   = null;
-protected $pathToEmblem29   = null;
-protected $pathToRank26		= null;
-public $pathToSigs 			= array();
-public $template 			= array();
-public $sigs 				= array();
-public $allSigs 			= array();
-public $data 				= array();
-public    $sigSettings		= array();
-public $tier				= null;
-public $tempPath			= null;
-protected $flag				= false;
-protected $inactive 		= 0;
-protected $use				= 0;
-protected $counter 			= 0;
-protected $sigCount         = 0;
-protected $fonts 			= array();
-protected $medals			= array();
+	/* Vars */
+	protected $gt 				= "";
+	protected $userID			= 0;
+	protected $id				= 0;
+	protected $max 				= 5; #CHANGE THIS TO MAX SIGS.
+	protected $pathToEmblem70   = null;
+	protected $pathToEmblem45   = null;
+	protected $pathToEmblem29   = null;
+	protected $pathToRank26		= null;
+	public $pathToSigs 			= array();
+	public $template 			= array();
+	public $sigs 				= array();
+	public $allSigs 			= array();
+	public $data 				= array();
+	public    $sigSettings		= array();
+	public $tier				= null;
+	public $tempPath			= null;
+	protected $flag				= false;
+	protected $inactive 		= 0;
+	protected $use				= 0;
+	protected $counter 			= 0;
+	protected $sigCount         = 0;
+	protected $fonts 			= array();
+	protected $medals			= array();
 
-/**
+	/**
  * Constructor
  */
-function __construct(ipsRegistry $ipsRegistry)
-{
-	/* Make objects and stuff */
-	$this->registry = &$ipsRegistry;
-	$this->DB = $this->registry->DB();
-	$this->settings = &$this->registry->fetchSettings();
-	$this->request = &$this->registry->fetchRequest();
-	$this->lang = $this->registry->getClass('class_localization');
-	$this->member = $this->registry->member();
-	$this->memberData = &$this->registry->member()->fetchMemberData();
-	$this->cache = $this->registry->cache();
-	$this->caches = &$this->cache->fetchCaches();
+	function __construct(ipsRegistry $ipsRegistry)
+	{
+		/* Make objects and stuff */
+		$this->registry 		= &$ipsRegistry;
+		$this->DB 				= $this->registry->DB();
+		$this->settings 		= &$this->registry->fetchSettings();
+		$this->request 			= &$this->registry->fetchRequest();
+		$this->lang 			= $this->registry->getClass('class_localization');
+		$this->member 			= $this->registry->member();
+		$this->memberData 		= &$this->registry->member()->fetchMemberData();
+		$this->cache 			= $this->registry->cache();
+		$this->caches 			= &$this->cache->fetchCaches();
 
-	/* var dump */
-	$userID = $this->memberData['member_id'];
-}
+		/* var dump */
+		$userID = $this->memberData['member_id'];
+	}
 
 	/**
 	 * reachStats::umImageNao()
@@ -68,7 +68,7 @@ function __construct(ipsRegistry $ipsRegistry)
 	 * @params int of image type
 	 * @return
 	 */
-public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
+	public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 	{
 		/* reset settings everytime */
 		$this->sigSettings = $sets;
@@ -76,7 +76,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		/* check or die */
 		if(!function_exists("gd_info"))
 		{
-			die("GD is not installed on this server");
+			die("GD is not installed on this server. Please ask the admin to install GD.");
 		}
 
 		/* do this once moron */
@@ -90,7 +90,6 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 			$this->reach = new reachStats( $this->registry );
 			$this->library = new Library( $this->registry );
 
-
 			/* Load Language Files */
 			$this->registry->getClass('class_localization')->loadLanguageFile( array('public_errors', 'public_reachstat' ));
 
@@ -98,17 +97,16 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 			$this->tempPath = DOC_IPS_ROOT_PATH;
 
 			/* Set the vars ONCE */
-			$this->id = $id;
-			$this->gt = $this->reach->unParseGT($data['gt']);
+			$this->id 	= $id;
+			$this->gt 	= $this->reach->unParseGT($data['gt']);
 			$this->data = $data;
 			$this->tier = $this->library->getUserData($this->id);
 
 			/* Check for inactiveness */
 			$result = $this->DB->buildAndFetch(array(
-				'select' => 'inactive',
-				'from' => 'reachstat',
-				'where' => "id='" . $id .
-						"'"));
+				'select' 	=> 'inactive',
+				'from' 		=> 'reachstat',
+				'where' 	=> "id='" . $id . "'"));
 
 
 			/* Load the fonts via function */
@@ -117,12 +115,12 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		}
 
 		/* Doesn't do anything, if they are trully inactive */
-		if ((($result['inactive'] == 1) && FLAG_INACTIVE ) && ($task != TRUE)) {
-
+		if ((($result['inactive'] == 1) && FLAG_INACTIVE ) && ($task != TRUE))
+		{
 			/* Throw error if inactive */
 			if($this->memberData['member_id'])
 			{
-				$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "<a href='".$this->kb."2023-r25'>2023</a>",false,'2023');
+				$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "2023",false,'2023');
 			}
 		}
 		else
@@ -134,7 +132,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		if (!(file_exists($this->tempPath . 'reach/sigs/' . $this->id . '/')))
 		{
 			/* make that folder */
-			mkdir($this->tempPath . 'reach/sigs/' . $id . '/' , 0777);
+			mkdir($this->tempPath . 'reach/sigs/' . $id . '/' , IPS_FILE_PERMISSION);
 		}
 
 		/* Temp */
@@ -180,18 +178,18 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 			/* do this once moron */
 			if ($this->counter == 0)
 			{
-				/* Update their Emblem */
+					/* Update their Emblem */
 				//$test = preg_replace('/70/','29',$this->data['emblem']);
 					$emblem70 = $this->fileManage->getFileContents($this->data['emblem']);
 					$emblem29 = $this->fileManage->getFileContents(preg_replace('/70/','29',$this->data['emblem']));
 					$emblem45 = $this->fileManage->getFileContents(preg_replace('/70/','45',$this->data['emblem']));
 
-				/* Create image from this stream */
+					/* Create image from this stream */
 					$emblemImage70 = imagecreatefromstring($emblem70);
 					$emblemImage45 = imagecreatefromstring($emblem45);
 				    $emblemImage29 = imagecreatefromstring($emblem29);
 
-				/* Retain Transparency */
+					/* Retain Transparency */
 					imagealphablending( $emblemImage70, false );
 					imagesavealpha( $emblemImage70, true );
 					imagealphablending( $emblemImage45, false );
@@ -199,7 +197,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 					imagealphablending( $emblemImage29, false );
 					imagesavealpha( $emblemImage29, true );
 
-				/* Write the stream */
+					/* Write the stream */
 					$this->pathToEmblem70 = "{$this->tempPath}reach/emblems/{$id}-70.png";
 					$this->pathToEmblem45 = "{$this->tempPath}reach/emblems/{$id}-45.png";
 				    $this->pathToEmblem29 = "{$this->tempPath}reach/emblems/{$id}-29.png";
@@ -222,6 +220,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 				//--------------------------------------------
 				$this->pathToRank26 = "{$this->tempPath}reach/ranks/26/{$this->data['currentRankIndex']}.png";
 			}
+
 	//---------------------------------------------------
 	// Watermarking
 	//---------------------------------------------------
@@ -284,10 +283,12 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 				$size = getimagesize(DOC_IPS_ROOT_PATH ."reach/templates/pack1.png");
 				$this->use = 0;
 				break;
+
 			case 2: #Pack 2
 
 				/* Check for settings */
-				if (($this->sigSettings['id'])) {
+				if (($this->sigSettings['id']))
+				{
 
 					if ($this->sigSettings['sp'] == 1 && $this->sigSettings['id'] == 1)
 					{
@@ -296,7 +297,8 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 					}
 					else
 					{
-						if ((file_exists))
+						/* check for that image */
+						if ((file_exists(DOC_IPS_ROOT_PATH ."reach/templates/pack2-" . $this->sigSettings['id'] . ".png")))
 						{
 							$template = imagecreatefrompng(DOC_IPS_ROOT_PATH ."reach/templates/pack2-" . $this->sigSettings['id'] . ".png");
 							$size = getimagesize(DOC_IPS_ROOT_PATH ."reach/templates/pack2-" . $this->sigSettings['id'] . ".png");
@@ -315,6 +317,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 				}
 				$this->use = 0;
 				break;
+
 			case 3: #Pack 3
 				$template = imagecreatefrompng(DOC_IPS_ROOT_PATH ."reach/templates/pack3.png");
 				$size = getimagesize(DOC_IPS_ROOT_PATH ."reach/templates/pack3.png");
@@ -328,7 +331,6 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 				break;
 
 			case 5:
-
 				/* Check if were null */
 				if ($this->sigSettings == null)
 				{
@@ -367,28 +369,33 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		/* Add IF statement to determine if inactive during task. Then don't update data */
 		if (($this->tier['visit'] > $this->tier['tier']['inactive'] && FLAG_INACTIVE) && ($task != TRUE))
 		{
-			switch($imageType){
+			switch($imageType)
+			{
 				case 1:
 					/* Write the message */
 					imagecopy($template,$watermark,imagesx($template) - ($water_w) - 11 , imagesy($template) - ($water_h + 3), 0, 0, imagesx($watermark), imagesy($watermark));
 					imagestring($template, $this->fonts[0], 160, 40, $this->lang->words['inactive_1'], $black);
 					imagestring($template, $this->fonts[0], 160, 62, $this->lang->words['inactive_2'], $black);
 					break;
+
 				case 2:
 					imagecopy($template,$watermark,imagesx($template) - ($water_w) - 85 , imagesy($template) - ($water_h + 4), 0, 0, imagesx($watermark), imagesy($watermark));
 					imagestring($template, $this->fonts[0], 160, 40, $this->lang->words['inactive_1'], $black);
 					imagestring($template, $this->fonts[0], 160, 62, $this->lang->words['inactive_2'], $black);
 					break;
+
 				case 3:
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 5 , imagesy($template) - ($water_h + 5), 0, 0, imagesx($watermark), imagesy($watermark));
 					imagestring($template, $this->fonts[0], 80, 1, $this->lang->words['inactive_1'], $white);
 					imagestring($template, $this->fonts[0], 80, 9, $this->lang->words['inactive_2'], $white);
 					break;
+
 				case 4:
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 92 , imagesy($template) - ($water_h + 10), 0, 0, imagesx($watermark), imagesy($watermark));
 					imagestring($template, $this->fonts[0], 20, 40, $this->lang->words['inactive_1'], $black);
 					imagestring($template, $this->fonts[0], 20, 55, $this->lang->words['inactive_2'], $black);
 					break;
+
 				case 5:
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 53 , imagesy($template) - ($water_h + 2), 0, 0, imagesx($watermark), imagesy($watermark));
 					imagestring($template, $this->fonts[0], 30, 1, $this->lang->words['inactive_1'], $white);
@@ -398,6 +405,7 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 				default:
 					break;
 			}
+
 			/* Set the filter */
 			$this->inactive = 1;
 
@@ -421,13 +429,13 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 					imagecopy($template,$emblem,imagesx($template) - (imagesx($emblem) + 14), imagesy($template) - (imagesy($emblem) + 24), 0, 0, imagesx($emblem), imagesy($emblem));
 					imagedestroy($emblem);
 
-
 					//-------------------------
 					// Merging of Medals
 					//-------------------------
 
 
-					if ($this->sigSettings['1']) {
+					if ($this->sigSettings['1'])
+					{
 						/* coordinates for placing the 6 medals */
 						$xCoord = array (
 						'0' => 110, #110
@@ -446,10 +454,11 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 						'5' => 50); #50
 
 						$i = 0;
-						foreach ($this->sigSettings as $medal){
-
+						foreach ($this->sigSettings as $medal)
+						{
 							/* Check for max, to prevent others */
-							if ($i > 3) {
+							if ($i > 3)
+							{
 								continue;
 							}
 
@@ -475,16 +484,16 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 					imagettftext($template, 9, 0, 7, 60, $black, $this->fonts[6], 'Daily Challenges Completed: ' . $this->data['daily_challenges']);
 					imagettftext($template, 9, 0, 7, 75, $black, $this->fonts[6], 'Weekly Challenges Completed: ' . $this->data['weekly_challenges']);
 					imagettftext($template, 9, 0, 7, 90, $black ,$this->fonts[6], 'Reach Playtime: ' . $this->data['total_playtime']);
-
 					break;
+
 				case 2: #Pack 2
 
 					//---------------------------------------------
 					// Sig Template 1 is different
 					//---------------------------------------------
 
-					if ((intval($this->sigSettings['sp']) == 1)) {
-
+					if ((intval($this->sigSettings['sp']) == 1))
+					{
 						/* Merge in progress */
 						imagecopy($template,$watermark,imagesx($template) - ($water_w) - 90 , imagesy($template) - ($water_h + 8), 0, 0, imagesx($watermark), imagesy($watermark));
 
@@ -503,9 +512,11 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 					else
 					{
 						/* Turn text white */
-						if ((intval($this->sigSettings['id'] == 3))) {
+						if ((intval($this->sigSettings['id'] == 3)))
+						{
 							$black = imagecolorallocate($template, 255, 255, 255);
 						}
+
 						//------------------------------------------------------
 						// ALL Other SIGS
 						//------------------------------------------------------
@@ -532,16 +543,15 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 						imagettftext($template, 10, 0, 290, 86, $black, $this->fonts[3], 'Medals: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_medals'])); # Medals
 						imagettftext($template, 16, 0, 36, 48, $black, $this->fonts[3], $this->data['rank'] );
 					}
+
 					/* Retain Transparency */
 					imagealphablending( $template, false );
 					imagesavealpha( $template, true );
-
 					break;
 
 				case 3: #Tiny Sig
 					/* Merge in progress */
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 5 , imagesy($template) - ($water_h + 5), 0, 0, imagesx($watermark), imagesy($watermark));
-
 
 					/* Add some text */
 					$this->imagettfstroketext($template,8,0,3,13,$white,$black,$this->fonts['4'], ('Reach Playtime: ' . $this->data['total_playtime']),1);
@@ -599,22 +609,23 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 					/* Retain Transparency */
 					imagealphablending( $template, false );
 					imagesavealpha( $template, true );
-
 					break;
-
 
 				default:
 					break;
 
 			}
 	 	}
+
 		//--------------------------------------
 		// START: This runs every sig
 		//--------------------------------------
 
 		/* Convert that stream into an image */
 		imagepng($template, $pathToSigs);
+
 		}
+
 		/* Send that image to be saved */
 		$this->_saveImage($q,$dirToSigs, $pathToSigs);
 
@@ -645,9 +656,9 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 	{
 		/* Loading Sigs, much like loading data */
 		$result = $this->DB->buildAndFetch(array(
-			'select' => 'sigs',
-			'from' => 'reachstat',
-			'where' => "id='" . intval($id) . "'"));
+			'select' 		=> 'sigs',
+			'from' 			=> 'reachstat',
+			'where' 		=> "id='" . intval($id) . "'"));
 
 		/* Unserialize then return */
 		return unserialize($result['sigs']);
@@ -660,9 +671,9 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		$sigs['path'] = $path;
 		$sigs['use']  = $this->use;
 
-			/*Need these nums for BBCODE/DIRECT url */
-			$sigs['num1']  = intval(($imageNum + $imageNum));
-			$sigs['num2']  = intval(($imageNum+ $imageNum + 1));
+		/*Need these nums for BBCODE/DIRECT url */
+		$sigs['num1']  = intval(($imageNum + $imageNum));
+		$sigs['num2']  = intval(($imageNum+ $imageNum + 1));
 
 		/* Settings added in */
 		//$sigs['settings'] = serialize($settings);
@@ -672,7 +683,8 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 		$this->sigCount++;
 
 		/* Add at end */
-		if ($this->sigCount == $this->max) {
+		if ($this->sigCount == $this->max)
+		{
 			$this->_saveAllImages($this->id,$this->sigs);
 		}
 
@@ -734,10 +746,9 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 
 		/* We need to get their groupID using just their ID */
 		$result = $this->DB->buildAndFetch(array(
-				'select' => 'member_group_id',
-				'from' => 'members',
-				'where' => "member_id='" . intval($id) .
-					"'"));
+				'select' 		=> 'member_group_id',
+				'from' 			=> 'members',
+				'where' 		=> "member_id='" . intval($id) . "'"));
 
 		/* Send to the tier check */
 		$this->tier = $this->libary->getUserData($result['member_group_id']);
@@ -772,11 +783,10 @@ public function umImageNao($id, $gt, $data, $imageType, $sets, $task)
 	private function imagettfstroketext(&$image, $size, $angle, $x, $y, &$textcolor, &$strokecolor, $fontfile, $text, $px)
 	{
 
-	for($c1 = ($x-abs($px)); $c1 <= ($x+abs($px)); $c1++)
-		for($c2 = ($y-abs($px)); $c2 <= ($y+abs($px)); $c2++)
-			$bg = imagettftext($image, $size, $angle, $c1, $c2, $strokecolor, $fontfile, $text);
+		for($c1 = ($x-abs($px)); $c1 <= ($x+abs($px)); $c1++)
+			for($c2 = ($y-abs($px)); $c2 <= ($y+abs($px)); $c2++)
+				$bg = imagettftext($image, $size, $angle, $c1, $c2, $strokecolor, $fontfile, $text);
 
-	return imagettftext($image, $size, $angle, $x, $y, $textcolor, $fontfile, $text);
+		return imagettftext($image, $size, $angle, $x, $y, $textcolor, $fontfile, $text);
 	}
-
 }

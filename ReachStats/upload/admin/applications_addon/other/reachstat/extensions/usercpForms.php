@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -19,11 +19,13 @@ if (! defined('IN_IPB')) {
     exit();
 }
 
-class usercpForms_reachstat extends public_core_usercp_manualResolver implements interface_usercp {
+class usercpForms_reachstat  extends public_core_usercp_manualResolver implements interface_usercp {
 	public $tab_name 					= "Stats";
     public $ok_message 					= 'Your gamertag exists, and has been saved.';
+	public $defaultAreaCode				= 'settings';
     public $hide_form_and_save_button   = false;
     public $uploadFormMax 				= 0;
+	public $version						= 32;
 	public $tier 						= 0;
 
     /**
@@ -45,8 +47,6 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
 
     	/* Load lang files */
     	$this->registry->getClass('class_localization')->loadLanguageFile( array( 'public_errors', 'public_reachstat' ), 'reachstat');
-
-
     }
 
     /**
@@ -63,17 +63,19 @@ class usercpForms_reachstat extends public_core_usercp_manualResolver implements
      */
     public function getLinks()
     {
-         $array = array();
+     	$array = array();
 
-        $array[] = array('url' => 'area=settings',
-            'title' => "Gamertag Settings",
-            'area' => 'settings',
-            'active' => $this->request['tab'] == 'reachstat' && $this->request['area'] == 'settings' ? 1 : 0
+        $array[] = array(
+        	'url' 		=> 'area=settings',
+            'title' 	=> "Gamertag Settings",
+            'area' 		=> 'settings',
+            'active' 	=> $this->request['tab'] == 'reachstat' && $this->request['area'] == 'settings' ? 1 : 0
             );
-    	$array[] = array('url' =>'area=mysigs',
-    		'title' => $this->lang->words['sig_tab'],
-    		'area'  => 'mysigs',
-    		'active' => $this->request['tab'] == 'reachstat' && $this->request['area'] == 'mysigs' ? 1 : 0
+    	$array[] = array(
+    		'url' 		=>'area=mysigs',
+    		'title' 	=> $this->lang->words['sig_tab'],
+    		'area'  	=> 'mysigs',
+    		'active' 	=> $this->request['tab'] == 'reachstat' && $this->request['area'] == 'mysigs' ? 1 : 0
     		);
 
         return $array;

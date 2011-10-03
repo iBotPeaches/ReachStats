@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -33,7 +33,7 @@ class public_reachstat_display_gamer extends ipsCommand
 	protected $curGamertag 			= "";
 	protected $loc					= "";
 	protected $debug 				= DEBUG_MODE;
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
+
 	/* TIME FOR the TABs */
 	protected $member_id			= null;
 	protected $_positions			= array( 0 => 0 );
@@ -73,9 +73,11 @@ class public_reachstat_display_gamer extends ipsCommand
 			case "adv":
 				$this->advance();
 				break;
+
 			case "recache":
 				$this->recache($this->times['gt'], $this->id);
 				break;
+
 			default:
 				$this->normal();
 				break;
@@ -97,8 +99,9 @@ class public_reachstat_display_gamer extends ipsCommand
 	public function recache($gt, $id)
 	{
 		/* Our settings disabled? */
-		if ($this->settings['recache_perm']) {
-			$this->registry->getClass('output')->showError( $this->lang->words['no_recache_acp_off'],"<a href='".$this->kb."2008-r10'>2008</a>", false, '2008' );
+		if ($this->settings['recache_perm'])
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['no_recache_acp_off'],"2008", false, '2008' );
 		}
 
 		/* can recache? */
@@ -108,8 +111,8 @@ class public_reachstat_display_gamer extends ipsCommand
 			$flag2 = true;
 
 				/* Prevent mass recaching. */
-				if ($this->times['tier']['control'] == 1 || $this->times['data'] > $this->settings['min_recache_time'] || $flag2 == true) {
-
+				if ($this->times['tier']['control'] == 1 || $this->times['data'] > $this->settings['min_recache_time'] || $flag2 == true)
+				{
 								/* Now send/do work */
 								$this->registry->getClass('library')->doubleCheck(&$this->times, $this->id); #remove inactive flag
 
@@ -119,11 +122,12 @@ class public_reachstat_display_gamer extends ipsCommand
 				else
 				{
 					/* 3 checks later...we finally failed it */
-					$this->registry->getClass('output')->showError( $this->lang->words['spam_gt_recache'],"<a href='".$this->kb."2009-r11'>2009</a>", false, '2009' );
+					$this->registry->getClass('output')->showError( $this->lang->words['spam_gt_recache'],"2009", false, '2009' );
 				}
 
 			/* Lets check if we own this account */
-			if ($this->memberData['member_id'] == $id ) {
+			if ($this->memberData['member_id'] == $id )
+			{
 				ipsRegistry::getClass('output')->redirectScreen( $this->lang->words['redirect_recache'], $this->settings['base_url'] . "app=reachstat&amp;module=display&amp;section=gamer&amp;gt={$this->data['gt']}" );
 			}
 			else
@@ -151,16 +155,17 @@ class public_reachstat_display_gamer extends ipsCommand
 		/* Work goes on here, if they pass ID but not GT */
 		if ($this->times['gt'] == null && $this->times['id'] != null)
 		{
-
 			/* Get their GT */
 			$this->times['gt'] = $this->registry->getClass('reach')->findAndCheckGT($this->times['id']);
 
 			/* Back to the redirect */
 			$this->registry->output->silentRedirect($this->settings['base_url'] . 'app=reachstat&amp;module=display&amp;section=gamer&amp;gt=' . $this->times['gt'] . '&amp;loc=' . $this->loc);
 		}
+
 		/* If Gamertag is blank, they didn't pass it */
-		if ($this->times['gt'] == "") {
-			$this->registry->getClass('output')->showError( $this->lang->words['no_gt'],"<a href='".$this->kb."2011-r13'>2011</a>", false, '2011' );
+		if ($this->times['gt'] == "")
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['no_gt'],"2011", false, '2011' );
 		}
 		else
 		{
@@ -179,7 +184,7 @@ class public_reachstat_display_gamer extends ipsCommand
 		}
 		else
 		{
-			$this->registry->getClass('output')->showError( $this->lang->words['2001'],"<a href='".$this->kb."2001-r2'>2001</a>", false, '2001' );
+			$this->registry->getClass('output')->showError( $this->lang->words['2001'],"2001", false, '2001' );
 		}
 
 		/* Get the times for comparing */

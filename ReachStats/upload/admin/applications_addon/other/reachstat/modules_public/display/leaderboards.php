@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -28,7 +28,6 @@ class public_reachstat_display_leaderboards extends ipsCommand
 	protected $gt         			= "";
 	protected $diff 				= array();
 	protected $debug 				= DEBUG_MODE;
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 	protected $version              = HR_VERSION;
 	protected $tier					= array();
 

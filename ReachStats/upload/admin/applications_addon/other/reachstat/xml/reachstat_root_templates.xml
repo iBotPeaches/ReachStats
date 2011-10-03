@@ -613,110 +613,7 @@ Vist the <a href='{parse url="app=core&amp;module=usercp&amp;tab=reachstat" base
     </template>
     <template>
       <template_group>skin_stattrack</template_group>
-      <template_content><![CDATA[<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js"></script>
-  <script type="text/javascript" src="http://reachstuff.com/community/public/js/3rd_party/jquery.bsmselect.js"></script>
-  <script type="text/javascript" src="http://reachstuff.com/community/public/js/3rd_party/jquery.bsmselect.sortable.js"></script>
-  <script type="text/javascript" src="http://reachstuff.com/community/public/js/3rd_party/jquery.bsmselect.compatibility.js"></script>
-<script type="text/javascript">
-    jQuery.noConflict();
-</script>
- <script type="text/javascript">//<!#^#|CDATA|
-    jQuery(function($) {
-	/* asign vars */
-	var colors = {$radioColor};
-	/* Make pic */
-    changePic(colors['id'].toString());
-	/* Click radio button */
-    document.getElementById(colors['name'].toString()).click();
-	/* is the emblem enabled? */
-    checkEmblem(colors['sp'].toString(), colors['id'].toString());
-	/* Check the image */
-	if (colors['color'] != null)
-	{
-		changeColor(colors['color'].toString());
-	}
-      // Initialize options
-      var medals = {$medals};
-      jQuery.each(medals, function(index, med)
-      {
-        jQuery(".sminit").each(function() {
-          jQuery(this).append(jQuery("<option>").html(med));
-        });
-      });
-      // Example 1
-      jQuery("#medalSelect").bsmSelect({
-        addItemTarget: 'top',
-        animate: true,
-        highlight: true,
-        plugins: [
-          jQuery.bsmSelect.plugins.sortable({ axis : 'y', opacity : 0.5 }, { listSortableClass : 'bsmListSortableCustom' }),
-          jQuery.bsmSelect.plugins.compatibility()
-        ]
-      });
-})
-  //|#^#]></script>
-<script type="text/javascript">
-window.onload = init;
-function init()
-{
-}
-function changePic(num)
-{
-	/* Uncheck Remove Emblem, if not green */
-	document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2_" + num.toString() + ".png";
-	if (num != 1)
-	{
-    	document.getElementById("spartan_enable").disabled = true;
-	    document.getElementById("spartan_enable").checked = false;
-	}
-	else
-	{
-    	document.getElementById("spartan_enable").disabled = false;
-	}
-}
-function changeColor(stringColor)
-{
-	document["sig5"].src = "http://reachstuff.com/community/reach/templates/pack5-" + stringColor.toString() + ".png";
-}
-function greenEmblem()
-{
-     document.getElementById("1_green").click();
-	if (document.getElementById("spartan_enable").checked == false)
-     document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2_1.png";
-    else
-	/* Set the radio to green, and only do this if its being checked not un-checked */
-     document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2.png";
-}
-function checkEmblem(num, id)
-{
-	/* Make sure were green */
-	if (id == 1)
-	{
-		/* Make sure were checked */
-	   if (num == 1)
-		{
-	    	document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2.png";
-	    	document.getElementById("spartan_enable").checked = true;
-		}
-	   else
-		{
-	    	document["sig2"].src = "http://reachstuff.com/community/ccs_files/sig2/pack2_1.png";
-	    	document.getElementById("spartan_enable").checked = false;
-		}
-	}
-	else
-	{
-		document.getElementById("spartan_enable").checked = false;
-	}
-}
-function changeMessage()
-{
-document.getElementById("funnyMessage").innerHTML='<div class="reg_msg reg_error">\
-Test this is an error\
-</div>';
-}
+      <template_content><![CDATA[<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css"rel="stylesheet"type="text/css"/><script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script><script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js"></script><script type="text/javascript"src="{$this->settings['js_base_url']}js/3rd_party/jquery.bsmselect.js"></script><script type="text/javascript"src="{$this->settings['js_base_url']}js/3rd_party/jquery.bsmselect.sortable.js"></script><script type="text/javascript"src="{$this->settings['js_base_url']}js/3rd_party/jquery.bsmselect.compatibility.js"></script><script type="text/javascript">jQuery.noConflict();</script><script type="text/javascript">jQuery(function($){var colors={$radioColor};changePic(colors['id'].toString());document.getElementById(colors['name'].toString()).click();checkEmblem(colors['sp'].toString(),colors['id'].toString());if(colors['color']!=null){changeColor(colors['color'].toString())}var medals={$medals};jQuery.each(medals,function(index,med){jQuery(".sminit").each(function(){jQuery(this).append(jQuery("<option>").html(med))})});jQuery("#medalSelect").bsmSelect({addItemTarget:'top',animate:true,highlight:true,plugins:[jQuery.bsmSelect.plugins.sortable({axis:'y',opacity:0.5},{listSortableClass:'bsmListSortableCustom'}),jQuery.bsmSelect.plugins.compatibility()]})})<script type="text/javascript">window.onload=init;function init(){}function changePic(num){document["sig2"].src="{$this->settings['_original_base_url']}/ccs_files/pack2_"+num.toString()+".png";if(num!=1){document.getElementById("spartan_enable").disabled=true;document.getElementById("spartan_enable").checked=false}else{document.getElementById("spartan_enable").disabled=false}}function changeColor(stringColor){document["sig5"].src="{$this->settings['_original_base_url']}/reach/templates/pack5-"+stringColor.toString()+".png"}function greenEmblem(){document.getElementById("1_green").click();if(document.getElementById("spartan_enable").checked==false)document["sig2"].src="{$this->settings['_original_base_url']}/ccs_files/pack2_1.png";else document["sig2"].src="{$this->settings['_original_base_url']}/ccs_files/pack2.png"}function checkEmblem(num,id){if(id==1){if(num==1){document["sig2"].src="{$this->settings['_original_base_url']}/ccs_files/pack2.png";document.getElementById("spartan_enable").checked=true}else{document["sig2"].src="{$this->settings['_original_base_url']}/ccs_files/pack2_1.png";document.getElementById("spartan_enable").checked=false}}else{document.getElementById("spartan_enable").checked=false}}function changeMessage(){document.getElementById("funnyMessage").innerHTML='<div class="reg_msg reg_error">Test this is an error</div>'}</script>
 </script>
 <fieldset class="row2">
 <h3>Sig 1 Settings</h3>
@@ -739,7 +636,6 @@ Previous Signature included:
 Background Color
 <fieldset class="row1">
 <div style="float: left;">
-<span class="desc"><a href="http://reachstuff.com/sigs/sig2bg">Huh? Background for what?</a></span><br /><br />
 <form name="colors" method="post">
 <input id="1_green" class="input_check" type="radio" onClick="changePic(1)" value="1_green" name="radioColor">
 <label for="1_green"> Green (Default)</label><br />
@@ -755,7 +651,7 @@ Background Color
 <label for="6_red"> Red </label><br />
 </div>
 <div style="float: right;">
-<a href="#"><img src="http://reachstuff.com/community/ccs_files/sig2/pack2_1.png" name="sig2" ></a>
+<a href="#"><img src="{$this->settings['_original_base_url']}/ccs_files/sig2/pack2_1.png" name="sig2" ></a>
 </div>
 </fieldset>
 <ul>
@@ -771,7 +667,7 @@ Background Color
 <fieldset class="row2">
 <h3>Sig 5 Settings</h3>
 <div style="float: right;">
-<a href="#"><img src="http://reachstuff.com/community/reach/templates/pack5-aqua.png" name="sig5" ></a>
+<a href="#"><img src="{$this->settings['_original_base_url']}/reach/templates/pack5-aqua.png" name="sig5" ></a>
 </div>
 <p>Background Color<br>
 <select name="sig5Colors" onChange="changeColor(this.value)">

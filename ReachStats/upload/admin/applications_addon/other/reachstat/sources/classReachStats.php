@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -383,122 +383,122 @@ class reachStats
 		if (($this->api_key != null))
 		{
 
-		//---------------------------------------------
-		// Try and load CACHE, otherwise redo
-		//---------------------------------------------
+			//---------------------------------------------
+			// Try and load CACHE, otherwise redo
+			//---------------------------------------------
 
-		/* Load cache for keys */
-		if( !$this->caches['challenges'] && $force == false )
-		{
-			$this->caches['challenges'] = $this->cache->getCache('challenges');
-
-			/* send back */
-			return $this->caches['challenges'];
-		}
-
-		/* Engine vrooom */
-		$this->_initCURL();
-
-		/* check for api key noob */
-		if (($this->api_key == null))
-		{
-			if (!(IN_ACP))
+			/* Load cache for keys */
+			if( !$this->caches['challenges'] && $force == false )
 			{
-				$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"2003", false, '2003' );
-			}
-		}
+				$this->caches['challenges'] = $this->cache->getCache('challenges');
 
-		/* Lets start our JSON readout */
-		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/challenges/' . $this->api_key;
-
-		/* check for bad api key */
-		$http_code = $this->library->get_http_response_code($tempURL);
-
-		/* boot us out of here */
-		if ($http_code != "200")
-		{
-			if (!(IN_ACP))
-			{
-				$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"2028", false, '2028' );
-			}
-		}
-
-
-		/* Download it via fileManage, then decode it */
-		$information = json_decode($this->fileManage->getFileContents($tempURL), true);
-
-		/* make sure that api key works */
-		$this->apiCheck($information);
-
-		/* init vars */
-		$k = 0;
-
-		/* foreach */
-		foreach ($information['Daily'] as $daily){
-
-			/* Check for daily */
-			if ($daily['IsWeeklyChallenge'] == false)
-			{
-				$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($daily['Credits']));
-				$this->challenges[$k]['des']     = $daily['Description'];
-				$this->challenges[$k]['expires'] = $this->_getDate($daily['ExpirationDate']);
-				$this->challenges[$k]['name']    = $daily['Name'];
-				$this->challenges[$k]['type']	 = 'daily';
-
-				/* ++ */
-				$k++;
-			}
-			/* What is a weekly doing in the daily :o */
-			else if($daily['IsWeeklyChallenge'] == true)
-			{
-				$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($daily['Credits']));
-				$this->challenges[$k]['des']     = $daily['Description'];
-				$this->challenges[$k]['expires'] = $this->_getDate($daily['ExpirationDate']);
-				$this->challenges[$k]['name']    = $daily['Name'];
-				$this->challenges[$k]['type']	 = 'weekly';
+				/* send back */
+				return $this->caches['challenges'];
 			}
 
-		}
-		unset($daily);
+			/* Engine vrooom */
+			$this->_initCURL();
 
-		/* foreach again */
-		foreach ($information['Weekly'] as $weekly)
-		{
-			/* Check for weekly */
-			if ($weekly['IsWeeklyChallenge'] == true)
+			/* check for api key noob */
+			if (($this->api_key == null))
 			{
-				$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($weekly['Credits']));
-				$this->challenges[$k]['des']     = $weekly['Description'];
-				$this->challenges[$k]['expires'] = $this->_getDate($weekly['ExpirationDate']);
-				$this->challenges[$k]['name']    = $weekly['Name'];
-				$this->challenges[$k]['type']	 = 'weekly';
-
-				/* ++ */
-				$k++;
+				if (!(IN_ACP))
+				{
+					$this->registry->getClass('output')->showError( $this->lang->words['no_api_key'],"2003", false, '2003' );
+				}
 			}
-			/* What is a daily doing in here? */
-			else if($weekly['IsWeeklyChallenge'] == false)
+
+			/* Lets start our JSON readout */
+			$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/game/challenges/' . $this->api_key;
+
+			/* check for bad api key */
+			$http_code = $this->library->get_http_response_code($tempURL);
+
+			/* boot us out of here */
+			if ($http_code != "200")
 			{
-				$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($weekly['Credits']));
-				$this->challenges[$k]['des']     = $weekly['Description'];
-				$this->challenges[$k]['expires'] = $this->_getDate($weekly['ExpirationDate']);
-				$this->challenges[$k]['name']    = $weekly['Name'];
-				$this->challenges[$k]['type']	 = 'daily';
+				if (!(IN_ACP))
+				{
+					$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"2028", false, '2028' );
+				}
+			}
+
+
+			/* Download it via fileManage, then decode it */
+			$information = json_decode($this->fileManage->getFileContents($tempURL), true);
+
+			/* make sure that api key works */
+			$this->apiCheck($information);
+
+			/* init vars */
+			$k = 0;
+
+			/* foreach */
+			foreach ($information['Daily'] as $daily){
+
+				/* Check for daily */
+				if ($daily['IsWeeklyChallenge'] == false)
+				{
+					$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($daily['Credits']));
+					$this->challenges[$k]['des']     = $daily['Description'];
+					$this->challenges[$k]['expires'] = $this->_getDate($daily['ExpirationDate']);
+					$this->challenges[$k]['name']    = $daily['Name'];
+					$this->challenges[$k]['type']	 = 'daily';
+
+					/* ++ */
+					$k++;
+				}
+				/* What is a weekly doing in the daily :o */
+				else if($daily['IsWeeklyChallenge'] == true)
+				{
+					$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($daily['Credits']));
+					$this->challenges[$k]['des']     = $daily['Description'];
+					$this->challenges[$k]['expires'] = $this->_getDate($daily['ExpirationDate']);
+					$this->challenges[$k]['name']    = $daily['Name'];
+					$this->challenges[$k]['type']	 = 'weekly';
+				}
+
+			}
+			unset($daily);
+
+			/* foreach again */
+			foreach ($information['Weekly'] as $weekly)
+			{
+				/* Check for weekly */
+				if ($weekly['IsWeeklyChallenge'] == true)
+				{
+					$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($weekly['Credits']));
+					$this->challenges[$k]['des']     = $weekly['Description'];
+					$this->challenges[$k]['expires'] = $this->_getDate($weekly['ExpirationDate']);
+					$this->challenges[$k]['name']    = $weekly['Name'];
+					$this->challenges[$k]['type']	 = 'weekly';
+
+					/* ++ */
+					$k++;
+				}
+				/* What is a daily doing in here? */
+				else if($weekly['IsWeeklyChallenge'] == false)
+				{
+					$this->challenges[$k]['cR']      = $this->registry->getClass('class_localization')->formatNumber(intval($weekly['Credits']));
+					$this->challenges[$k]['des']     = $weekly['Description'];
+					$this->challenges[$k]['expires'] = $this->_getDate($weekly['ExpirationDate']);
+					$this->challenges[$k]['name']    = $weekly['Name'];
+					$this->challenges[$k]['type']	 = 'daily';
+				}
+			}
+
+			//--------------------------------------------------
+			// CACHE THIS JUNK
+			//--------------------------------------------------
+			/* set cache */
+			$this->cache->setCache( 'challenges', $this->challenges,  array( 'array' => 1, 'donow' => 1 ) );
+
+			/* cleanup */
+			if ($force != true)
+			{
+				return($this->challenges);
 			}
 		}
-
-		//--------------------------------------------------
-		// CACHE THIS JUNK
-		//--------------------------------------------------
-		/* set cache */
-		$this->cache->setCache( 'challenges', $this->challenges,  array( 'array' => 1, 'donow' => 1 ) );
-
-		/* cleanup */
-		if ($force != true)
-		{
-			return($this->challenges);
-		}
-	}
 	}
 
 	/**
@@ -539,17 +539,18 @@ class reachStats
 			{
 				return $this->caches['metadata'][$type][$key]['DisplayName'];
 			}
+
 			/* Bug fix for variants */
 			if ($type == 'variants')
 			{
 				return $this->caches['metadata'][$type][$key]['Key'];
 			}
+
 			/* Send the name that matches ID */
 			return $this->caches['metadata'][$type][$key]['Value']['Name'];
 		}
 		break;
 	}
-
 
 	/*
 	 * $number -> Value of commendations
@@ -560,8 +561,6 @@ class reachStats
 	{
 		/* First lets figure out which commendation were dealing with */
 		$comm = $this->getKey($id,'commendations', true);
-
-
 	}
 
 	/**
@@ -593,9 +592,9 @@ class reachStats
 
 		/* BuildAndFetch */
 		$result = $this->DB->buildAndFetch(array(
-			'select' => 'id,gamertag,stat_date,sig_date,inactive,ip_address',
-			'from' => 'reachstat',
-			'where' => "id='" . intval($id) . "'"));
+			'select' 		=> 'id,gamertag,stat_date,sig_date,inactive,ip_address',
+			'from' 			=> 'reachstat',
+			'where' 		=> "id='" . intval($id) . "'"));
 
 		/* Don't check if were testing */
 		if ($this->memberData['member_id'] != 1 || $task != true)
@@ -609,7 +608,7 @@ class reachStats
 					/* get rid of error if inactivity is off */
 					if(!(ipsRegistry::$settings['inactive_flag']))
 					{
-						$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "<a href='".$this->kb."2023-r25'>2023</a>",false,'2023');
+						$this->registry->getClass('output')->showError($this->lang->words['gt_inactive'], "2023",false,'2023');
 					}
 				}
 			}
@@ -639,8 +638,7 @@ class reachStats
 		//------------------------------------------------
 
 		/* Lets start our JSON readout */
-		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/player/details/nostats/'
-			. $this->api_key . "/" . rawurlencode($this->data['gt']);
+		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/player/details/nostats/' . $this->api_key . "/" . rawurlencode($this->data['gt']);
 
 		/* check for bad api key */
 		$http_code = $this->library->get_http_response_code($tempURL);
@@ -648,7 +646,7 @@ class reachStats
 		/* boot us out of here */
 		if ($http_code != "200")
 		{
-			$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"<a href='".$this->kb."2028-r30'>2028</a>", false, '2028' );
+			$this->registry->getClass('output')->showError( $this->lang->words['reponse_failed'],"2028", false, '2028' );
 		}
 
 		/* Download it via fileManage, then decode it */
@@ -688,6 +686,7 @@ class reachStats
 			$this->commendations[$common['Key']]['Name'] = $this->getKey($common['Key'],'commendations');
 
 		}
+
 		/* Re allign IDs */
 		ksort($this->commendations);
 
@@ -722,8 +721,7 @@ class reachStats
 
 
 		/* Lets start our JSON readout */
-		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/player/details/byPlaylist/'
-			. $this->api_key . "/" . rawurlencode($this->data['gt']);
+		$tempURL = 'http://www.bungie.net/api/reach/reachapijson.svc/player/details/byPlaylist/' . $this->api_key . "/" . rawurlencode($this->data['gt']);
 
 		/* Download it via fileManage, then decode it */
 		$data = json_decode($this->fileManage->getFileContents($tempURL), true);
@@ -752,8 +750,8 @@ class reachStats
 					IPSDebug::fireBug( 'info', 'Total Kills Running: ' .$this->data['totalKills'] . ' and specifially ' . $playlist['total_kills'] . ' added for ' . $this->getKey($playlist['VariantClass'],'variants',false) );
 					IPSDebug::fireBug( 'info', 'Total Deaths Running: ' .$this->data['totalDeaths'] . ' and specifially ' . $playlist['total_deaths'] . ' added for ' . $this->getKey($playlist['VariantClass'],'variants',false) );
 				}
-				/* We add total seconds together here, then at the end convert */
 
+				/* We add total seconds together here, then at the end convert */
 				//IPSDebug::fireBug('info','We are at ' . $this->data['totalPlaytime'] . " before");
 				$this->data['totalPlaytime'] += $this->_getTimePlayed($playlist['total_playtime']);
 				//IPSDebug::fireBug('info','We are at ' . $this->library->time_duration($this->_getTimePlayed($playlist['total_playtime'])) . " then total " . $this->data['totalPlaytime'] . " after on the playlist: " . $playlist['HopperId']);
@@ -896,11 +894,11 @@ class reachStats
 		foreach ($this->weapons as $weap){
 
 			/* Lets keep a running K/D */
-			if (array_key_exists('deaths', $weap) && intval($weap['deaths']) != 0) {
-
+			if (array_key_exists('deaths', $weap) && intval($weap['deaths']) != 0)
+			{
 				/* Double check */
-				if (array_key_exists('kills', $weap) && intval($weap['kills']) != 0) {
-
+				if (array_key_exists('kills', $weap) && intval($weap['kills']) != 0)
+				{
 					/* Divide kills by deaths */
 					$this->weapons[$weap['Key']]['ratio'] = round(($weap['kills'] / $weap['deaths']),2);
 				}
@@ -942,13 +940,13 @@ class reachStats
 		$postBack = $this->saveReachData($gt, $id, &$this->data, &$this->weapons, &$this->medals, &$this->commendations, $task);
 
 		/* Pull what we want from $this->data  */
-		$tempData = $postBack;
-		$tempData['gt'] = $this->data['gt'];
-		$tempData['mem_id'] = $this->data['mem_id'];
-		$tempData['currentRankIndex'] = $this->data['currentRankIndex'];
-		$tempData['emblem'] = $this->data['emblem'];
-		$tempData['spartan'] = $this->data['spartan'];
-		$tempData['rank_id'] = $this->data['rank_id'];
+		$tempData 						= $postBack;
+		$tempData['gt'] 				= $this->data['gt'];
+		$tempData['mem_id'] 			= $this->data['mem_id'];
+		$tempData['currentRankIndex'] 	= $this->data['currentRankIndex'];
+		$tempData['emblem'] 			= $this->data['emblem'];
+		$tempData['spartan'] 			= $this->data['spartan'];
+		$tempData['rank_id'] 			= $this->data['rank_id'];
 
 		/* moar memmmory */
 		unset($postBack);
@@ -956,9 +954,9 @@ class reachStats
 
 		/* join back together */
 		//$tempData['info'] = $this->data;
-		$tempData['stats'] = $this->weapons;
-		$tempData['medals'] = $this->medals;
-		$tempData['commendations'] = $this->commendations;
+		$tempData['stats'] 				= $this->weapons;
+		$tempData['medals'] 			= $this->medals;
+		$tempData['commendations'] 		= $this->commendations;
 
 		/* we want our kilos back :o */
 		unset($this->weapons);
@@ -971,7 +969,6 @@ class reachStats
 		/* send meh back */
 		return $tempData;
 	}
-
 
 	public function containsVehicleWord($string)
 	{
@@ -996,8 +993,8 @@ class reachStats
 			$pattern .= '/';
 
 			/* Check if it exists */
-			if (preg_match($pattern, $string)) {
-
+			if (preg_match($pattern, $string))
+			{
 				/* break out */
 				return true;
 			}
@@ -1017,10 +1014,9 @@ class reachStats
 
 	private function _getTimePlayed($time)
 	{
-
 		/* Check for days, hours, minutes, seconds */
-		if (preg_match('/P(?P<days>[0-9]*)DT(?P<hours>[0-9]*)H(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs)) {
-
+		if (preg_match('/P(?P<days>[0-9]*)DT(?P<hours>[0-9]*)H(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs))
+		{
 			/* now dump */
 			$totalSeconds = ($regs['days'] * 86400) + ($regs['hours'] * 3600) + ($regs['minutes'] * 60) + $regs['seconds'];
 		}
@@ -1028,8 +1024,8 @@ class reachStats
 		{
 
 			/* Check for days, hours, minutes */
-			if (preg_match('/P(?P<days>[0-9]*)DT(?P<hours>[0-9]*)H(?P<minutes>[0-9]*)M/s', $time, $regs)) {
-
+			if (preg_match('/P(?P<days>[0-9]*)DT(?P<hours>[0-9]*)H(?P<minutes>[0-9]*)M/s', $time, $regs))
+			{
 				/* now dump */
 				$totalSeconds = ($regs['days'] * 86400) + ($regs['hours'] * 3600) + ($regs['minutes'] * 60);
 			}
@@ -1037,8 +1033,8 @@ class reachStats
 			{
 
 				/* Break down this code */
-				if (preg_match('/PT(?P<hours>[0-9]*)H(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs)) {
-
+				if (preg_match('/PT(?P<hours>[0-9]*)H(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs))
+				{
 					/* now dump */
 					$totalSeconds = ($regs['hours'] * 3600) + ($regs['minutes'] * 60) + $regs['seconds'];
 
@@ -1046,8 +1042,8 @@ class reachStats
 				else
 				{
 					/* Check for days and minutes */
-					if (preg_match('/P(?P<days>[0-9]*)DT(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs)) {
-
+					if (preg_match('/P(?P<days>[0-9]*)DT(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs))
+					{
 						/* now dump */
 						$totalSeconds = ($regs['days'] * 86400) + ($regs['minutes'] * 60) + $regs['seconds'];
 					}
@@ -1055,27 +1051,25 @@ class reachStats
 					{
 
 						/* Check for minutes and seconds */
-						if(preg_match('/PT(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs)) {
-
+						if(preg_match('/PT(?P<minutes>[0-9]*)M(?P<seconds>[0-9]*)S/s', $time, $regs))
+						{
 							/* now dump */
 							$totalSeconds = ($regs['minutes'] * 60) + $regs['seconds'];
 						}
 						else
 						{
 							/* Check for hours and seconds */
-							if (preg_match('/PT(?P<hours>[0-9]*)H(?P<seconds>[0-9]*)S/s', $time, $regs)) {
-
+							if (preg_match('/PT(?P<hours>[0-9]*)H(?P<seconds>[0-9]*)S/s', $time, $regs))
+							{
 								/* now dump */
 								$totalSeconds = ($regs['hours'] * 3600) + $regs['seconds'];
 							}
 							else
 							{
-
 								/* error not found */
 								$totalSeconds = -1;
 							}
 						}
-
 					}
 				}
 			}
@@ -1092,7 +1086,6 @@ class reachStats
 
 	private function _getEmblem($subject, $size = 70)
 	{
-
 		/* check for array */
 		if (is_array($subject))
 		{
@@ -1119,8 +1112,8 @@ class reachStats
 	private function _getDate($subject)
 	{
 		/* Time to mess with this wierd looking string	 */
-		if (preg_match('%/Date.(?P<date>[0-9]*)-%s', $subject, $regs)) {
-
+		if (preg_match('%/Date.(?P<date>[0-9]*)-%s', $subject, $regs))
+		{
 			/* Delete those trailing zeros */
 			$piece['date'] = substr($regs['date'], 0, -3);
 
@@ -1130,7 +1123,9 @@ class reachStats
 			/* Send it back */
 			return $piece;
 
-		} else {
+		}
+		else
+		{
 			return array();
 		}
 
@@ -1164,10 +1159,8 @@ class reachStats
 			$tempNess['service_tag']       = $data['serviceTag'];
 
 			/* Now remove old parts of array, again. very hacky */
-			unset($data['currentRank'], $data['gamesPlayed'],$data['totalWins'],$data['lastActive'],
-				$data['gamesLost'], $data['totalKills'], $data['totalDeaths'], $data['totalBetrayals'],
-				$data['daily_ch_complete'], $data['weekly_ch_complete'], $data['totalPlaytime'],
-				$data['totalMedals'], $data['firstActive'], $data['armorCompletion'], $data['kd_ratio'],
+			unset($data['currentRank'], $data['gamesPlayed'],$data['totalWins'],$data['lastActive'],$data['gamesLost'], $data['totalKills'], $data['totalDeaths'], $data['totalBetrayals'],
+				$data['daily_ch_complete'], $data['weekly_ch_complete'], $data['totalPlaytime'],$data['totalMedals'], $data['firstActive'], $data['armorCompletion'], $data['kd_ratio'],
 				$data['totalAssists'], $data['serviceTag'], $data['rank_id']);
 
 		//--------------------------------------------
@@ -1183,7 +1176,8 @@ class reachStats
 		//------------------------------------------------------
 		// Is this the task running?
 		//------------------------------------------------------
-		if (($task == true)) {
+		if (($task == true))
+		{
 			/* o teh nos. We exist. Update nao */
 			$this->DB->update('reachstat', array(
 			'id' 			 => intval($id),
@@ -1248,6 +1242,7 @@ class reachStats
 			    'ip_address'	=> IPSText::alphanumericalClean($_SERVER['REMOTE_ADDR'],'.')),
 			"id=" . intval($id));
 
+			/* bi bi */
 			return $tempNess;
 		}
 	}
@@ -1260,17 +1255,8 @@ class reachStats
 	 */
 	public function getReachData($id)
 	{
-		$result = $this->DB->buildAndFetch(array(
-			'select' => '*',
-			'from' => 'reachstat',
-				'where' => "id='" . intval($id) .
-		    "'"));
 		/* ABANDON */
 		die("use getAllReachData");
-
-
-		/* Unserialize, then pass back */
-		return (unserialize($result['data']));
 	}
 
 	public function getAllReachData($id, $type = 'all')
@@ -1280,15 +1266,16 @@ class reachStats
 		$this->library = new Library($this->registry);
 
 		/* Switch for the different types of data */
-		switch($type){
+		switch($type)
+		{
+			default:
 			case 'all':
 				$result = $this->DB->buildAndFetch(array(
-					'select' => 'rank,last_active,games_played,games_won,games_lost,total_kills,total_deaths,total_betrayals,
+					'select' 	=> 'rank,last_active,games_played,games_won,games_lost,total_kills,total_deaths,total_betrayals,
 						daily_challenges,weekly_challenges,total_playtime,total_medals,first_played,armory_completion,win_percent,
 						kd_ratio,total_assists,service_tag, data,weapons,medals,commendations,settings, rank_id',
-					'from' => 'reachstat',
-					'where' => "id='" . intval($id) .
-				"'"));
+					'from'		=> 'reachstat',
+					'where' 	=> "id='" . intval($id) . "'"));
 
 				//------------------------------------------------------
 				// Mega ARRAY is MEGA
@@ -1325,21 +1312,17 @@ class reachStats
 				return $tempData;
 
 				break;
+
 			case 'stats':
 				$result = $this->DB->buildAndFetch(array(
-					'select' => 'data',
-					'from' => 'reachstat',
-					'where' => "id='" . intval($id) .
-				"'"));
+					'select' 	=> 'data',
+					'from' 		=> 'reachstat',
+					'where' 	=> "id='" . intval($id) . "'"));
 
 				/* return just stats */
 				return unserialize($result['data']);
 
 				/* break out */
-				break;
-
-
-			default:
 				break;
 		}
 	}
@@ -1349,31 +1332,23 @@ class reachStats
 		/* Don't trust the user */
 		$gtCleaned = $this->ParseGT(($gt));
 
-		/* grab first letter/number for comparison */
-		$firstL = substr($gtCleaned,0,1);
-
 		/* Can't search it, so gotta build it */
-		$this->DB->build(array(
-			'select' => 'gamertag, id',
-			'from' => 'reachstat',
-			'order' => 'gamertag',
-			'where' => "gamertag LIKE '" . $firstL . "%'"));
+		$resp = $this->DB->buildAndFetch(array(
+			'select' 	=> 'gamertag, id',
+			'from' 		=> 'reachstat',
+			'order' 	=> 'gamertag',
+			'where'		=> "gamertag='" . $gtCleaned . "'"));
 
-		/* run */
-		$this->DB->execute();
-
-		/* one by one, we will find one */
-		while ($r = $this->DB->fetch())
+		/* check it */
+		if ($resp == null || FALSE || "")
 		{
-			/* OUR GTs EQUAL YET */
-			if (strtoupper($r['gamertag']) === strtoupper($gtCleaned))
-			{
-				/* Return ID it matched */
-				return $r['id'];
-
-			}
+			return 0;
 		}
-		return 0;
+		else
+		{
+			/* we exist */
+			return $resp['id'];
+		}
 	}
 
 	public function findAndCheckGT($id)
@@ -1383,10 +1358,9 @@ class reachStats
 
 		/* Have ID, reverse for GT */
 		$result = $this->DB->buildAndFetch(array(
-		 		'select' => 'gamertag',
-		 		'from' => 'reachstat',
-				'where' => "id='" . $id .
-		     "'"));
+		 		'select' 	=> 'gamertag',
+		 		'from' 		=> 'reachstat',
+				'where' 	=> "id='" . $id . "'"));
 
 		/* Send it back */
 		return ($this->unParseGT($result['gamertag']));
@@ -1435,7 +1409,7 @@ class reachStats
 		/* Remove trace of members table */
 		$this->DB->update('members',array(
 				'has_reachstat' => intval(0)),
-		"member_id=" .intval($userID));
+		"member_id=" . intval($userID));
 
 		/* Now clear DB. Per ToS */
 		$this->DB->update('reachstat', array(
@@ -1484,7 +1458,8 @@ class reachStats
 	 */
 	private function _findRankID($id)
 	{
-		switch($id){
+		switch($id)
+		{
 			case '0':
 				return 0;
 			case '1':
@@ -1625,9 +1600,9 @@ class reachStats
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['rank'][$i]['num'] = $row['rank'];
-			$stats['rank'][$i]['gt']  = $row['gamertag'];
-			$stats['rank'][$i]['mem_id'] = $row['member_id'];
+			$stats['rank'][$i]['num'] 		= $row['rank'];
+			$stats['rank'][$i]['gt']  		= $row['gamertag'];
+			$stats['rank'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1645,12 +1620,13 @@ class reachStats
 
 		$stats['wper'][0]['name'] = 'Win Percent';
 		$stats['wper'][0]['des']  = 'Best Wining Percentage';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['wper'][$i]['num'] = $row['win_percent'] . '%';
-			$stats['wper'][$i]['gt']  = $row['gamertag'];
-			$stats['wper'][$i]['mem_id'] = $row['member_id'];
+			$stats['wper'][$i]['num'] 		= $row['win_percent'] . '%';
+			$stats['wper'][$i]['gt']  		= $row['gamertag'];
+			$stats['wper'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1668,12 +1644,13 @@ class reachStats
 
 		$stats['kd'][0]['name'] = 'K/D Ratio';
 		$stats['kd'][0]['des']  = 'Best Kills / Death';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['kd'][$i]['num'] = $row['kd_ratio'];
-			$stats['kd'][$i]['gt']  = $row['gamertag'];
-			$stats['kd'][$i]['mem_id'] = $row['member_id'];
+			$stats['kd'][$i]['num'] 		= $row['kd_ratio'];
+			$stats['kd'][$i]['gt']  		= $row['gamertag'];
+			$stats['kd'][$i]['mem_id'] 		= $row['member_id'];
 			$i++;
 		}
 		//-------------
@@ -1690,12 +1667,13 @@ class reachStats
 
 		$stats['apg'][0]['name'] = 'ApG';
 		$stats['apg'][0]['des']  = 'Assists per Game';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['apg'][$i]['num'] = $row['ApG'];
-			$stats['apg'][$i]['gt']  = $row['gamertag'];
-			$stats['apg'][$i]['mem_id'] = $row['member_id'];
+			$stats['apg'][$i]['num'] 		= $row['ApG'];
+			$stats['apg'][$i]['gt']  		= $row['gamertag'];
+			$stats['apg'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1713,12 +1691,13 @@ class reachStats
 
 		$stats['bpg'][0]['name'] = 'BpG';
 		$stats['bpg'][0]['des']  = 'Betrayals per Game';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['bpg'][$i]['num'] = $row['BpG'];
-			$stats['bpg'][$i]['gt']  = $row['gamertag'];
-			$stats['bpg'][$i]['mem_id'] = $row['member_id'];
+			$stats['bpg'][$i]['num'] 		= $row['BpG'];
+			$stats['bpg'][$i]['gt']  		= $row['gamertag'];
+			$stats['bpg'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1736,12 +1715,13 @@ class reachStats
 
 		$stats['kpg'][0]['name'] = 'KpG';
 		$stats['kpg'][0]['des']  = 'Kills per Game';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['kpg'][$i]['num'] = $row['KpG'];
-			$stats['kpg'][$i]['gt']  = $row['gamertag'];
-			$stats['kpg'][$i]['mem_id'] = $row['member_id'];
+			$stats['kpg'][$i]['num'] 			= $row['KpG'];
+			$stats['kpg'][$i]['gt']  			= $row['gamertag'];
+			$stats['kpg'][$i]['mem_id'] 		= $row['member_id'];
 			$i++;
 		}
 		//-------------
@@ -1758,12 +1738,13 @@ class reachStats
 
 		$stats['dpg'][0]['name'] = 'DpG';
 		$stats['dpg'][0]['des']  = 'Deaths per Game';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['dpg'][$i]['num'] = $row['DpG'];
-			$stats['dpg'][$i]['gt']  = $row['gamertag'];
-			$stats['dpg'][$i]['mem_id'] = $row['member_id'];
+			$stats['dpg'][$i]['num'] 		= $row['DpG'];
+			$stats['dpg'][$i]['gt']  		= $row['gamertag'];
+			$stats['dpg'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1781,12 +1762,13 @@ class reachStats
 
 		$stats['spg'][0]['name'] = 'SpG';
 		$stats['spg'][0]['des']  = 'Snipes per Game';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['spg'][$i]['num'] = $row['SpG'];
-			$stats['spg'][$i]['gt']  = $row['gamertag'];
-			$stats['spg'][$i]['mem_id'] = $row['member_id'];
+			$stats['spg'][$i]['num'] 		= $row['SpG'];
+			$stats['spg'][$i]['gt']  		= $row['gamertag'];
+			$stats['spg'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1804,12 +1786,13 @@ class reachStats
 
 		$stats['mpg'][0]['name'] = 'MpG';
 		$stats['mpg'][0]['des']  = 'Medals per Game';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['mpg'][$i]['num'] = $row['MpG'];
-			$stats['mpg'][$i]['gt']  = $row['gamertag'];
-			$stats['mpg'][$i]['mem_id'] = $row['member_id'];
+			$stats['mpg'][$i]['num'] 		= $row['MpG'];
+			$stats['mpg'][$i]['gt']  		= $row['gamertag'];
+			$stats['mpg'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1827,12 +1810,13 @@ class reachStats
 
 		$stats['games'][0]['name'] = 'Total Games';
 		$stats['games'][0]['des']  = 'Total Games Played';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['games'][$i]['num'] = $this->registry->getClass('class_localization')->formatNumber($row['total_games']);
-			$stats['games'][$i]['gt']  = $row['gamertag'];
-			$stats['games'][$i]['mem_id'] = $row['member_id'];
+			$stats['games'][$i]['num'] 		= $this->registry->getClass('class_localization')->formatNumber($row['total_games']);
+			$stats['games'][$i]['gt']  		= $row['gamertag'];
+			$stats['games'][$i]['mem_id'] 	= $row['member_id'];
 			$i++;
 		}
 
@@ -1850,12 +1834,13 @@ class reachStats
 
 		$stats['kills'][0]['name'] = 'Total Kills';
 		$stats['kills'][0]['des']  = 'Total Kills earned';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['kills'][$i]['num'] = $this->registry->getClass('class_localization')->formatNumber($row['total_kills']);
-			$stats['kills'][$i]['gt']  = $row['gamertag'];
-			$stats['kills'][$i]['mem_id'] = $row['member_id'];
+			$stats['kills'][$i]['num'] 			= $this->registry->getClass('class_localization')->formatNumber($row['total_kills']);
+			$stats['kills'][$i]['gt']  			= $row['gamertag'];
+			$stats['kills'][$i]['mem_id']		= $row['member_id'];
 			$i++;
 		}
 
@@ -1873,12 +1858,13 @@ class reachStats
 
 		$stats['assists'][0]['name'] = 'Total Assists';
 		$stats['assists'][0]['des']  = 'Total Assists Earned';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['assists'][$i]['num'] = $this->registry->getClass('class_localization')->formatNumber($row['total_assists']);
-			$stats['assists'][$i]['gt']  = $row['gamertag'];
-			$stats['assists'][$i]['mem_id'] = $row['member_id'];
+			$stats['assists'][$i]['num'] 			= $this->registry->getClass('class_localization')->formatNumber($row['total_assists']);
+			$stats['assists'][$i]['gt']  			= $row['gamertag'];
+			$stats['assists'][$i]['mem_id'] 		= $row['member_id'];
 			$i++;
 		}
 
@@ -1896,12 +1882,13 @@ class reachStats
 
 		$stats['deaths'][0]['name'] = 'Total Deaths';
 		$stats['deaths'][0]['des']  = 'Total Deaths Earned';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['deaths'][$i]['num'] = $this->registry->getClass('class_localization')->formatNumber($row['total_deaths']);
-			$stats['deaths'][$i]['gt']  = $row['gamertag'];
-			$stats['deaths'][$i]['mem_id'] = $row['member_id'];
+			$stats['deaths'][$i]['num'] 			= $this->registry->getClass('class_localization')->formatNumber($row['total_deaths']);
+			$stats['deaths'][$i]['gt']  			= $row['gamertag'];
+			$stats['deaths'][$i]['mem_id'] 			= $row['member_id'];
 			$i++;
 		}
 
@@ -1919,12 +1906,13 @@ class reachStats
 
 		$stats['medals'][0]['name'] = 'Total Medals';
 		$stats['medals'][0]['des']  = 'Total Medals Obtained';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['medals'][$i]['num'] = $this->registry->getClass('class_localization')->formatNumber($row['total_medals']);
-			$stats['medals'][$i]['gt']  = $row['gamertag'];
-			$stats['medals'][$i]['mem_id'] = $row['member_id'];
+			$stats['medals'][$i]['num'] 			= $this->registry->getClass('class_localization')->formatNumber($row['total_medals']);
+			$stats['medals'][$i]['gt']  			= $row['gamertag'];
+			$stats['medals'][$i]['mem_id']			= $row['member_id'];
 			$i++;
 		}
 
@@ -1942,19 +1930,18 @@ class reachStats
 
 		$stats['chest'][0]['name'] = 'Armory Unlocked';
 		$stats['chest'][0]['des']  = 'Percentage of Armory Unlocked';
+
 		/* Bring those in and lets loop em */
 		while($row = $this->DB->fetch($out))
 		{
-			$stats['chest'][$i]['num'] = $row['chest_completion'] . "%";
-			$stats['chest'][$i]['gt']  = $row['gamertag'];
-			$stats['chest'][$i]['mem_id'] = $row['member_id'];
+			$stats['chest'][$i]['num'] 			= $row['chest_completion'] . "%";
+			$stats['chest'][$i]['gt']  			= $row['gamertag'];
+			$stats['chest'][$i]['mem_id']		= $row['member_id'];
 			$i++;
 		}
 
 		/* set cache */
 		$this->cache->setCache( 'leaderboard', $stats,  array( 'array' => 1, 'donow' => 1 ) );
-
-
 	}
 
 	/**
@@ -1965,9 +1952,9 @@ class reachStats
 	 */
 	public function _setLeaderboards($data, $weapons)
 	{
-
 		/* Check for 400 kills and 100 games */
-		if (($data['totalKills'] < 400) && ($data['gamesPlayed'] < 100)) {
+		if (($data['totalKills'] < 400) && ($data['gamesPlayed'] < 100))
+		{
 
 		}
 		else
@@ -1992,8 +1979,7 @@ class reachStats
 				'total_medals'	=> intval($data['totalMedals']),
 				'chest_completion' => intval($data['armorCompletion'])),
 				array (
-					'where'	=> "member_id='".$data['mem_id']."'")
-			);
+					'where'	=> "member_id='" . $data['mem_id'] . "'"));
 		}
 	}
 }

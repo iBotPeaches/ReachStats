@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -22,7 +22,7 @@ if ( ! defined( 'IN_IPB' ) )
 
 class task_item
 {
-/* Needed vars */
+	/* Needed vars */
 	protected $class;
 	protected $task			= array();
 	protected $restrict_log	= false;
@@ -36,7 +36,7 @@ class task_item
 	protected $counter 		= 0;
 	protected $tier 		= array();
 
-/* Other data */
+	/* Other data */
 	private $data = array ();
 
 	/**
@@ -82,7 +82,6 @@ class task_item
 
 		/* New data */
 		$this->reach->setLeaderboards();
-
 
 		/* do the work */
 		$this->cache->rebuildCache('leaderboard','reachstat');

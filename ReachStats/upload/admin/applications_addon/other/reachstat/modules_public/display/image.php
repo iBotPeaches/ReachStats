@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -59,10 +59,12 @@ class public_reachstat_display_image extends ipsCommand
 
 		/* Are we recaching images? */
 		$loc = $this->request['loc'];
-		switch($loc){
+		switch($loc)
+		{
 			case 'recache':
 				$this->_recache($this->id, $this->gt);
 				break;
+
 			default:
 				break;
 		}
@@ -75,8 +77,8 @@ class public_reachstat_display_image extends ipsCommand
 		{
 
 			/* Only do this if its your page */
-			if ($this->id == $this->memberData['member_id']) {
-
+			if ($this->id == $this->memberData['member_id'])
+			{
 				/* Can't cache yet, so grab it */
 				$sigs = $this->registry->getClass('image')->doThemAll($this->id,$this->gt, false);
 			}
@@ -109,8 +111,9 @@ class public_reachstat_display_image extends ipsCommand
 		$this->gt = IPSText::parseCleanValue($this->request['gt']);
 
 		/* If Gamertag is blank, they didn't pass it */
-		if ($this->gt == "") {
-			$this->registry->getClass('output')->showError( $this->lang->words['no_gt_passed'],"<a href='".$this->kb."2012-r14'>2012</a>", false, '2012' );
+		if ($this->gt == "")
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['no_gt_passed'],"2012", false, '2012' );
 		}
 		else
 		{
@@ -131,15 +134,16 @@ class public_reachstat_display_image extends ipsCommand
 		}
 		else
 		{
-			$this->registry->getClass('output')->showError($this->lang->words['gt_no_exists'], "<a href='".$this->kb."2013-r15'>2013</a>",false,'2013');
+			$this->registry->getClass('output')->showError($this->lang->words['gt_no_exists'], "2013",false,'2013');
 		}
 
 		/* Finish up with Tier Data */
 		$this->times = $this->registry->getClass('library')->getUserData($this->id);
 
 		/* Check for banned image */
-		if ($this->times['tier']['dynimg'] == 0) {
-			$this->registry->getClass('output')->showError($this->lang->words['gt_banned_img'], "<a href='".$this->kb."2014-r16'>2014</a>",false,'2014');
+		if ($this->times['tier']['dynimg'] == 0)
+		{
+			$this->registry->getClass('output')->showError($this->lang->words['gt_banned_img'], "2014",false,'2014');
 		}
 
 		/* Unset some stuff */
@@ -150,8 +154,9 @@ class public_reachstat_display_image extends ipsCommand
 	private function _recache($id, $gt)
 	{
 		/* Our settings disabled? */
-		if ($this->settings['recache_perm']) {
-			$this->registry->getClass('output')->showError( $this->lang->words['no_recache_acp_off'],"<a href='".$this->kb."2015-r17'>2015</a>", false, '2015' );
+		if ($this->settings['recache_perm'])
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['no_recache_acp_off'],"2015", false, '2015' );
 		}
 
 		/* can recache? */
@@ -173,10 +178,11 @@ class public_reachstat_display_image extends ipsCommand
 		else
 		{
 			$flag2 = false;
-			$this->registry->getClass('output')->showError( $this->lang->words['no_perm_img'],"<a href='".$this->kb."2017-r19'>2017</a>", false, '2017' );
+			$this->registry->getClass('output')->showError( $this->lang->words['no_perm_img'],"2017", false, '2017' );
 		}
 			/* Lets check if we own this account */
-			if ($this->memberData['member_id'] == $id ) {
+			if ($this->memberData['member_id'] == $id )
+			{
 				ipsRegistry::getClass('output')->redirectScreen( $this->lang->words['redirect_images'], $this->settings['base_url'] . "app=reachstat&amp;module=display&amp;section=image&amp;gt={$gt}" );
 			}
 			else

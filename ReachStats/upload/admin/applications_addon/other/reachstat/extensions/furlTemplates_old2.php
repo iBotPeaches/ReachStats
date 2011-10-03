@@ -13,16 +13,21 @@
    *
    * ~peaches
 */
-
-if ( ! defined( 'IN_IPB' ) )
+if ( !defined( 'IN_IPB' ) )
 {
 	print "<h1>Incorrect access</h1>You cannot access this file directly. If you have recently upgraded, make sure you upgraded all the relevant files.";
 	exit();
 }
+$_SEOTEMPLATES = array(
 
-/**
- * Very simply returns the default section if one is not
- * passed in the URL
- */
-
-$DEFAULT_SECTION = 'tools';
+'app=reachstat' => array( 	 'app'			 => 'reachstat',
+							 'allowRedirect' => 0,
+							 'out'		     => array( '/app=reachstat$/i', 'reachstats/' ),
+							 'in'			 => array(
+							 						'regex'   => "#/reachstat/#i",
+													'matches' => array(
+													   	array( 'app', 'reachstat' )
+													   				   )
+													 )
+							 ),
+);

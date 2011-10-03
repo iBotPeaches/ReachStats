@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -82,16 +82,17 @@ class public_reachstat_display_compare extends ipsCommand
 		/* Work goes on here, if they pass ID but not GT */
 		if ($this->times['gt'] == null && $this->times['id'] != null)
 		{
-
 			/* Get their GT */
 			$this->times['gt'] = $this->reach->findAndCheckGT($this->times['id']);
 
 			/* Back to the redirect */
 			$this->registry->output->silentRedirect($this->settings['base_url'] . 'app=reachstat&amp;module=display&amp;section=gamer&amp;gt=' . $this->times['gt'] . '&amp;loc=' . $this->loc);
 		}
+
 		/* If Gamertag is blank, they didn't pass it */
-		if ($this->times['gt'] == "") {
-			$this->registry->getClass('output')->showError( $this->lang->words['gt_no_exist'],"<a href='".$this->kb."2025-r28'>2025</a>", false, '2025', '404' );
+		if ($this->times['gt'] == "")
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['gt_no_exist'],"2025", false, '2025', '404' );
 		}
 		else
 		{
@@ -100,7 +101,6 @@ class public_reachstat_display_compare extends ipsCommand
 
 		/* They passed GT, but does it exist? */
 		$check = $this->reach->findAndCheckID($this->times['gt']);
-
 
 		/* If the its not equal to 0, get it */
 		if (!($check == 0))
@@ -111,7 +111,7 @@ class public_reachstat_display_compare extends ipsCommand
 		}
 		else
 		{
-			$this->registry->getClass('output')->showError( $this->lang->words['2001'],"<a href='".$this->kb."2026-r29'>2026</a>", false, '2026', '404' );
+			$this->registry->getClass('output')->showError( $this->lang->words['2001'],"2026", false, '2026', '404' );
 		}
 
 		/* Get the times for comparing */

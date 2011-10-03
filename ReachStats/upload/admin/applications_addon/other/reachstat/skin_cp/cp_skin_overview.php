@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -33,8 +33,8 @@ public function __destruct()
  *
  */
 
-public function overviewSplash($data ) {
-
+public function overviewSplash($data )
+{
 $IPBHTML = "";
 //--starthtml--//
 
@@ -82,7 +82,8 @@ HTML;
 	return $IPBHTML;
 }
 
-public function tools() {
+public function tools()
+{
 
 $IPBHTML = "";
 //--starthtml--//

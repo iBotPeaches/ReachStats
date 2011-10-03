@@ -9,7 +9,7 @@
    * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY OF ANY KIND
    *
    * https://github.com/iBotPeaches/ReachStats
-   * bugs: http://reachstuff.com/community/tracker/project-1-halo-reach-stats/
+   * bugs: https://github.com/iBotPeaches/ReachStats/issues
    *
    * ~peaches
 */
@@ -85,13 +85,11 @@ private $data = array ();
 		/* New data */
 		$this->reach->getChallenges(true);
 
-
 		/* do the work */
 		$this->cache->rebuildCache('challenges','reachstat');
 
 		/* new stuff */
 		$this->points->setCacheCompareArray();
-
 
 		//-----------------------------------------
 		// Unlock Task: DO NOT MODIFY!
