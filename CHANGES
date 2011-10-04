@@ -2,6 +2,11 @@
 	Started 3.2 work
 	Fixed lang issue
 	Fixed wrong API key issue
+	Fixed KB articles linking to wrong area
+	Fixed templates for 3.2
+	Adjusted template on home
+	Fixed profile view
+	Removed "new profile"
 
 == 0.8.5 ==
 	Fixed -1 medal ID problem

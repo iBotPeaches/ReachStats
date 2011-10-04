@@ -5,9 +5,9 @@ Copyright (c) 2011 ReachStats
 ReachStats is released under a Creative Commons Attribution-NonCommerical 3.0 Unported License.
 Details of this license can be found here: http://creativecommons.org/licenses/by-nc/3.0/
 
-Bug Reports:  http://reachstuff.com/community/tracker/project-1-halo-reach-stats/ 
-Discussion: http://reachstuff.com/community/forum/16-discussion/
-Feature Requests: http://reachstuff.com/community/forum/16-discussion/
+Bug Reports:  https://github.com/iBotPeaches/ReachStats/issues
+Discussion: https://github.com/iBotPeaches/ReachStats
+Feature Requests: https://github.com/iBotPeaches/ReachStats/issues
 
 Requirements:
 -Bungie API Key ( http://www.bungie.net/Account/reachapikey.aspx )

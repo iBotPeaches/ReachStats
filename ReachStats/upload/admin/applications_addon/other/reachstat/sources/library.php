@@ -117,7 +117,7 @@ class Library
 		/* Return copyright */
 		return "<div class='desc' style='margin-top:10px; margin-right: 15px; float: right; text-align:right'>ReachStats was created under Microsoft's <a href='http://www.xbox.com/en-US/community/developer/rules.htm' target='_blank' >Game Content Usage Rules</a> using assets from Halo Reach. <br />
 				Halo Reach is a registered trademark of Bungie, LLC. This website is in no way affiliated with Bungie, LLC.<br />
-				Powered by <a href='http://reachstuff.com/community/' title='ReachStuff' target= '_blank'>Reach Stats</a> {$this->version} &copy; ".date('Y')."</div><br /><br />";
+				Powered by <a href='http://connortumbleson.com/reachstats/' title='ReachStats' target= '_blank'>Reach Stats</a> {$this->version} &copy; ".date('Y')."</div><br /><br />";
 	}
 
 	/**

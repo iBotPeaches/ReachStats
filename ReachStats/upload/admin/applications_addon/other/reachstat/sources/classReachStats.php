@@ -874,7 +874,7 @@ class reachStats
 		}
 
 		/* get total time */
-		$this->data['totalPlaytime'] = $this->library->time_duration($this->data['totalPlaytime'],'yMwdhm');
+		$this->data['totalPlaytime'] = $this->library->time_duration($this->data['totalPlaytime'],'yMwdh');
 
 		/* work something out for games played */
 		$this->data['gamesLost'] = ($this->data['gamesPlayed'] - $this->data['totalWins']);

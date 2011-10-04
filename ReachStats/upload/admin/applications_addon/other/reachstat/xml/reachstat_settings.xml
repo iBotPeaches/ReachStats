@@ -46,7 +46,7 @@
 	{
 		$_POST['reach_group_online'] = "";
 	}
-	
+
 	$key = 'reach_group_online';
 }
 if ( $show == 1 )
@@ -134,7 +134,7 @@ if ( $show == 1 )
 	{
 		$_POST['recache_abil'] = "";
 	}
-	
+
 	$key = 'recache_abil';
 }
 if ( $show == 1 )
@@ -232,24 +232,6 @@ if ( $show == 1 )
       <conf_is_title>0</conf_is_title>
     </setting>
     <setting>
-      <conf_title>Prevent Recaching</conf_title>
-      <conf_description>This will prevent the task from re-caching users data every 24/48 hours.</conf_description>
-      <conf_group>46</conf_group>
-      <conf_type>yes_no</conf_type>
-      <conf_key>recache_perm</conf_key>
-      <conf_default>1</conf_default>
-      <conf_extra/>
-      <conf_evalphp/>
-      <conf_protected>1</conf_protected>
-      <conf_position>1</conf_position>
-      <conf_start_group>Global Task Rules</conf_start_group>
-      <conf_end_group>0</conf_end_group>
-      <conf_add_cache>1</conf_add_cache>
-      <conf_keywords>recache enabled</conf_keywords>
-      <conf_title_keyword>tasks</conf_title_keyword>
-      <conf_is_title>0</conf_is_title>
-    </setting>
-    <setting>
       <conf_title>Profiles ran per task</conf_title>
       <conf_description>This limits the amount of profiles checked per task run.</conf_description>
       <conf_group>46</conf_group>
@@ -296,7 +278,7 @@ if ( $show == 1 )
 	{
 		$_POST['tier_0_group'] = "";
 	}
-	
+
 	$key = 'tier_0_group';
 }
 if ( $show == 1 )
@@ -330,7 +312,7 @@ if ( $show == 1 )
 	{
 		$_POST['tier_1_group'] = "";
 	}
-	
+
 	$key = 'tier_1_group';
 }
 if ( $show == 1 )
@@ -364,7 +346,7 @@ if ( $show == 1 )
 	{
 		$_POST['tier_2_group'] = "";
 	}
-	
+
 	$key = 'tier_2_group';
 }
 if ( $show == 1 )
@@ -398,7 +380,7 @@ if ( $show == 1 )
 	{
 		$_POST['tier_3_group'] = "";
 	}
-	
+
 	$key = 'tier_3_group';
 }
 if ( $show == 1 )
@@ -432,7 +414,7 @@ if ( $show == 1 )
 	{
 		$_POST['tier_4_group'] = "";
 	}
-	
+
 	$key = 'tier_4_group';
 }
 if ( $show == 1 )

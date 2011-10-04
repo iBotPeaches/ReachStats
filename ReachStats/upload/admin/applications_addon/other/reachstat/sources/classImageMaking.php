@@ -550,6 +550,10 @@ class imageClass {
 					break;
 
 				case 3: #Tiny Sig
+
+					/* reset black */
+					$black = imagecolorallocate($template, 0, 0, 0);
+
 					/* Merge in progress */
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 5 , imagesy($template) - ($water_h + 5), 0, 0, imagesx($watermark), imagesy($watermark));
 
@@ -562,6 +566,10 @@ class imageClass {
 					break;
 
 				case 4: #Rank / Emblem
+
+					/* reset black */
+					$black = imagecolorallocate($template, 0, 0, 0);
+
 					/* Merge in progress */
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 92 , imagesy($template) - ($water_h + 10), 0, 0, imagesx($watermark), imagesy($watermark));
 
@@ -576,12 +584,12 @@ class imageClass {
 					imagedestroy($rank);
 
 					/* Add some text */
-					imagettftext($template, 10, 0, 15, 50, $black, $this->fonts[7], '      Kills: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_kills']) . '                Defeats: '. $this->registry->getClass('class_localization')->formatNumber( $this->data['games_lost']));
-					imagettftext($template, 10, 0, 15, 65, $black, $this->fonts[7], 'Deaths: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_deaths']).     '               Victories: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['games_won'])); # Victories;
-					imagettftext($template, 10, 0, 15, 80, $black, $this->fonts[7], 'Armory Completed: ' . $this->data['armory_completion'] . "%");
+					imagettftext($template, 10, 0, 15, 50, $black, $this->fonts[3], '      Kills: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_kills']) . '                Defeats: '. $this->registry->getClass('class_localization')->formatNumber( $this->data['games_lost']));
+					imagettftext($template, 10, 0, 15, 65, $black, $this->fonts[3], 'Deaths: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['total_deaths']).     '               Victories: ' . $this->registry->getClass('class_localization')->formatNumber( $this->data['games_won'])); # Victories;
+					imagettftext($template, 10, 0, 15, 80, $black, $this->fonts[3], 'Armory Completed: ' . $this->data['armory_completion'] . "%");
 					/* Add the data based on this template */
-					imagettftext($template, 18, 0, 15, 25, $black, $this->fonts[7], $this->gt);
-					imagettftext($template, 18, 0, 290, 25, $black, $this->fonts[7], $this->data['service_tag']);
+					imagettftext($template, 18, 0, 15, 25, $black, $this->fonts[3], $this->gt);
+					imagettftext($template, 18, 0, 290, 25, $black, $this->fonts[3], $this->data['service_tag']);
 
 					/* Retain Transparency */
 					imagealphablending( $template, false );
@@ -589,6 +597,10 @@ class imageClass {
 					break;
 
 				case 5: #Tiny little guy
+
+					/* reset black */
+					$black = imagecolorallocate($template, 0, 0, 0);
+
 					/* Merge in progress */
 					imagecopy($template,$watermark,imagesx($template)- ($water_w) - 53 , imagesy($template) - ($water_h + 2), 0, 0, imagesx($watermark), imagesy($watermark));
 
@@ -603,8 +615,8 @@ class imageClass {
 					imagedestroy($rank);
 
 					/* Add the data based on this template */
-					imagettftext($template, 12, 0, 40, 15, $white, $this->fonts[7], $this->gt);
-					imagettftext($template, 12, 0, 40, 30, $white, $this->fonts[7], $this->data['service_tag']);
+					imagettftext($template, 12, 0, 40, 15, $white, $this->fonts[3], $this->gt);
+					imagettftext($template, 12, 0, 40, 30, $white, $this->fonts[3], $this->data['service_tag']);
 
 					/* Retain Transparency */
 					imagealphablending( $template, false );
@@ -647,7 +659,6 @@ class imageClass {
 		$this->fonts[4] = $this->tempPath . 'reach/fonts/visitor.ttf';
 		//$this->fonts[5] = $this->tempPath . 'reach/fonts/gothic.ttf';
 		$this->fonts[6] = $this->tempPath . 'reach/fonts/segoeuil.ttf';
-		$this->fonts[7] = $this->tempPath . 'reach/fonts/conduit.ttf';
 
 		return $this->fonts;
 	}

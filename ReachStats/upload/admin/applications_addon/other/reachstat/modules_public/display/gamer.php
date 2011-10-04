@@ -86,7 +86,7 @@ class public_reachstat_display_gamer extends ipsCommand
 		/* DEBUG CHECK */
 		if ($this->debug == 1)
 		{
-			print_r($this->data);
+			//print_r($this->data);
 		}
 
 		/* Send to the output */
