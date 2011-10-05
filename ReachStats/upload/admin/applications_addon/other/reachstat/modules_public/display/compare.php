@@ -32,7 +32,6 @@ class public_reachstat_display_compare extends ipsCommand
 	protected $id 					= 0;
 	protected $curGamertag 			= "";
 	protected $debug 				= DEBUG_MODE;
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 
 	/**
 	 * Main class entry point

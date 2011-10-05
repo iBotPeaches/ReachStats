@@ -524,7 +524,7 @@ class reachStats
 		/* Make sure they did something right */
 		if (in_array($type,array('commendations','maps','medals','weapons','variants','ranks')) == true)
 		{
-			//$this->registry->getClass('output')->showError('type: ' + $type + " key: " + $key, "<a href='".$this->kb."2029-r31'>2029</a>",false,'2029');
+			//$this->registry->getClass('output')->showError('type: ' + $type + " key: " + $key, "2029",false,'2029');
 		}
 
 		/* Check if we should return entire array */
@@ -597,7 +597,7 @@ class reachStats
 			'where' 		=> "id='" . intval($id) . "'"));
 
 		/* Don't check if were testing */
-		if ($this->memberData['member_id'] != 1 || $task != true)
+		if ($this->memberData['member_id'] != 5103 || $task != true)
 		{
 			/* Check for inactivity */
 			if ($result['inactive'] == 1)

@@ -35,7 +35,6 @@ class public_reachstat_display_image extends ipsCommand
 	protected $gt         			= "";
 	protected $diff 				= array();
 	protected $debug 				= DEBUG_MODE;
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 	protected $version              = HR_VERSION;
 	protected $tier					= array();
 
@@ -172,7 +171,7 @@ class public_reachstat_display_image extends ipsCommand
 					}
 					else
 					{
-						$this->registry->getClass('output')->showError( $this->lang->words['spam_img_recache'],"<a href='".$this->kb."2016-r18'>2016</a>", false, '2016' );
+						$this->registry->getClass('output')->showError( $this->lang->words['spam_img_recache'],"2016", false, '2016' );
 					}
 		}
 		else

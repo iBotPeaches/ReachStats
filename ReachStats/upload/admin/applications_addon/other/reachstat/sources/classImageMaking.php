@@ -179,7 +179,7 @@ class imageClass {
 			if ($this->counter == 0)
 			{
 					/* Update their Emblem */
-				//$test = preg_replace('/70/','29',$this->data['emblem']);
+				    //$test = preg_replace('/70/','29',$this->data['emblem']);
 					$emblem70 = $this->fileManage->getFileContents($this->data['emblem']);
 					$emblem29 = $this->fileManage->getFileContents(preg_replace('/70/','29',$this->data['emblem']));
 					$emblem45 = $this->fileManage->getFileContents(preg_replace('/70/','45',$this->data['emblem']));
@@ -202,9 +202,29 @@ class imageClass {
 					$this->pathToEmblem45 = "{$this->tempPath}reach/emblems/{$id}-45.png";
 				    $this->pathToEmblem29 = "{$this->tempPath}reach/emblems/{$id}-29.png";
 
+					/* if file exists */
+					if (file_exists($this->pathToEmblem70))
+					{
+						unlink($this->pathToEmblem70);
+					}
+					if ((file_exists($this->pathToEmblem45)))
+					{
+						unlink($this->pathToEmblem45);
+					}
+					if ((file_exists($this->pathToEmblem29)))
+					{
+						unlink($this->pathToEmblem29);
+					}
+
+					/* make the images */
 					imagepng($emblemImage70,$this->pathToEmblem70);
 					imagepng($emblemImage45,$this->pathToEmblem45);
 				    imagepng($emblemImage29,$this->pathToEmblem29);
+
+					/* chmod em */
+					chmod($this->pathToEmblem70, IPS_FILE_PERMISSION);
+					chmod($this->pathToEmblem45, IPS_FILE_PERMISSION);
+					chmod($this->pathToEmblem29, IPS_FILE_PERMISSION);
 
 					imagedestroy($emblemImage70);
 					imagedestroy($emblemImage45);
@@ -633,8 +653,18 @@ class imageClass {
 		// START: This runs every sig
 		//--------------------------------------
 
+		/* check if that image exists first */
+		if (file_exists($pathToSigs))
+		{
+			/* bi bi */
+			unlink($pathToSigs);
+		}
+
 		/* Convert that stream into an image */
 		imagepng($template, $pathToSigs);
+
+		/* chmod it */
+		chmod($pathToSigs,IPS_FILE_PERMISSION);
 
 		}
 

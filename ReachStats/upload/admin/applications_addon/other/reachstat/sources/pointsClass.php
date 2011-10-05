@@ -26,7 +26,6 @@ class pointsClass
 	protected $points		     = array ();
 	protected $compare			 = array ();
 	protected $final			 = array ();
-	protected $kb 					= 'http://reachstuff.com/kb/page/';
 
 	/*
 	   * POINTS EXPLAINED
@@ -111,7 +110,7 @@ function __construct(ipsRegistry $ipsRegistry)
 
 		/* Make sure Player 1 can be found */
 		if ($result == "") {
-			$this->registry->getClass('output')->showError( $this->lang->words['p1_failed'],"<a href='".$this->kb."2019-r21'>2019</a>", false, '2019' );
+			$this->registry->getClass('output')->showError( $this->lang->words['p1_failed'],"2019", false, '2019' );
 		}
 		else
 		{
@@ -145,7 +144,7 @@ function __construct(ipsRegistry $ipsRegistry)
 
 		/* Make sure Player 2 can be found */
 		if ($result == "") {
-			$this->registry->getClass('output')->showError( $this->lang->words['p2_failed'],"<a href='".$this->kb."2020-r22'>2020</a>", false, '2020' );
+			$this->registry->getClass('output')->showError( $this->lang->words['p2_failed'],"2020", false, '2020' );
 		}
 		else
 		{
@@ -190,7 +189,8 @@ function __construct(ipsRegistry $ipsRegistry)
 					case 0: //Highest Wins
 
 						/* Check if p1 is greater */
-						if ($this->final['p1'][$x]['pts'] >= $this->final['p2'][$x]['pts']) {
+						if ($this->final['p1'][$x]['pts'] >= $this->final['p2'][$x]['pts'])
+						{
 							$this->final['p1'][$x]['place'] = 1;
 							$this->final['p2'][$x]['place'] = 0;
 						}
@@ -204,7 +204,8 @@ function __construct(ipsRegistry $ipsRegistry)
 					case 1: // Lowest Wins
 
 						/* Check if p1 is lower */
-						if ($this->final['p1'][$x]['pts'] <= $this->final['p2'][$x]['pts']) {
+						if ($this->final['p1'][$x]['pts'] <= $this->final['p2'][$x]['pts'])
+						{
 							$this->final['p1'][$x]['place'] = 1;
 							$this->final['p2'][$x]['place'] = 0;
 						}
@@ -218,7 +219,8 @@ function __construct(ipsRegistry $ipsRegistry)
 					case 2: // No Compare
 
 						/* Check if p1 is higher, but no compare */
-						if ($this->final['p1'][$x]['pts'] >= $this->final['p2'][$x]['pts']) {
+						if ($this->final['p1'][$x]['pts'] >= $this->final['p2'][$x]['pts'])
+						{
 							$this->final['p1'][$x]['place'] = 1;
 							$this->final['p2'][$x]['place'] = 0;
 						}
@@ -403,7 +405,8 @@ function __construct(ipsRegistry $ipsRegistry)
 
 
 			/* Do we send data back to user? */
-			if (($return === true)) {
+			if (($return === true))
+			{
 				$this->returnCompareArray();
 			}
 		}
@@ -421,12 +424,14 @@ function __construct(ipsRegistry $ipsRegistry)
 	private function _validate(){
 
 		/* 100 games */
-		if ($this->data['total']['stats']['gameCount'] < 100) {
-			$this->registry->getClass('output')->showError( $this->lang->words['100_games'],"<a href='".$this->kb."2021-r23'>2021</a>", false, '2021' );
+		if ($this->data['total']['stats']['gameCount'] < 100)
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['100_games'],"2021", false, '2021' );
 		}
 		/* 400 Kills */
-		if ($this->data['total']['stats']['totalKills'] < 400) {
-			$this->registry->getClass('output')->showError( $this->lang->words['400_kills'],"<a href='".$this->kb."2022-r24'>2022</a>", false, '2022' );
+		if ($this->data['total']['stats']['totalKills'] < 400)
+		{
+			$this->registry->getClass('output')->showError( $this->lang->words['400_kills'],"2022", false, '2022' );
 		}
 	}
 

@@ -13,6 +13,10 @@ Requirements:
 -Bungie API Key ( http://www.bungie.net/Account/reachapikey.aspx )
 -Installation of IPB (Invision Power Board)
 -Have at least curl, sockets or getfilecontents() 
+-GD installed
+-TTF (Freetype) installed
+-At least php 5.2.11
+
 
 ReachStats installs as an application into the Invision Power Board platform. Currently supported version is 3.1.4 and will be updated to reflect newer versions as they are released.
 

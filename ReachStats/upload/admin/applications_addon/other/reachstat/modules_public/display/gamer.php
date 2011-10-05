@@ -142,7 +142,7 @@ class public_reachstat_display_gamer extends ipsCommand
 			$flag2 = false;
 
 			/* Error out, we don't have permission to recache */
-			$this->registry->getClass('output')->showError( $this->lang->words['no_perm'],"<a href='".$this->kb."2010-r13'>2010</a>", false, '2010' );
+			$this->registry->getClass('output')->showError( $this->lang->words['no_perm'],"2010", false, '2010' );
 		}
 	}
 
@@ -260,10 +260,12 @@ class public_reachstat_display_gamer extends ipsCommand
 		$num1 = 0;
 
 		/* Weapons (needed for Google Graphs API */
-		foreach ($this->data['stats'] as $stat){
+		foreach ($this->data['stats'] as $stat)
+		{
 
 			/* Check for vehicle */
-			if ($stat['type'] == 'vehicle') {
+			if ($stat['type'] == 'vehicle')
+			{
 				$temp1[$num]= $stat;
 
 				/* seperate counters */
